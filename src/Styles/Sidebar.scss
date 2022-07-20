@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap");
+
+$primary-color: #1b1824;
+$glow-effect: 1px 2px 8px 3px rgba(255, 255, 255, 0.5);
+
+@mixin popEffect {
+  transform: scale(1.1);
+}
+
+.sidenav {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+  width: 100px;
+  height: 90vh;
+  background-color: $primary-color;
+  border-radius: 12px;
+
+  &__logo {
+    position: absolute;
+    cursor: pointer;
+    top: -35px;
+    width: 75px;
+    height: auto;
+  }
+
+  .logo__text {
+    font-family: "Lato", sans-serif;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      @include popEffect();
+    }
+
+    &--moon {
+      margin-top: 50px;
+      color: white;
+    }
+
+    &--cake {
+      margin-bottom: 40px;
+      color: rgb(144, 56, 245);
+    }
+  }
+
+  .icon {
+    width: 25px;
+    height: auto;
+    color: rgb(175, 106, 255);
+    margin: 20px 0px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      @include popEffect();
+    }
+
+    &--active {
+      color: white;
+    }
+  }
+
+  .icon--spin {
+    @extend .icon;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+
+  .group-position--end {
+    margin-top: 250px;
+  }
+}
