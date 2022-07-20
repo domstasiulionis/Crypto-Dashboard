@@ -22,8 +22,8 @@ $primary-color: #1b1824;
   background-color: $primary-color;
   border-radius: 12px;
 
-  .sidenav-top-container,
-  .bottom-container {
+  &-top-container,
+  &-bottom-container {
     @include Flex;
   }
 
@@ -60,9 +60,26 @@ $primary-color: #1b1824;
     width: 25px;
     height: auto;
     color: rgb(175, 106, 255);
-    margin: 20px 0px;
+    margin: 20px 20px;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
+
+    &-container {
+      width: 100px;
+      height: 65px;
+      padding-left: 18px;
+    }
+
+    &-container--active {
+      @extend .icon-container;
+      background-image: linear-gradient(
+        to right,
+        rgb(255, 255, 255, 0.2),
+        rgba(255, 0, 0, 0)
+      );
+      border-left: 3px solid white;
+      padding-left: 15px;
+    }
 
     &:hover {
       @include popEffect();
@@ -75,18 +92,11 @@ $primary-color: #1b1824;
 
   .icon--spin {
     @extend .icon;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     &:hover {
       transform: rotate(90deg);
-    }
-  }
-
-  .icon--power {
-    @extend .icon;
-    color: rgb(148, 64, 64);
-
-    &:hover {
-      color: rgb(192, 46, 46);
     }
   }
 }
