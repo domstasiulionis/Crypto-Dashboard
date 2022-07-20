@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import "../Styles/Sidebar.scss";
 
 // Icons
@@ -8,7 +11,9 @@ import { BsGear, BsGearFill } from "react-icons/bs";
 // Images
 import logo from "../Assets/moon-logo.png";
 
-const Sidebar = ({ activeIcon, setActiveIcon }) => {
+const Sidebar = () => {
+  const [activeIcon, setActiveIcon] = useState("home");
+
   const selectedHome = () => {
     setActiveIcon("home");
   };
@@ -30,38 +35,45 @@ const Sidebar = ({ activeIcon, setActiveIcon }) => {
         <h3 className="logo__text logo__text--cake">CAKE</h3>
 
         {/* Top icons */}
+        <Link to="/Home">
+          {activeIcon === "home" ? (
+            <div className="icon-container--active">
+              <IoHome
+                className={`icon ${
+                  activeIcon === "home" ? "icon--active" : ""
+                }`}
+              />
+            </div>
+          ) : (
+            <div className="icon-container" onClick={() => selectedHome()}>
+              <IoHomeOutline
+                className={`icon ${
+                  activeIcon === "home" ? "icon--active" : ""
+                }`}
+              />
+            </div>
+          )}
+        </Link>
 
-        {activeIcon === "home" ? (
-          <div className="icon-container--active">
-            <IoHome
-              className={`icon ${activeIcon === "home" ? "icon--active" : ""}`}
-            />
-          </div>
-        ) : (
-          <div className="icon-container" onClick={() => selectedHome()}>
-            <IoHomeOutline
-              className={`icon ${activeIcon === "home" ? "icon--active" : ""}`}
-            />
-          </div>
-        )}
-
-        {activeIcon === "favourites" ? (
-          <div className="icon-container--active">
-            <AiFillStar
-              className={`icon ${
-                activeIcon === "favourites" ? "icon--active" : ""
-              }`}
-            />
-          </div>
-        ) : (
-          <div className="icon-container" onClick={() => selectedFav()}>
-            <AiOutlineStar
-              className={`icon ${
-                activeIcon === "favourites" ? "icon--active" : ""
-              }`}
-            />
-          </div>
-        )}
+        <Link to="/Favourites">
+          {activeIcon === "favourites" ? (
+            <div className="icon-container--active">
+              <AiFillStar
+                className={`icon ${
+                  activeIcon === "favourites" ? "icon--active" : ""
+                }`}
+              />
+            </div>
+          ) : (
+            <div className="icon-container" onClick={() => selectedFav()}>
+              <AiOutlineStar
+                className={`icon ${
+                  activeIcon === "favourites" ? "icon--active" : ""
+                }`}
+              />
+            </div>
+          )}
+        </Link>
       </div>
 
       {/* Bottom icons */}

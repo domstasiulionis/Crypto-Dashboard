@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
-
+import Home from "./Components/Pages/Home";
+import Favourites from "./Components/Pages/Favourites";
 import "./Styles/App.scss";
 
 function App() {
-  const [activeIcon, setActiveIcon] = useState("home");
-
   return (
     <div className="Content">
-      <Sidebar activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
+      <Router>
+        <Sidebar />
+        <Routes>
+          <Route exact path="/Home" element={<Home />} />
+          <Route exact path="/Favourites" element={<Favourites />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
