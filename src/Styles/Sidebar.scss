@@ -1,22 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap");
 
 $primary-color: #1b1824;
-$glow-effect: 1px 2px 8px 3px rgba(255, 255, 255, 0.5);
 
 @mixin popEffect {
   transform: scale(1.1);
 }
 
-.sidenav {
+@mixin Flex {
   display: flex;
   position: relative;
   flex-direction: column;
   align-items: center;
+}
+
+.sidenav {
+  @include Flex;
+  justify-content: space-between;
   margin-top: 35px;
   width: 100px;
   height: 90vh;
   background-color: $primary-color;
   border-radius: 12px;
+
+  .sidenav-top-container,
+  .bottom-container {
+    @include Flex;
+  }
 
   &__logo {
     position: absolute;
@@ -68,11 +77,16 @@ $glow-effect: 1px 2px 8px 3px rgba(255, 255, 255, 0.5);
     @extend .icon;
 
     &:hover {
-      transform: rotate(180deg);
+      transform: rotate(90deg);
     }
   }
 
-  .group-position--end {
-    margin-top: 250px;
+  .icon--power {
+    @extend .icon;
+    color: rgb(148, 64, 64);
+
+    &:hover {
+      color: rgb(192, 46, 46);
+    }
   }
 }
