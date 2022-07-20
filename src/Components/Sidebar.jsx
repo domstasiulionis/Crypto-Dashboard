@@ -38,9 +38,8 @@ const Sidebar = ({ activeIcon, setActiveIcon }) => {
             />
           </div>
         ) : (
-          <div className="icon-container">
+          <div className="icon-container" onClick={() => selectedHome()}>
             <IoHomeOutline
-              onClick={() => selectedHome()}
               className={`icon ${activeIcon === "home" ? "icon--active" : ""}`}
             />
           </div>
@@ -55,9 +54,8 @@ const Sidebar = ({ activeIcon, setActiveIcon }) => {
             />
           </div>
         ) : (
-          <div className="icon-container">
+          <div className="icon-container" onClick={() => selectedFav()}>
             <AiOutlineStar
-              onClick={() => selectedFav()}
               className={`icon ${
                 activeIcon === "favourites" ? "icon--active" : ""
               }`}
