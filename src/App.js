@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Sidebar />
         <Routes>
-          <Route exact path="/Home" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/Favourites" element={<Favourites />} />
         </Routes>
       </Router>

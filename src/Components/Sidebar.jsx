@@ -15,6 +15,7 @@ import logo from "../Assets/moon-logo.png";
 
 const Sidebar = () => {
   const [activeIcon, setActiveIcon] = useState("home");
+  const [popUp, setpPopUp] = useState(false);
 
   const selectedHome = () => {
     setActiveIcon("home");
@@ -25,7 +26,7 @@ const Sidebar = () => {
   };
 
   const selectedSettings = () => {
-    setActiveIcon("settings");
+    setpPopUp((popUp) => !popUp);
   };
 
   return (
@@ -38,7 +39,7 @@ const Sidebar = () => {
 
         {/* Top icons */}
         <Tippy placement="right" delay={300} theme="custom" content="Home">
-          <Link to="/Home">
+          <Link to="/">
             {activeIcon === "home" ? (
               <div className="icon-container--active">
                 <IoHome
@@ -90,18 +91,18 @@ const Sidebar = () => {
       {/* Bottom icons */}
       <Tippy placement="right" delay={300} theme="custom" content="Settings">
         <div className="sidenav-bottom-container">
-          {activeIcon === "settings" ? (
+          {popUp === true ? (
             <BsGearFill
               onClick={() => selectedSettings()}
               className={`icon icon--spin ${
-                activeIcon === "settings" ? "icon--active" : ""
+                popUp === true ? "icon--active" : ""
               }`}
             />
           ) : (
             <BsGear
               onClick={() => selectedSettings()}
               className={`icon icon--spin ${
-                activeIcon === "settings" ? "icon--active" : ""
+                popUp === true ? "icon--active" : ""
               }`}
             />
           )}
