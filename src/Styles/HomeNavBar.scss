@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+
+$mainFont: "PT Sans", sans-serif;
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+
+  &-left {
+    display: flex;
+    align-items: center;
+
+    &__title {
+      font-family: $mainFont;
+      color: white;
+    }
+
+    &__icon {
+      width: 22px;
+      height: auto;
+      color: white;
+      margin-right: 10px;
+      margin-left: 20px;
+    }
+  }
+
+  .search-bar {
+    position: relative;
+
+    &__icon {
+      position: absolute;
+      color: white;
+      top: 7px;
+      right: 15px;
+      width: 20px;
+      height: auto;
+    }
+  }
+
+  input[type="text"] {
+    color: white;
+    padding: 10px 50px 10px 25px;
+    margin-bottom: 3px;
+    background-color: #131016;
+    border: 1px rgba($color: #ffffff, $alpha: 0.5) solid;
+    border-radius: 20px;
+  }
+}
