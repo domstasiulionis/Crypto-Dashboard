@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"; // optional
 
 import "../Styles/Sidebar.scss";
 
@@ -35,65 +37,76 @@ const Sidebar = () => {
         <h3 className="logo__text logo__text--cake">CAKE</h3>
 
         {/* Top icons */}
-        <Link to="/Home">
-          {activeIcon === "home" ? (
-            <div className="icon-container--active">
-              <IoHome
-                className={`icon ${
-                  activeIcon === "home" ? "icon--active" : ""
-                }`}
-              />
-            </div>
-          ) : (
-            <div className="icon-container" onClick={() => selectedHome()}>
-              <IoHomeOutline
-                className={`icon ${
-                  activeIcon === "home" ? "icon--active" : ""
-                }`}
-              />
-            </div>
-          )}
-        </Link>
+        <Tippy placement="right" delay={300} theme="custom" content="Home">
+          <Link to="/Home">
+            {activeIcon === "home" ? (
+              <div className="icon-container--active">
+                <IoHome
+                  className={`icon ${
+                    activeIcon === "home" ? "icon--active" : ""
+                  }`}
+                />
+              </div>
+            ) : (
+              <div className="icon-container" onClick={() => selectedHome()}>
+                <IoHomeOutline
+                  className={`icon ${
+                    activeIcon === "home" ? "icon--active" : ""
+                  }`}
+                />
+              </div>
+            )}
+          </Link>
+        </Tippy>
 
-        <Link to="/Favourites">
-          {activeIcon === "favourites" ? (
-            <div className="icon-container--active">
-              <AiFillStar
-                className={`icon ${
-                  activeIcon === "favourites" ? "icon--active" : ""
-                }`}
-              />
-            </div>
-          ) : (
-            <div className="icon-container" onClick={() => selectedFav()}>
-              <AiOutlineStar
-                className={`icon ${
-                  activeIcon === "favourites" ? "icon--active" : ""
-                }`}
-              />
-            </div>
-          )}
-        </Link>
+        <Tippy
+          placement="right"
+          delay={300}
+          theme="custom"
+          content="Favourites"
+        >
+          <Link to="/Favourites">
+            {activeIcon === "favourites" ? (
+              <div className="icon-container--active">
+                <AiFillStar
+                  className={`icon ${
+                    activeIcon === "favourites" ? "icon--active" : ""
+                  }`}
+                />
+              </div>
+            ) : (
+              <div className="icon-container" onClick={() => selectedFav()}>
+                <AiOutlineStar
+                  className={`icon ${
+                    activeIcon === "favourites" ? "icon--active" : ""
+                  }`}
+                />
+              </div>
+            )}
+          </Link>
+        </Tippy>
       </div>
 
       {/* Bottom icons */}
-      <div className="sidenav-bottom-container">
-        {activeIcon === "settings" ? (
-          <BsGearFill
-            onClick={() => selectedSettings()}
-            className={`icon icon--spin ${
-              activeIcon === "settings" ? "icon--active" : ""
-            }`}
-          />
-        ) : (
-          <BsGear
-            onClick={() => selectedSettings()}
-            className={`icon icon--spin ${
-              activeIcon === "settings" ? "icon--active" : ""
-            }`}
-          />
-        )}
-      </div>
+      <Tippy placement="right" delay={300} theme="custom" content="Settings">
+        <div className="sidenav-bottom-container">
+          {activeIcon === "settings" ? (
+            <BsGearFill
+              onClick={() => selectedSettings()}
+              className={`icon icon--spin ${
+                activeIcon === "settings" ? "icon--active" : ""
+              }`}
+            />
+          ) : (
+            <BsGear
+              onClick={() => selectedSettings()}
+              className={`icon icon--spin ${
+                activeIcon === "settings" ? "icon--active" : ""
+              }`}
+            />
+          )}
+        </div>
+      </Tippy>
     </nav>
   );
 };
