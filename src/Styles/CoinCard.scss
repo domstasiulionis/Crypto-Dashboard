@@ -9,7 +9,6 @@ $positiveGreen: rgb(91, 190, 132);
 .coin-card {
   display: flex;
   align-items: center;
-  width: 100%;
   height: 82px;
   margin: 15px 0px;
 
@@ -25,13 +24,14 @@ $positiveGreen: rgb(91, 190, 132);
 
 .coin-info {
   display: flex;
+  width: 60%;
   margin-left: 15px;
   margin-right: 60px;
   cursor: pointer;
 
   &__img {
     width: 40px;
-    height: auto;
+    height: 40px;
     margin-right: 12px;
     pointer-events: none;
     user-select: none;
@@ -67,6 +67,8 @@ $positiveGreen: rgb(91, 190, 132);
 
 .coin-overall {
   display: flex;
+  width: 60%;
+
   flex-direction: column;
   align-items: center;
   cursor: pointer;

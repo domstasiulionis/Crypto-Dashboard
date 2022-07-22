@@ -7,10 +7,10 @@ import "../Styles/CoinCard.scss";
 import { BsArrowUp } from "react-icons/bs";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
-import coin from "../Assets/bitcoin.png";
+// import coin from "../Assets/bitcoin.png";
 
-const CoinCard = () => {
-  const [selectedTime, setSelectedTime] = useState("7d");
+const CoinCard = ({ name, short, image, price, change }) => {
+  const [selectedTime, setSelectedTime] = useState("24h");
   const [isFav, setIsFav] = useState(false);
 
   const changeTo1h = () => {
@@ -38,19 +38,19 @@ const CoinCard = () => {
       </div>
 
       <div className="coin-info">
-        <img className="coin-info__img" src={coin} alt="coin" />
+        <img className="coin-info__img" src={image} alt="coin" />
         <div className="coin-info-column">
-          <div className="coin-info__name">Bitcoin</div>
-          <div className="coin-info__id">BTC</div>
+          <div className="coin-info__name">{name}</div>
+          <div className="coin-info__id">{short}</div>
         </div>
         <BiChevronLeft className="coin-info__chevron" />
       </div>
 
       <div className="coin-overall">
-        <div className="coin-overall__price">£19,243</div>
+        <div className="coin-overall__price">{"£" + price}</div>
         <div className="coin-overall-row">
           <BsArrowUp className="coin-overall__arrow" />
-          <div className="coin-overall__percentage">£210</div>
+          <div className="coin-overall__percentage">{change}</div>
         </div>
       </div>
 
