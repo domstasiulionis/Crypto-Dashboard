@@ -1,13 +1,23 @@
 import React from "react";
 import { useState } from "react";
 import { BiChevronLeft } from "react-icons/bi";
+import { Sparklines, SparklinesLine } from "react-sparklines";
 
 import "../Styles/CoinCard.scss";
 
 import { BsArrowUp } from "react-icons/bs";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
-const CoinCard = ({ name, short, image, price, change, change24per, rank }) => {
+const CoinCard = ({
+  name,
+  short,
+  image,
+  price,
+  change,
+  change24per,
+  rank,
+  priceChart,
+}) => {
   const [selectedTime, setSelectedTime] = useState("24h");
   const [isFav, setIsFav] = useState(false);
 
@@ -31,7 +41,7 @@ const CoinCard = ({ name, short, image, price, change, change24per, rank }) => {
         {isFav === true ? (
           <AiFillStar onClick={toggleFav} className="fav" />
         ) : (
-          <AiOutlineStar onClick={toggleFav} className="fav" />
+          <AiOutlineStar onClick={toggleFav} className="fav--empty" />
         )}
       </div>
 
@@ -43,7 +53,7 @@ const CoinCard = ({ name, short, image, price, change, change24per, rank }) => {
           <div className="coin-info__name">{name}</div>
           <div className="coin-info__id">{short}</div>
         </div>
-        <BiChevronLeft className="coin-info__chevron" />
+        {/* <BiChevronLeft className="coin-info__chevron" /> */}
       </div>
 
       <div className="coin-overall">
@@ -77,7 +87,9 @@ const CoinCard = ({ name, short, image, price, change, change24per, rank }) => {
       </div>
 
       <div className="mini-chart">
-        <h1>chart</h1>
+        <Sparklines data={priceChart}>
+          <SparklinesLine color="#b89629" />
+        </Sparklines>
       </div>
     </div>
   );

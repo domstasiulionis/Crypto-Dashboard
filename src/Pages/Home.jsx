@@ -1,8 +1,10 @@
 import React from "react";
-import HomeNavBar from "../Components/HomeNavBar";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import "../Styles/Home.scss";
+
 import CoinCard from "../Components/CoinCard";
+import HomeNavBar from "../Components/HomeNavBar";
 
 const Home = ({ coins }) => {
   return (
@@ -17,11 +19,12 @@ const Home = ({ coins }) => {
             short={coin.symbol.toUpperCase()}
             image={coin.image}
             price={coin.current_price}
-            change={Math.round(coin.price_change_24h * 100) / 100}
+            change={Math.round(coin.price_change_24h * 1000) / 1000}
             change24per={
               Math.round(coin.price_change_percentage_24h * 100) / 100
             }
             rank={coin.market_cap_rank}
+            priceChart={coin.sparkline_in_7d.price}
           />
         ))}
       </div>
