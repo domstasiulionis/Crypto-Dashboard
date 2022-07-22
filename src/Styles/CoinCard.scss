@@ -20,11 +20,19 @@ $positiveGreen: rgb(91, 190, 132);
     cursor: pointer;
     transition: all 0.1s ease-in-out;
   }
+
+  .rank {
+    color: white;
+    margin-right: 5px;
+    margin-left: 35px;
+    align-items: center;
+    user-select: none;
+  }
 }
 
 .coin-info {
   display: flex;
-  width: 60%;
+  width: 1000px;
   margin-left: 15px;
   margin-right: 60px;
   cursor: pointer;
@@ -60,6 +68,7 @@ $positiveGreen: rgb(91, 190, 132);
     width: 22px;
     margin-top: -19px;
     margin-left: 5px;
+    padding: 25px;
     height: auto;
     color: white;
   }
@@ -68,22 +77,23 @@ $positiveGreen: rgb(91, 190, 132);
 .coin-overall {
   display: flex;
   width: 60%;
-
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
   margin-right: 30px;
+  cursor: pointer;
 
   &__price {
     color: white;
     font-weight: 600;
     margin-bottom: 1px;
+    margin-left: auto;
   }
 
   &-row {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: auto;
   }
 
   &__arrow {
@@ -100,7 +110,8 @@ $positiveGreen: rgb(91, 190, 132);
   flex-direction: column;
   align-items: center;
   margin-left: 30px;
-  padding: 15px 18px;
+  width: 400px;
+  height: 70px;
   border-radius: 5px;
   cursor: pointer;
 
@@ -112,6 +123,7 @@ $positiveGreen: rgb(91, 190, 132);
     color: $positiveGreen;
     font-weight: 600;
     margin-bottom: 4px;
+    margin-top: 15px;
   }
 
   &__period {

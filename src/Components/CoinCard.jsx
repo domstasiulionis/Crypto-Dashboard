@@ -7,9 +7,7 @@ import "../Styles/CoinCard.scss";
 import { BsArrowUp } from "react-icons/bs";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
-// import coin from "../Assets/bitcoin.png";
-
-const CoinCard = ({ name, short, image, price, change }) => {
+const CoinCard = ({ name, short, image, price, change, change24per, rank }) => {
   const [selectedTime, setSelectedTime] = useState("24h");
   const [isFav, setIsFav] = useState(false);
 
@@ -36,6 +34,8 @@ const CoinCard = ({ name, short, image, price, change }) => {
           <AiOutlineStar onClick={toggleFav} className="fav" />
         )}
       </div>
+
+      <div className="rank">{rank}</div>
 
       <div className="coin-info">
         <img className="coin-info__img" src={image} alt="coin" />
@@ -65,7 +65,7 @@ const CoinCard = ({ name, short, image, price, change }) => {
         className={`time ${selectedTime === "24h" ? "time--active" : ""}`}
         onClick={changeTo24h}
       >
-        <divv className="time__percantage">1.4%</divv>
+        <divv className="time__percantage">{change24per + "%"}</divv>
         <div className="time__period">24h</div>
       </div>
       <div

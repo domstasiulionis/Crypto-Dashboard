@@ -17,7 +17,11 @@ const Home = ({ coins }) => {
             short={coin.symbol.toUpperCase()}
             image={coin.image}
             price={coin.current_price}
-            change={coin.price_change_24h}
+            change={Math.round(coin.price_change_24h * 100) / 100}
+            change24per={
+              Math.round(coin.price_change_percentage_24h * 100) / 100
+            }
+            rank={coin.market_cap_rank}
           />
         ))}
       </div>
