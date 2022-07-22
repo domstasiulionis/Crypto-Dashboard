@@ -1,0 +1,31 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1b1824;
+  border-radius: 20px;
+  margin-top: 18px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #433b5c;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  border-radius: 20px;
+}
+
+// Support for browsers that do not support webkit
+@supports (scrollbar-color: #433b5c #1b1824) {
+  * {
+    scrollbar-color: #433b5c #1b1824;
+    scrollbar-width: thin;
+  }
+}

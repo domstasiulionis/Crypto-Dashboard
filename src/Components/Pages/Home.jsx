@@ -28,6 +28,42 @@ const Home = () => {
         <CoinCard />
         <CoinCard />
         <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
       </div>
     </div>
   );
