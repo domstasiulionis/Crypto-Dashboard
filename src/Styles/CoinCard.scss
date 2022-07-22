@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+.coin-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 82px;
+  margin: 10px 0px;
+}
+
+.coin-info {
+  display: flex;
+  margin-left: 15px;
+  margin-right: 50px;
+  cursor: pointer;
+
+  &__img {
+    width: 40px;
+    height: auto;
+    margin-right: 12px;
+  }
+
+  &-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: white;
+  }
+
+  &__id {
+    color: gray;
+    font-size: 13px;
+    margin-top: 5px;
+  }
+
+  &__chevron {
+    width: 22px;
+    margin-top: -17px;
+    margin-left: 5px;
+    height: auto;
+    color: white;
+  }
+}
+
+.coin-overall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  &__price {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 1px;
+  }
+
+  &-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__arrow {
+    color: rgb(45, 216, 116);
+  }
+
+  &__percentage {
+    color: rgb(45, 216, 116);
+  }
+}
