@@ -1,8 +1,11 @@
 .home-container {
-  width: 67%;
+  width: 63%;
+
   margin: 0px 30px;
 }
 
 .coins-container {
   padding-top: -5px;
+  overflow-y: scroll;
+  height: 87vh;
 }

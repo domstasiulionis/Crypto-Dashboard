@@ -11,6 +11,23 @@ const Home = () => {
       <hr />
       <div className="coins-container">
         <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
+        <CoinCard />
       </div>
     </div>
   );
