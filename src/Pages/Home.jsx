@@ -22,6 +22,7 @@ const Home = ({ coins }) => {
             ) {
               return value;
             }
+            return null;
           })
           .map((coin, i) => (
             <CoinCard

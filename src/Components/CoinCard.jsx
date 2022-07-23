@@ -5,6 +5,7 @@ import { Sparklines, SparklinesLine, SparklinesSpots } from "react-sparklines";
 import "../Styles/CoinCard.scss";
 
 import { BsArrowUp } from "react-icons/bs";
+import { BsArrowDown } from "react-icons/bs";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
 
@@ -50,19 +51,36 @@ const CoinCard = ({
       </div>
 
       <div className="coin-info">
-        <img className="coin-info__img" src={image} alt="coin" />
+        <div className="coin-info__img-container">
+          <img className="coin-info__img" src={image} alt="coin" />
+        </div>
         <div className="coin-info-column">
           <div className="coin-info__name">{name}</div>
           <div className="coin-info__id">{short}</div>
         </div>
-        {/* <BiChevronLeft className="coin-info__chevron" /> */}
+        {/* <div>
+          <BiChevronLeft className="coin-info__chevron" />
+        </div> */}
       </div>
 
       <div className="coin-overall">
         <div className="coin-overall__price">{"£" + price}</div>
         <div className="coin-overall-row">
-          <BsArrowUp className="coin-overall__arrow" />
-          <div className="coin-overall__percentage">{change}</div>
+          {change > 0 ? (
+            <BsArrowUp className="coin-overall__arrow" />
+          ) : (
+            <BsArrowDown className="coin-overall__arrow--red" />
+          )}
+
+          <div
+            className={`${
+              change > 0
+                ? "coin-overall__percentage"
+                : "coin-overall__percentage--red"
+            }`}
+          >
+            {change}%
+          </div>
         </div>
       </div>
 
@@ -89,8 +107,8 @@ const CoinCard = ({
       </div>
 
       <div className="mini-chart-container">
-        <Sparklines data={priceChart} className="mini-chart__chart">
-          <SparklinesLine color="#b89629" />
+        <Sparklines data={priceChart}>
+          <SparklinesLine color="#b89629" className="mini-chart__chart" />
           <SparklinesSpots />
         </Sparklines>
       </div>

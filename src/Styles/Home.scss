@@ -1,10 +1,12 @@
+@import "./ScrollBar";
+
 .home-container {
-  width: 65vw;
+  width: 1200px;
   margin: 0px 30px;
 }
 
 .coins-container {
-  padding-top: -5px;
+  margin-top: 20px;
   overflow-y: scroll;
   height: 87vh;
 }
