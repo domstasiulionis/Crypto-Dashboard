@@ -1,10 +1,11 @@
 import React from "react";
+
 import { IoHome } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
 
 import "../Styles/HomeNavBar.scss";
 
-const HomeNavBar = () => {
+const HomeNavBar = ({ setSearchText }) => {
   return (
     <nav className="top-nav">
       <div className="top-nav-left">
@@ -13,7 +14,11 @@ const HomeNavBar = () => {
       </div>
       <div className="top-nav-right">
         <div className="search-bar">
-          <input type="text" placeholder="Search..." />
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            placeholder="Search..."
+          />
           <BsSearch className="search-bar__icon" />
         </div>
       </div>
