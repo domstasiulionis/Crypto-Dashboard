@@ -20,6 +20,7 @@ const CoinCard = ({
   change24h,
   change7d,
   rank,
+  priceChart24h,
   priceChart7d,
 }) => {
   const [selectedTime, setSelectedTime] = useState("7d");
@@ -133,16 +134,26 @@ const CoinCard = ({
       </div>
 
       <div className="mini-chart-container">
-        <Sparklines data={priceChart7d}>
-          <SparklinesLine
-            color={change7d > 0 ? "#5bbe84" : "#c43d3d"}
-            className="mini-chart__chart"
-          />
-        </Sparklines>
-
-        {/* <LineChart width={400} height={400} data={priceChart7d}>
-        <Line stroke="#8884d8" />
-      </LineChart> */}
+        {selectedTime === "24h" ? (
+          <Sparklines data={priceChart24h}>
+            <SparklinesLine
+              color={change24h > 0 ? "#5bbe84" : "#c43d3d"}
+              className="mini-chart__chart"
+            />
+          </Sparklines>
+        ) : (
+          ""
+        )}
+        {selectedTime === "7d" ? (
+          <Sparklines data={priceChart7d}>
+            <SparklinesLine
+              color={change7d > 0 ? "#5bbe84" : "#c43d3d"}
+              className="mini-chart__chart"
+            />
+          </Sparklines>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

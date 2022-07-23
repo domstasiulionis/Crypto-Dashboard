@@ -8,6 +8,16 @@ import HomeNavBar from "../Components/HomeNavBar";
 const Home = ({ coins }) => {
   const [searchText, setSearchText] = useState("");
 
+  const display24hChart = (sevenDays) => {
+    let overall = [];
+
+    const total = sevenDays.length;
+    const hour = total - 24;
+    overall = sevenDays.slice(hour, total);
+    console.log(overall);
+    return overall;
+  };
+
   return (
     <div className="home-container">
       <HomeNavBar setSearchText={setSearchText} />
@@ -24,9 +34,9 @@ const Home = ({ coins }) => {
             }
             return null;
           })
-          .map((coin, i) => (
+          .map((coin) => (
             <CoinCard
-              key={i}
+              key={coin.id}
               name={coin.name}
               short={coin.symbol.toUpperCase()}
               image={coin.image}
@@ -45,6 +55,7 @@ const Home = ({ coins }) => {
               }
               rank={coin.market_cap_rank}
               priceChart7d={coin.sparkline_in_7d.price}
+              priceChart24h={display24hChart(coin.sparkline_in_7d.price)}
             />
           ))}
       </div>

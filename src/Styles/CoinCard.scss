@@ -29,10 +29,11 @@ $mainSelected: #1b1824;
   }
 
   &:hover {
-    background-color: rgba(66, 66, 66, 0.1);
+    background-color: rgba(39, 38, 44, 0.1);
 
     .coin-info__chevron {
       background-color: #524577;
+      transform: scale(1.1);
     }
   }
 
@@ -96,7 +97,7 @@ $mainSelected: #1b1824;
     background-color: $mainSelected;
     border-radius: 50px;
     color: white;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
     &-container {
       display: flex;
@@ -162,8 +163,16 @@ $mainSelected: #1b1824;
   border-radius: 5px;
   cursor: pointer;
 
+  &:hover {
+    background-color: rgba(66, 66, 66, 0.1);
+  }
+
   &--active {
     background-color: $mainSelected;
+
+    &:hover {
+      background-color: $mainSelected;
+    }
   }
 
   &__percentage {
