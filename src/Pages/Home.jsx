@@ -36,7 +36,7 @@ const Home = ({ coins }) => {
                 Math.round(coin.price_change_percentage_1h_in_currency * 1000) /
                 1000
               }
-              change24={
+              change24h={
                 Math.round(coin.price_change_percentage_24h * 100) / 100
               }
               change7d={

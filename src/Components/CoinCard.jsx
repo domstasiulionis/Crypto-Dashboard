@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Sparklines, SparklinesLine, SparklinesSpots } from "react-sparklines";
+import { LineChart, Line } from "recharts";
+import { Sparklines, SparklinesLine } from "react-sparklines";
 
 import "../Styles/CoinCard.scss";
 
@@ -16,13 +17,14 @@ const CoinCard = ({
   price,
   changePrice,
   change1h,
-  change24,
+  change24h,
   change7d,
   rank,
   priceChart7d,
 }) => {
   const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const changeTo1h = () => {
     setSelectedTime("1h");
@@ -36,6 +38,10 @@ const CoinCard = ({
 
   const toggleFav = () => {
     setIsFav((isFav) => !isFav);
+  };
+
+  const expandCard = () => {
+    setExpanded((expanded) => !expanded);
   };
 
   return (
@@ -60,9 +66,9 @@ const CoinCard = ({
           <div className="coin-info__name">{name}</div>
           <div className="coin-info__id">{short}</div>
         </div>
-        {/* <div>
-          <BiChevronLeft className="coin-info__chevron" />
-        </div> */}
+        <div className="coin-info__chevron-container">
+          <BiChevronLeft className="coin-info__chevron" onClick={expandCard} />
+        </div>
       </div>
 
       <div className="coin-overall">
@@ -105,10 +111,10 @@ const CoinCard = ({
       >
         <div
           className={`${
-            change24 > 0 ? "time__percentage" : "time__percentage--red"
+            change24h > 0 ? "time__percentage" : "time__percentage--red"
           }`}
         >
-          {change24}%
+          {change24h}%
         </div>
         <div className="time__period">24h</div>
       </div>
@@ -128,9 +134,15 @@ const CoinCard = ({
 
       <div className="mini-chart-container">
         <Sparklines data={priceChart7d}>
-          <SparklinesLine color="#b89629" className="mini-chart__chart" />
-          <SparklinesSpots />
+          <SparklinesLine
+            color={change7d > 0 ? "#5bbe84" : "#c43d3d"}
+            className="mini-chart__chart"
+          />
         </Sparklines>
+
+        {/* <LineChart width={400} height={400} data={priceChart7d}>
+        <Line stroke="#8884d8" />
+      </LineChart> */}
       </div>
     </div>
   );

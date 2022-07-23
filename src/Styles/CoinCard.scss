@@ -5,13 +5,14 @@
 }
 
 $positiveGreen: rgb(91, 190, 132);
+$mainSelected: #1b1824;
 
 .coin-card {
   display: flex;
   align-items: center;
   height: 82px;
   margin-right: 35px;
-  border-bottom: 1px solid #1b1824;
+  border-bottom: 1px solid $mainSelected;
 
   .fav {
     width: 21px;
@@ -24,6 +25,14 @@ $positiveGreen: rgb(91, 190, 132);
     &--empty {
       @extend .fav;
       color: grey;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(66, 66, 66, 0.1);
+
+    .coin-info__chevron {
+      background-color: #524577;
     }
   }
 
@@ -43,6 +52,7 @@ $positiveGreen: rgb(91, 190, 132);
 
 .coin-info {
   display: flex;
+  flex-direction: row;
   width: 1000px;
   margin-right: 60px;
   cursor: pointer;
@@ -82,10 +92,20 @@ $positiveGreen: rgb(91, 190, 132);
 
   &__chevron {
     width: 22px;
-
-    margin-left: 5px;
     height: auto;
+    background-color: $mainSelected;
+    border-radius: 50px;
     color: white;
+    transition: all 0.1s ease-in-out;
+
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+
+    &:hover {
+      background-color: #524577;
+    }
   }
 }
 
@@ -143,7 +163,7 @@ $positiveGreen: rgb(91, 190, 132);
   cursor: pointer;
 
   &--active {
-    background-color: #1b1824;
+    background-color: $mainSelected;
   }
 
   &__percentage {
@@ -170,6 +190,7 @@ $positiveGreen: rgb(91, 190, 132);
   height: 65px;
   margin-left: 30px;
   margin-right: 20px;
+  user-select: none;
 
   svg {
     height: 100%;
