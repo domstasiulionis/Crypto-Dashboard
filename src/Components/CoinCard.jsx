@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { BiChevronLeft } from "react-icons/bi";
-import { Sparklines, SparklinesLine } from "react-sparklines";
+import { Sparklines, SparklinesLine, SparklinesSpots } from "react-sparklines";
 
 import "../Styles/CoinCard.scss";
 
 import { BsArrowUp } from "react-icons/bs";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { BiChevronLeft } from "react-icons/bi";
 
 const CoinCard = ({
   name,
@@ -68,27 +68,28 @@ const CoinCard = ({
         className={`time ${selectedTime === "1h" ? "time--active" : ""}`}
         onClick={changeTo1h}
       >
-        <divv className="time__percantage">1.4%</divv>
+        <div className="time__percantage">1.4%</div>
         <div className="time__period">1h</div>
       </div>
       <div
         className={`time ${selectedTime === "24h" ? "time--active" : ""}`}
         onClick={changeTo24h}
       >
-        <divv className="time__percantage">{change24per + "%"}</divv>
+        <div className="time__percantage">{change24per + "%"}</div>
         <div className="time__period">24h</div>
       </div>
       <div
         className={`time ${selectedTime === "7d" ? "time--active" : ""}`}
         onClick={changeTo7d}
       >
-        <div className="time__percantage">1.4%</div>
+        <div className="time__percantage">yeah</div>
         <div className="time__period">7d</div>
       </div>
 
       <div className="mini-chart">
         <Sparklines data={priceChart}>
           <SparklinesLine color="#b89629" />
+          <SparklinesSpots />
         </Sparklines>
       </div>
     </div>

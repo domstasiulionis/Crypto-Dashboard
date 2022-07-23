@@ -1,6 +1,3 @@
-import React from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-
 import "../Styles/Home.scss";
 
 import CoinCard from "../Components/CoinCard";
