@@ -45,7 +45,9 @@ const CoinCard = ({
         )}
       </div>
 
-      <div className="rank">{rank}</div>
+      <div className="rank">
+        <div className="rank__number">{rank}</div>
+      </div>
 
       <div className="coin-info">
         <img className="coin-info__img" src={image} alt="coin" />
@@ -86,8 +88,8 @@ const CoinCard = ({
         <div className="time__period">7d</div>
       </div>
 
-      <div className="mini-chart">
-        <Sparklines data={priceChart}>
+      <div className="mini-chart-container">
+        <Sparklines data={priceChart} className="mini-chart__chart">
           <SparklinesLine color="#b89629" />
           <SparklinesSpots />
         </Sparklines>

@@ -12,7 +12,7 @@ function App() {
   const [coins, setCoins] = useState([]);
   const [update, setUpdate] = useState(0);
 
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=20&page=1&sparkline=true
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=15&page=1&sparkline=true
   `;
 
   useEffect(() => {
@@ -35,7 +35,13 @@ function App() {
       <Router>
         <Sidebar />
         <Routes>
-          <Route exact path="/" element={<Home coins={coins} />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <Home coins={coins} update={update} setUpdate={setUpdate} />
+            }
+          />
           <Route exact path="/Favourites" element={<Favourites />} />
         </Routes>
       </Router>
