@@ -31,12 +31,20 @@ const Home = ({ coins }) => {
               short={coin.symbol.toUpperCase()}
               image={coin.image}
               price={coin.current_price}
-              change={Math.round(coin.price_change_24h * 1000) / 1000}
-              change24per={
+              changePrice={Math.round(coin.price_change_24h * 1000) / 1000}
+              change1h={
+                Math.round(coin.price_change_percentage_1h_in_currency * 1000) /
+                1000
+              }
+              change24={
                 Math.round(coin.price_change_percentage_24h * 100) / 100
               }
+              change7d={
+                Math.round(coin.price_change_percentage_7d_in_currency * 100) /
+                100
+              }
               rank={coin.market_cap_rank}
-              priceChart={coin.sparkline_in_7d.price}
+              priceChart7d={coin.sparkline_in_7d.price}
             />
           ))}
       </div>

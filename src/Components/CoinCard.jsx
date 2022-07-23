@@ -14,12 +14,14 @@ const CoinCard = ({
   short,
   image,
   price,
-  change,
-  change24per,
+  changePrice,
+  change1h,
+  change24,
+  change7d,
   rank,
-  priceChart,
+  priceChart7d,
 }) => {
-  const [selectedTime, setSelectedTime] = useState("24h");
+  const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
 
   const changeTo1h = () => {
@@ -66,7 +68,7 @@ const CoinCard = ({
       <div className="coin-overall">
         <div className="coin-overall__price">{"£" + price}</div>
         <div className="coin-overall-row">
-          {change > 0 ? (
+          {changePrice > 0 ? (
             <BsArrowUp className="coin-overall__arrow" />
           ) : (
             <BsArrowDown className="coin-overall__arrow--red" />
@@ -74,12 +76,12 @@ const CoinCard = ({
 
           <div
             className={`${
-              change > 0
+              changePrice > 0
                 ? "coin-overall__percentage"
                 : "coin-overall__percentage--red"
             }`}
           >
-            {change}%
+            {changePrice}
           </div>
         </div>
       </div>
@@ -88,26 +90,44 @@ const CoinCard = ({
         className={`time ${selectedTime === "1h" ? "time--active" : ""}`}
         onClick={changeTo1h}
       >
-        <div className="time__percantage">1.4%</div>
+        <div
+          className={`${
+            change1h > 0 ? "time__percentage" : "time__percentage--red"
+          }`}
+        >
+          {change1h}%
+        </div>
         <div className="time__period">1h</div>
       </div>
       <div
         className={`time ${selectedTime === "24h" ? "time--active" : ""}`}
         onClick={changeTo24h}
       >
-        <div className="time__percantage">{change24per + "%"}</div>
+        <div
+          className={`${
+            change24 > 0 ? "time__percentage" : "time__percentage--red"
+          }`}
+        >
+          {change24}%
+        </div>
         <div className="time__period">24h</div>
       </div>
       <div
         className={`time ${selectedTime === "7d" ? "time--active" : ""}`}
         onClick={changeTo7d}
       >
-        <div className="time__percantage">yeah</div>
+        <div
+          className={`${
+            change7d > 0 ? "time__percentage" : "time__percentage--red"
+          }`}
+        >
+          {change7d}%
+        </div>
         <div className="time__period">7d</div>
       </div>
 
       <div className="mini-chart-container">
-        <Sparklines data={priceChart}>
+        <Sparklines data={priceChart7d}>
           <SparklinesLine color="#b89629" className="mini-chart__chart" />
           <SparklinesSpots />
         </Sparklines>

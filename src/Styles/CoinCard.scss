@@ -146,11 +146,18 @@ $positiveGreen: rgb(91, 190, 132);
     background-color: #1b1824;
   }
 
-  &__percantage {
+  &__percentage {
     color: $positiveGreen;
     font-weight: 600;
     margin-bottom: 4px;
     margin-top: 15px;
+
+    &--red {
+      font-weight: 600;
+      margin-bottom: 4px;
+      margin-top: 15px;
+      color: rgb(196, 61, 61);
+    }
   }
 
   &__period {
