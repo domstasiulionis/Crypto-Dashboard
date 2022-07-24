@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { LineChart, Line } from "recharts";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 
 import "../Styles/CoinCard.scss";
@@ -20,6 +19,7 @@ const CoinCard = ({
   change24h,
   change7d,
   rank,
+  priceChart1h,
   priceChart24h,
   priceChart7d,
 }) => {
@@ -80,7 +80,6 @@ const CoinCard = ({
           ) : (
             <BsArrowDown className="coin-overall__arrow--red" />
           )}
-
           <div
             className={`${
               changePrice > 0
@@ -134,6 +133,16 @@ const CoinCard = ({
       </div>
 
       <div className="mini-chart-container">
+        {selectedTime === "1h" ? (
+          <Sparklines data={priceChart1h}>
+            <SparklinesLine
+              color={change1h > 0 ? "#5bbe84" : "#c43d3d"}
+              className="mini-chart__chart"
+            />
+          </Sparklines>
+        ) : (
+          ""
+        )}
         {selectedTime === "24h" ? (
           <Sparklines data={priceChart24h}>
             <SparklinesLine

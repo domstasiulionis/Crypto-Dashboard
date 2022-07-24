@@ -98,6 +98,7 @@ $mainSelected: #1b1824;
     border-radius: 50px;
     color: white;
     transition: all 0.3s ease-in-out;
+    margin-left: 5px;
 
     &-container {
       display: flex;
@@ -148,6 +149,13 @@ $mainSelected: #1b1824;
     &--red {
       color: rgb(196, 61, 61);
       margin-top: 2px;
+    }
+  }
+
+  &__24hr {
+    color: grey;
+    &-icon {
+      color: grey;
     }
   }
 }

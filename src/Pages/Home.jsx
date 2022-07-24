@@ -8,13 +8,44 @@ import HomeNavBar from "../Components/HomeNavBar";
 const Home = ({ coins }) => {
   const [searchText, setSearchText] = useState("");
 
+  const display1hChart = (sevenDays, name) => {
+    let overall = [];
+
+    const lastHour = sevenDays[165];
+    const currentHour = sevenDays[166];
+    let calc = lastHour - currentHour;
+
+    if (lastHour < currentHour) {
+      calc = -calc;
+    } else {
+      calc = calc;
+    }
+
+    const lowerBound = calc * 0.25 + lastHour;
+    const upperBound = calc * 0.75 + lastHour;
+
+    overall.push(lastHour, lowerBound, upperBound, currentHour);
+
+    // FOR TESTING OUTPUTS
+    // console.log("name:  " + name);
+    // console.log("last hour: " + lastHour);
+    // console.log("lowerBound: " + lowerBound);
+    // console.log("upperBound: " + upperBound);
+    // console.log("current hour: " + currentHour);
+    // console.log("calc: " + calc);
+    // console.log("overall: " + overall);
+    // console.log("--------------------");
+
+    return overall;
+  };
+
   const display24hChart = (sevenDays) => {
     let overall = [];
 
     const total = sevenDays.length;
-    const hour = total - 24;
-    overall = sevenDays.slice(hour, total);
-    console.log(overall);
+    const twentyFourHours = total - 24;
+    overall = sevenDays.slice(twentyFourHours, total);
+
     return overall;
   };
 
@@ -54,8 +85,12 @@ const Home = ({ coins }) => {
                 100
               }
               rank={coin.market_cap_rank}
-              priceChart7d={coin.sparkline_in_7d.price}
+              priceChart1h={display1hChart(
+                coin.sparkline_in_7d.price,
+                coin.symbol
+              )}
               priceChart24h={display24hChart(coin.sparkline_in_7d.price)}
+              priceChart7d={coin.sparkline_in_7d.price}
             />
           ))}
       </div>
