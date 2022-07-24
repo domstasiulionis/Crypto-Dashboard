@@ -7,12 +7,32 @@
 $positiveGreen: rgb(91, 190, 132);
 $mainSelected: #1b1824;
 
-.coin-card {
-  display: flex;
-  align-items: center;
-  height: 82px;
+.expanded {
+  height: 420px;
+  border-bottom: 1px solid $mainSelected;
+  background-color: $mainSelected;
+  margin-bottom: 15px;
+  margin-right: 35px;
+  border-radius: 20px;
+}
+
+.not-expanded {
   margin-right: 35px;
   border-bottom: 1px solid $mainSelected;
+
+  &:hover {
+    background-color: rgba(39, 38, 44, 0.1);
+
+    .coin-info__chevron {
+      background-color: #524577;
+    }
+  }
+}
+
+.coin-card {
+  display: flex;
+  height: 82px;
+  align-items: center;
 
   .fav {
     width: 21px;
@@ -25,15 +45,6 @@ $mainSelected: #1b1824;
     &--empty {
       @extend .fav;
       color: grey;
-    }
-  }
-
-  &:hover {
-    background-color: rgba(39, 38, 44, 0.1);
-
-    .coin-info__chevron {
-      background-color: #524577;
-      transform: scale(1.1);
     }
   }
 
@@ -97,7 +108,7 @@ $mainSelected: #1b1824;
     background-color: $mainSelected;
     border-radius: 50px;
     color: white;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     margin-left: 5px;
 
     &-container {
@@ -108,6 +119,11 @@ $mainSelected: #1b1824;
     &:hover {
       background-color: #524577;
     }
+  }
+
+  &__chevron-down {
+    @extend .coin-info__chevron;
+    transform: rotate(-90deg);
   }
 }
 
@@ -166,7 +182,7 @@ $mainSelected: #1b1824;
   align-items: center;
   margin-left: 30px;
   padding: 0px 5px;
-  width: 400px;
+  width: 320px;
   height: 70px;
   border-radius: 5px;
   cursor: pointer;
@@ -205,7 +221,7 @@ $mainSelected: #1b1824;
 
 .mini-chart-container {
   height: 65px;
-  margin-left: 30px;
+  margin-left: 20px;
   margin-right: 20px;
   user-select: none;
 

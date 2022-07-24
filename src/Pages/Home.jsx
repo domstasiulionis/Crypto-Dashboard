@@ -17,8 +17,6 @@ const Home = ({ coins }) => {
 
     if (lastHour < currentHour) {
       calc = -calc;
-    } else {
-      calc = calc;
     }
 
     const lowerBound = calc * 0.25 + lastHour;
