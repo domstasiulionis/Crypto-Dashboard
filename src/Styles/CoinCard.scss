@@ -8,7 +8,7 @@ $positiveGreen: rgb(91, 190, 132);
 $mainSelected: #1b1824;
 
 .expanded {
-  height: 420px;
+  height: 480px;
   border-bottom: 1px solid $mainSelected;
   background-color: $mainSelected;
   margin-bottom: 15px;
@@ -49,14 +49,14 @@ $mainSelected: #1b1824;
   }
 
   .rank {
-    width: 400px;
+    width: 100px;
+    padding-left: 50px;
+    padding-right: 80px;
     height: auto;
+    text-align: center;
 
     &__number {
       color: white;
-      margin-right: 5px;
-      margin-left: 32px;
-      align-items: center;
       user-select: none;
     }
   }
@@ -129,7 +129,7 @@ $mainSelected: #1b1824;
 
 .coin-overall {
   display: flex;
-  width: 60%;
+  width: 10%;
   flex-direction: column;
   align-items: center;
   margin-right: 30px;
@@ -180,9 +180,9 @@ $mainSelected: #1b1824;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 35px;
   padding: 0px 5px;
-  width: 320px;
+  width: 180px;
   height: 70px;
   border-radius: 5px;
   cursor: pointer;
@@ -221,7 +221,7 @@ $mainSelected: #1b1824;
 
 .mini-chart-container {
   height: 65px;
-  margin-left: 20px;
+  margin-left: 35px;
   margin-right: 20px;
   user-select: none;
 
