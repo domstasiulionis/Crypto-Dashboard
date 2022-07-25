@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
@@ -13,9 +13,13 @@ import { BsGear, BsGearFill } from "react-icons/bs";
 // Images
 import logo from "../Assets/moon-logo.png";
 
-const Sidebar = () => {
-  const [activeIcon, setActiveIcon] = useState("home");
+const Sidebar = ({ activeIcon, setActiveIcon }) => {
   const [popUp, setpPopUp] = useState(false);
+
+  // useEffect(() => {
+  //   const data = window.localStorage.getItem("icon");
+  //   setActiveIcon(data);
+  // }, []);
 
   const selectedHome = () => {
     setActiveIcon("home");

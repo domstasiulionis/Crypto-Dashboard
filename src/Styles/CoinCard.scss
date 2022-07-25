@@ -7,17 +7,8 @@
 $positiveGreen: rgb(91, 190, 132);
 $mainSelected: #1b1824;
 
-.expanded {
-  height: 480px;
-  border-bottom: 1px solid $mainSelected;
-  background-color: $mainSelected;
-  margin-bottom: 15px;
-  margin-right: 35px;
-  border-radius: 20px;
-}
-
-.not-expanded {
-  margin-right: 35px;
+.expand-default {
+  margin-right: 30px;
   border-bottom: 1px solid $mainSelected;
 
   &:hover {
@@ -26,6 +17,37 @@ $mainSelected: #1b1824;
     .coin-info__chevron {
       background-color: #524577;
     }
+  }
+}
+
+.expand-true {
+  margin-bottom: 15px;
+  border-radius: 20px;
+  animation: open 0.3s ease-in-out forwards;
+}
+
+.expand-false {
+  animation: close 0.3s ease-in-out forwards;
+}
+
+@keyframes open {
+  0% {
+    height: 82px;
+  }
+
+  100% {
+    height: 500px;
+    background-color: $mainSelected;
+  }
+}
+
+@keyframes close {
+  0% {
+    height: 500px;
+  }
+
+  100% {
+    height: 83px;
   }
 }
 
@@ -50,8 +72,9 @@ $mainSelected: #1b1824;
 
   .rank {
     width: 100px;
-    padding-left: 50px;
-    padding-right: 80px;
+    padding-left: 30px;
+    padding-right: 20px;
+
     height: auto;
     text-align: center;
 

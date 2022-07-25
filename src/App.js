@@ -9,11 +9,18 @@ import Favourites from "./Pages/Favourites";
 import "./Styles/App.scss";
 
 function App() {
+  const [activeIcon, setActiveIcon] = useState(() =>
+    localStorage.getItem("icon")
+  );
   const [coins, setCoins] = useState([]);
   const [update, setUpdate] = useState(0);
 
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=15&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d
   `;
+
+  useEffect(() => {
+    localStorage.setItem("icon", activeIcon);
+  }, [activeIcon]);
 
   useEffect(() => {
     axios.get(url).then((res) => {
@@ -33,7 +40,7 @@ function App() {
   return (
     <div className="Content">
       <Router>
-        <Sidebar />
+        <Sidebar activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
         <Routes>
           <Route
             exact

@@ -46,7 +46,11 @@ const CoinCard = ({
   };
 
   return (
-    <div className={`${expanded === true ? "expanded" : "not-expanded"}`}>
+    <div
+      className={`expand-default ${
+        expanded === true ? "expand-true" : "expand-false"
+      }`}
+    >
       <div className="coin-card">
         <div className="coin__star">
           {isFav === true ? (
