@@ -30,9 +30,11 @@ const CoinCard = ({
   const changeTo1h = () => {
     setSelectedTime("1h");
   };
+
   const changeTo24h = () => {
     setSelectedTime("24h");
   };
+
   const changeTo7d = () => {
     setSelectedTime("7d");
   };

@@ -16,19 +16,6 @@ import logo from "../Assets/moon-logo.png";
 const Sidebar = ({ activeIcon, setActiveIcon }) => {
   const [popUp, setpPopUp] = useState(false);
 
-  // useEffect(() => {
-  //   const data = window.localStorage.getItem("icon");
-  //   setActiveIcon(data);
-  // }, []);
-
-  const selectedHome = () => {
-    setActiveIcon("home");
-  };
-
-  const selectedFav = () => {
-    setActiveIcon("favourites");
-  };
-
   const selectedSettings = () => {
     setpPopUp((popUp) => !popUp);
   };
@@ -53,7 +40,10 @@ const Sidebar = ({ activeIcon, setActiveIcon }) => {
                 />
               </div>
             ) : (
-              <div className="icon-container" onClick={() => selectedHome()}>
+              <div
+                className="icon-container"
+                onClick={() => setActiveIcon("home")}
+              >
                 <IoHomeOutline
                   className={`icon ${
                     activeIcon === "home" ? "icon--active" : ""
@@ -80,7 +70,10 @@ const Sidebar = ({ activeIcon, setActiveIcon }) => {
                 />
               </div>
             ) : (
-              <div className="icon-container" onClick={() => selectedFav()}>
+              <div
+                className="icon-container"
+                onClick={() => setActiveIcon("favourites")}
+              >
                 <AiOutlineStar
                   className={`icon ${
                     activeIcon === "favourites" ? "icon--active" : ""

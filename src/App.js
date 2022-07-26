@@ -9,8 +9,8 @@ import Favourites from "./Pages/Favourites";
 import "./Styles/App.scss";
 
 function App() {
-  const [activeIcon, setActiveIcon] = useState(() =>
-    localStorage.getItem("icon")
+  const [activeIcon, setActiveIcon] = useState(
+    () => sessionStorage.getItem("icon") || "home"
   );
   const [coins, setCoins] = useState([]);
   const [update, setUpdate] = useState(0);
@@ -19,7 +19,7 @@ function App() {
   `;
 
   useEffect(() => {
-    localStorage.setItem("icon", activeIcon);
+    sessionStorage.setItem("icon", activeIcon);
   }, [activeIcon]);
 
   useEffect(() => {
