@@ -81,10 +81,10 @@ const CoinCard = ({
             expanded === true ? "coin-info--expand-adjustment" : ""
           }`}
         >
-          <div className="coin-info__img-container">
+          <div className="coin-info__img-container" onClick={expandCard}>
             <img className="coin-info__img" src={image} alt="coin" />
           </div>
-          <div className="coin-info-column">
+          <div className="coin-info-column" onClick={expandCard}>
             <div className="coin-info__name">{name}</div>
             <div className="coin-info__id">{short}</div>
           </div>
@@ -195,7 +195,7 @@ const CoinCard = ({
             </div>
           </>
         ) : (
-          ""
+          <div className="exp">hello</div>
         )}
       </div>
     </div>

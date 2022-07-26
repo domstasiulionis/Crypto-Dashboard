@@ -71,19 +71,12 @@ $mainSelected: #1b1824;
   }
 
   .rank {
-    width: 100px;
-    padding-left: 30px;
-    padding-right: 20px;
-    height: auto;
-    text-align: center;
+    padding-left: 35px;
+    padding-right: 25px;
 
     &__number {
       color: white;
       user-select: none;
-    }
-
-    .rank__number--expand-adjustment {
-      margin-left: -19px;
     }
   }
 }
@@ -91,13 +84,9 @@ $mainSelected: #1b1824;
 .coin-info {
   display: flex;
   flex-direction: row;
-  width: 1000px;
-  margin-right: 60px;
+  align-items: center;
+  width: 700px;
   cursor: pointer;
-
-  &--expand-adjustment {
-    margin-left: -19px;
-  }
 
   &__img-container {
     display: flex;
@@ -212,7 +201,7 @@ $mainSelected: #1b1824;
   align-items: center;
   margin-left: 35px;
   padding: 0px 5px;
-  width: 180px;
+  width: 120px;
   height: 70px;
   border-radius: 5px;
   cursor: pointer;
@@ -258,4 +247,9 @@ $mainSelected: #1b1824;
   svg {
     height: 100%;
   }
+}
+
+.exp {
+  width: auto;
+  background-color: green;
 }
