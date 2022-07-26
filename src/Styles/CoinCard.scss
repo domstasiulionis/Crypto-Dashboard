@@ -74,13 +74,16 @@ $mainSelected: #1b1824;
     width: 100px;
     padding-left: 30px;
     padding-right: 20px;
-
     height: auto;
     text-align: center;
 
     &__number {
       color: white;
       user-select: none;
+    }
+
+    .rank__number--expand-adjustment {
+      margin-left: -19px;
     }
   }
 }
@@ -91,6 +94,10 @@ $mainSelected: #1b1824;
   width: 1000px;
   margin-right: 60px;
   cursor: pointer;
+
+  &--expand-adjustment {
+    margin-left: -19px;
+  }
 
   &__img-container {
     display: flex;

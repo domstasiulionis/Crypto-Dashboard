@@ -25,17 +25,12 @@ function App() {
   useEffect(() => {
     axios.get(url).then((res) => {
       setCoins(res.data);
-      setTimeout(() => updater(), 30000);
+      setTimeout(
+        () => (update === 1 ? setUpdate(update - 1) : setUpdate(update + 1)),
+        30000
+      );
     });
   }, [url, update]);
-
-  const updater = () => {
-    if (update === 1) {
-      setUpdate(update - 1);
-    } else if (update === 0) {
-      setUpdate(update + 1);
-    }
-  };
 
   return (
     <div className="Content">
