@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 $positiveGreen: rgb(91, 190, 132);
@@ -24,6 +24,14 @@ $mainSelected: #1b1824;
   margin-bottom: 15px;
   border-radius: 20px;
   animation: open 0.3s ease-in-out forwards;
+}
+
+.coin-overall-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  justify-content: flex-end;
+  width: 2000px;
 }
 
 .expand-false {
@@ -51,15 +59,36 @@ $mainSelected: #1b1824;
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
+
 .coin-card {
   display: flex;
   height: 82px;
   align-items: center;
+  animation: fadeIn 0.2s ease-in-out forwards;
 
   .fav {
     width: 21px;
     height: auto;
-    color: rgb(218, 176, 40);
+    color: rgb(235, 188, 35);
     margin: 25px 20px 20px 20px;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
@@ -71,9 +100,9 @@ $mainSelected: #1b1824;
   }
 
   .rank {
-    padding-left: 35px;
-    padding-right: 25px;
-
+    margin-left: 30px;
+    margin-right: 10px;
+    width: 1px;
     &__number {
       color: white;
       user-select: none;
@@ -85,7 +114,7 @@ $mainSelected: #1b1824;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 700px;
+  margin-left: 30px;
   cursor: pointer;
 
   &__img-container {
@@ -143,6 +172,7 @@ $mainSelected: #1b1824;
   &__chevron-down {
     @extend .coin-info__chevron;
     transform: rotate(-90deg);
+    background-color: #524577;
   }
 }
 

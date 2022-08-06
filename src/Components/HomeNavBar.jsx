@@ -12,7 +12,8 @@ const HomeNavBar = ({ setSearchText }) => {
         <IoHome className="top-nav-left__icon" />
         <h3 className="top-nav-left__title">Dashboard</h3>
       </div>
-      <div className="top-nav-right">
+
+      <div className="top-nav-middle">
         <div className="search-bar">
           <input
             onChange={(e) => setSearchText(e.target.value)}
@@ -22,6 +23,8 @@ const HomeNavBar = ({ setSearchText }) => {
           <BsSearch className="search-bar__icon" />
         </div>
       </div>
+
+      {/* <div className="top-nav-right"></div> */}
     </nav>
   );
 };

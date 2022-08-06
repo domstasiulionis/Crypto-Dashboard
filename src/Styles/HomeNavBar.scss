@@ -7,6 +7,7 @@ $mainFont: "PT Sans", sans-serif;
   justify-content: space-between;
   align-items: center;
   height: 60px;
+  animation: fadeIn 0.5s ease-in-out forwards;
 
   &-left {
     display: flex;
@@ -24,6 +25,11 @@ $mainFont: "PT Sans", sans-serif;
       margin-right: 10px;
       margin-left: 20px;
     }
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
   }
 
   .search-bar {
@@ -46,5 +52,15 @@ $mainFont: "PT Sans", sans-serif;
     background-color: #131016;
     border: 1px rgba($color: #ffffff, $alpha: 0.5) solid;
     border-radius: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
   }
 }

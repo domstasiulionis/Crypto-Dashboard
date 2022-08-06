@@ -48,155 +48,161 @@ const CoinCard = ({
   };
 
   return (
-    <div
-      className={`expand-default ${
-        expanded === true ? "expand-true" : "expand-false"
-      }`}
-    >
-      <div className="coin-card">
-        <div className="coin__star">
-          {isFav === true ? (
-            <AiFillStar onClick={toggleFav} className="fav" />
-          ) : (
-            <AiOutlineStar onClick={toggleFav} className="fav--empty" />
-          )}
-        </div>
+    <div>
+      <div
+        className={`expand-default ${
+          expanded === true ? "expand-true" : "expand-false"
+        }`}
+      >
+        <div className="coin-card">
+          <div className="coin__star">
+            {isFav === true ? (
+              <AiFillStar onClick={toggleFav} className="fav" />
+            ) : (
+              <AiOutlineStar onClick={toggleFav} className="fav--empty" />
+            )}
+          </div>
 
-        <div
-          className={`rank ${
-            expanded === true ? "rank--expand-adjustment" : ""
-          }`}
-        >
           <div
-            className={`rank__number ${
-              expanded === true ? "rank__number--expand-adjustment" : ""
+            className={`rank ${
+              expanded === true ? "" : ""
             }`}
           >
-            {rank}
+            <div
+              className="rank__number"
+            >
+              {rank}
+            </div>
           </div>
-        </div>
 
-        <div
-          className={`coin-info ${
-            expanded === true ? "coin-info--expand-adjustment" : ""
-          }`}
-        >
-          <div className="coin-info__img-container" onClick={expandCard}>
-            <img className="coin-info__img" src={image} alt="coin" />
+          <div
+            className={`coin-info ${
+              expanded === true ? "coin-info--expand-adjustment" : ""
+            }`}
+          >
+            <div className="coin-info__img-container" onClick={expandCard}>
+              <img className="coin-info__img" src={image} alt="coin" />
+            </div>
+            <div className="coin-info-column" onClick={expandCard}>
+              <div className="coin-info__name">{name}</div>
+              <div className="coin-info__id">{short}</div>
+            </div>
+            <div className="coin-info__chevron-container" onClick={expandCard}>
+              <BiChevronLeft
+                className={
+                  expanded === true
+                    ? "coin-info__chevron-down"
+                    : "coin-info__chevron"
+                }
+              />
+            </div>
           </div>
-          <div className="coin-info-column" onClick={expandCard}>
-            <div className="coin-info__name">{name}</div>
-            <div className="coin-info__id">{short}</div>
-          </div>
-          <div className="coin-info__chevron-container" onClick={expandCard}>
-            <BiChevronLeft
-              className={
-                expanded === true
-                  ? "coin-info__chevron-down"
-                  : "coin-info__chevron"
-              }
-            />
-          </div>
-        </div>
 
-        {expanded === false ? (
-          <>
-            <div className="coin-overall">
-              <div className="coin-overall__price">{"£" + price}</div>
-              <div className="coin-overall-row">
-                {changePrice > 0 ? (
-                  <BsArrowUp className="coin-overall__arrow" />
-                ) : (
-                  <BsArrowDown className="coin-overall__arrow--red" />
-                )}
+          {expanded === false ? (
+            <div className="coin-overall-container">
+              <div className="coin-overall">
+                <div className="coin-overall__price">{"£" + price}</div>
+                {/* <div className="coin-overall-row">
+                  {changePrice > 0 ? (
+                    <BsArrowUp className="coin-overall__arrow" />
+                  ) : (
+                    <BsArrowDown className="coin-overall__arrow--red" />
+                  )}
+                  <div
+                    className={`${
+                      changePrice > 0
+                        ? "coin-overall__percentage"
+                        : "coin-overall__percentage--red"
+                    }`}
+                  >
+                    {changePrice}
+                  </div>
+                </div> */}
+              </div>
+
+              <div
+                className={`time ${
+                  selectedTime === "1h" ? "time--active" : ""
+                }`}
+                onClick={changeTo1h}
+              >
                 <div
                   className={`${
-                    changePrice > 0
-                      ? "coin-overall__percentage"
-                      : "coin-overall__percentage--red"
+                    change1h > 0 ? "time__percentage" : "time__percentage--red"
                   }`}
                 >
-                  {changePrice}
+                  {change1h}%
                 </div>
+                <div className="time__period">1h</div>
               </div>
-            </div>
+              <div
+                className={`time ${
+                  selectedTime === "24h" ? "time--active" : ""
+                }`}
+                onClick={changeTo24h}
+              >
+                <div
+                  className={`${
+                    change24h > 0 ? "time__percentage" : "time__percentage--red"
+                  }`}
+                >
+                  {change24h}%
+                </div>
+                <div className="time__period">24h</div>
+              </div>
+              <div
+                className={`time ${
+                  selectedTime === "7d" ? "time--active" : ""
+                }`}
+                onClick={changeTo7d}
+              >
+                <div
+                  className={`${
+                    change7d > 0 ? "time__percentage" : "time__percentage--red"
+                  }`}
+                >
+                  {change7d}%
+                </div>
+                <div className="time__period">7d</div>
+              </div>
 
-            <div
-              className={`time ${selectedTime === "1h" ? "time--active" : ""}`}
-              onClick={changeTo1h}
-            >
-              <div
-                className={`${
-                  change1h > 0 ? "time__percentage" : "time__percentage--red"
-                }`}
-              >
-                {change1h}%
+              <div className="mini-chart-container">
+                {selectedTime === "1h" ? (
+                  <Sparklines data={priceChart1h}>
+                    <SparklinesLine
+                      color={change1h > 0 ? "#5bbe84" : "#c43d3d"}
+                      className="mini-chart__chart"
+                    />
+                  </Sparklines>
+                ) : (
+                  ""
+                )}
+                {selectedTime === "24h" ? (
+                  <Sparklines data={priceChart24h}>
+                    <SparklinesLine
+                      color={change24h > 0 ? "#5bbe84" : "#c43d3d"}
+                      className="mini-chart__chart"
+                    />
+                  </Sparklines>
+                ) : (
+                  ""
+                )}
+                {selectedTime === "7d" ? (
+                  <Sparklines data={priceChart7d}>
+                    <SparklinesLine
+                      color={change7d > 0 ? "#5bbe84" : "#c43d3d"}
+                      className="mini-chart__chart"
+                    />
+                  </Sparklines>
+                ) : (
+                  ""
+                )}
               </div>
-              <div className="time__period">1h</div>
             </div>
-            <div
-              className={`time ${selectedTime === "24h" ? "time--active" : ""}`}
-              onClick={changeTo24h}
-            >
-              <div
-                className={`${
-                  change24h > 0 ? "time__percentage" : "time__percentage--red"
-                }`}
-              >
-                {change24h}%
-              </div>
-              <div className="time__period">24h</div>
-            </div>
-            <div
-              className={`time ${selectedTime === "7d" ? "time--active" : ""}`}
-              onClick={changeTo7d}
-            >
-              <div
-                className={`${
-                  change7d > 0 ? "time__percentage" : "time__percentage--red"
-                }`}
-              >
-                {change7d}%
-              </div>
-              <div className="time__period">7d</div>
-            </div>
-
-            <div className="mini-chart-container">
-              {selectedTime === "1h" ? (
-                <Sparklines data={priceChart1h}>
-                  <SparklinesLine
-                    color={change1h > 0 ? "#5bbe84" : "#c43d3d"}
-                    className="mini-chart__chart"
-                  />
-                </Sparklines>
-              ) : (
-                ""
-              )}
-              {selectedTime === "24h" ? (
-                <Sparklines data={priceChart24h}>
-                  <SparklinesLine
-                    color={change24h > 0 ? "#5bbe84" : "#c43d3d"}
-                    className="mini-chart__chart"
-                  />
-                </Sparklines>
-              ) : (
-                ""
-              )}
-              {selectedTime === "7d" ? (
-                <Sparklines data={priceChart7d}>
-                  <SparklinesLine
-                    color={change7d > 0 ? "#5bbe84" : "#c43d3d"}
-                    className="mini-chart__chart"
-                  />
-                </Sparklines>
-              ) : (
-                ""
-              )}
-            </div>
-          </>
-        ) : (
-          <div className="exp">hello</div>
-        )}
+          ) : (
+            <div className="exp">hello</div>
+          )}
+        </div>
       </div>
     </div>
   );
