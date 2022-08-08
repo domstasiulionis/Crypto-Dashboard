@@ -66,10 +66,11 @@ const Home = ({ coins }) => {
           .map((coin) => (
             <CoinCard
               key={coin.id}
+              coinid={coin.id}
               name={coin.name}
               short={coin.symbol.toUpperCase()}
               image={coin.image}
-              price={coin.current_price}
+              price={coin.current_price.toLocaleString()}
               changePrice={Math.round(coin.price_change_24h * 1000) / 1000}
               change1h={
                 Math.round(coin.price_change_percentage_1h_in_currency * 1000) /

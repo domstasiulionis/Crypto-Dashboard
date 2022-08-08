@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 
 import "../Styles/CoinCard.scss";
@@ -8,8 +9,10 @@ import { BsArrowUp } from "react-icons/bs";
 import { BsArrowDown } from "react-icons/bs";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
+import ExpandedCoinCard from "./ExpandedCoinCard";
 
 const CoinCard = ({
+  coinid,
   name,
   short,
   image,
@@ -26,6 +29,16 @@ const CoinCard = ({
   const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [coin, setCoin] = useState({});
+
+  const url = `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&sparkline=true
+`;
+
+  useEffect(() => {
+    axios.get(url).then((res) => {
+      setCoin(res.data);
+    });
+  }, [url]);
 
   const changeTo1h = () => {
     setSelectedTime("1h");
@@ -63,16 +76,8 @@ const CoinCard = ({
             )}
           </div>
 
-          <div
-            className={`rank ${
-              expanded === true ? "" : ""
-            }`}
-          >
-            <div
-              className="rank__number"
-            >
-              {rank}
-            </div>
+          <div className={`rank ${expanded === true ? "" : ""}`}>
+            <div className="rank__number">{rank}</div>
           </div>
 
           <div
@@ -200,7 +205,31 @@ const CoinCard = ({
               </div>
             </div>
           ) : (
-            <div className="exp">hello</div>
+            <div className="ex-coin-top">
+              <div className="ex-coin-top__price">
+                £
+                {coin.market_data?.current_price
+                  ? coin.market_data.current_price.gbp.toLocaleString()
+                  : null}
+              </div>
+
+              <div className="ex-coin-top-row">
+                {changePrice > 0 ? (
+                  <BsArrowUp className="ex-coin-top__arrow" />
+                ) : (
+                  <BsArrowDown className="ex-coin-top__arrow--red" />
+                )}
+                <div
+                  className={`${
+                    changePrice > 0
+                      ? "ex-coin-top__percentage"
+                      : "ex-coin-top__percentage--red"
+                  }`}
+                >
+                  {changePrice}
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>

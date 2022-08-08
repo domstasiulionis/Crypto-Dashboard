@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 $positiveGreen: rgb(91, 190, 132);
@@ -191,32 +191,6 @@ $mainSelected: #1b1824;
     margin-left: auto;
   }
 
-  &-row {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    align-items: center;
-  }
-
-  &__arrow {
-    color: $positiveGreen;
-    align-items: center;
-
-    &--red {
-      color: rgb(196, 61, 61);
-    }
-  }
-
-  &__percentage {
-    color: $positiveGreen;
-    margin-top: 2px;
-
-    &--red {
-      color: rgb(196, 61, 61);
-      margin-top: 2px;
-    }
-  }
-
   &__24hr {
     color: grey;
     &-icon {
@@ -279,7 +253,45 @@ $mainSelected: #1b1824;
   }
 }
 
-.exp {
-  width: auto;
-  background-color: green;
+.ex-coin-top {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-left: 200px;
+
+  &__price {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 1px;
+    margin-left: auto;
+  }
+
+  &-row {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    align-items: center;
+  }
+
+  &__arrow {
+    color: $positiveGreen;
+    align-items: center;
+    margin-top: 2px;
+    transform: scale(0.95);
+
+    &--red {
+      color: rgb(196, 61, 61);
+    }
+  }
+
+  &__percentage {
+    color: $positiveGreen;
+    margin-top: 2px;
+    transform: scale(0.95);
+
+    &--red {
+      color: rgb(196, 61, 61);
+      margin-top: 2px;
+    }
+  }
 }
