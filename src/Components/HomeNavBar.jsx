@@ -12,7 +12,7 @@ const HomeNavBar = ({ setSearchText }) => {
         <IoHome className="top-nav-left__icon" />
         <h3 className="top-nav-left__title">Dashboard</h3>
         <p className="top-nav-left__live">LIVE</p>
-        <div class="top-nav-left__pulsating-circle"></div>
+        <div className="top-nav-left__pulsating-circle"></div>
       </div>
 
       <div className="top-nav-middle">

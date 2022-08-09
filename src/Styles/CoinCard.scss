@@ -256,8 +256,14 @@ $mainSelected: #1b1824;
 .ex-coin-top {
   display: flex;
   justify-content: flex-end;
-  flex-direction: column;
+  flex-direction: row;
   margin-left: 200px;
+
+  &-col {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
 
   &__price {
     color: white;

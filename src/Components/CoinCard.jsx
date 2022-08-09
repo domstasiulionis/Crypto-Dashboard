@@ -9,7 +9,8 @@ import { BsArrowUp } from "react-icons/bs";
 import { BsArrowDown } from "react-icons/bs";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
-import ExpandedCoinCard from "./ExpandedCoinCard";
+import { MdOutlineAvTimer } from "react-icons/md";
+// import ExpandedCoinCard from "./ExpandedCoinCard";
 
 const CoinCard = ({
   coinid,
@@ -107,22 +108,6 @@ const CoinCard = ({
             <div className="coin-overall-container">
               <div className="coin-overall">
                 <div className="coin-overall__price">{"£" + price}</div>
-                {/* <div className="coin-overall-row">
-                  {changePrice > 0 ? (
-                    <BsArrowUp className="coin-overall__arrow" />
-                  ) : (
-                    <BsArrowDown className="coin-overall__arrow--red" />
-                  )}
-                  <div
-                    className={`${
-                      changePrice > 0
-                        ? "coin-overall__percentage"
-                        : "coin-overall__percentage--red"
-                    }`}
-                  >
-                    {changePrice}
-                  </div>
-                </div> */}
               </div>
 
               <div
@@ -206,28 +191,27 @@ const CoinCard = ({
             </div>
           ) : (
             <div className="ex-coin-top">
-              <div className="ex-coin-top__price">
-                £
-                {coin.market_data?.current_price
-                  ? coin.market_data.current_price.gbp.toLocaleString()
-                  : null}
-              </div>
-
-              <div className="ex-coin-top-row">
-                {changePrice > 0 ? (
-                  <BsArrowUp className="ex-coin-top__arrow" />
-                ) : (
-                  <BsArrowDown className="ex-coin-top__arrow--red" />
-                )}
-                <div
-                  className={`${
-                    changePrice > 0
-                      ? "ex-coin-top__percentage"
-                      : "ex-coin-top__percentage--red"
-                  }`}
-                >
-                  {changePrice}
+              <div className="ex-coin-top-col">
+                <div className="ex-coin-top__price">{"£" + price}</div>
+                <div className="ex-coin-top-row">
+                  {changePrice > 0 ? (
+                    <BsArrowUp className="ex-coin-top__arrow" />
+                  ) : (
+                    <BsArrowDown className="ex-coin-top__arrow--red" />
+                  )}
+                  <div
+                    className={`${
+                      changePrice > 0
+                        ? "ex-coin-top__percentage"
+                        : "ex-coin-top__percentage--red"
+                    }`}
+                  >
+                    {changePrice}
+                  </div>
                 </div>
+              </div>
+              <div>
+                <MdOutlineAvTimer />
               </div>
             </div>
           )}
