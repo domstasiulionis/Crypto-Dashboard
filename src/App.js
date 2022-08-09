@@ -15,8 +15,9 @@ function App() {
   );
   const [coins, setCoins] = useState([]);
   const [update, setUpdate] = useState(0);
+  const [page, setPage] = useState(1);
 
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=12&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=20&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d
   `;
 
   useEffect(() => {
