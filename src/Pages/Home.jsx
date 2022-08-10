@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "../Components/Loader";
 
@@ -8,8 +8,12 @@ import HomeNavBar from "../Components/HomeNavBar";
 import axios from "axios";
 const CoinCard = lazy(() => import("../Components/CoinCard"));
 
-const Home = ({ coins, setCoins, page, setPage, hasMore, setHasMore }) => {
+const Home = () => {
   const [searchText, setSearchText] = useState("");
+  const [coins, setCoins] = useState([]);
+  const [update, setUpdate] = useState(0);
+  const [page, setPage] = useState(2);
+  const [hasMore, setHasMore] = useState(true);
 
   const display1hChart = (sevenDays, name) => {
     let overall = [];
@@ -50,7 +54,31 @@ const Home = ({ coins, setCoins, page, setPage, hasMore, setHasMore }) => {
     return overall;
   };
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+      )
+      .then((res) => {
+        setCoins(res.data);
+        // setTimeout(
+        //   () => (update === 1 ? setUpdate(update - 1) : setUpdate(update + 1)),
+        //   30000
+        // );
+      });
+  }, []);
+
+  const fetchMore = async () => {
+    const res = await fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+    );
+    const data = await res.json();
+    return data;
+  };
+
   const fetchData = async () => {
+    const nextTwenty = await fetchMore();
+    setCoins([...coins, ...nextTwenty]);
     setPage(page + 1);
     setHasMore(false);
   };
@@ -59,18 +87,14 @@ const Home = ({ coins, setCoins, page, setPage, hasMore, setHasMore }) => {
     <div className="home-container">
       <HomeNavBar setSearchText={setSearchText} />
       <div className="coins-container">
-        <InfiniteScroll
-          dataLength={coins.length}
-          next={fetchData}
-          hasMore={hasMore}
-          loader={<div></div>}
-          endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
-        >
-          <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader />}>
+          <InfiniteScroll
+            dataLength={coins.length}
+            next={fetchData}
+            hasMore={hasMore}
+            loader={<div></div>}
+            endMessage={<div></div>}
+          >
             {coins
               .filter((value) => {
                 if (searchText === "") {
@@ -113,8 +137,8 @@ const Home = ({ coins, setCoins, page, setPage, hasMore, setHasMore }) => {
                   priceChart7d={coin.sparkline_in_7d.price}
                 />
               ))}
-          </Suspense>
-        </InfiniteScroll>
+          </InfiniteScroll>
+        </Suspense>
       </div>
     </div>
   );
