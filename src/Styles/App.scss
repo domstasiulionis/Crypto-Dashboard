@@ -6,12 +6,11 @@
 
 body {
   background-color: #131016;
+  overflow-y: scroll;
 }
 
 .Content {
   display: flex;
-  overflow: hidden;
-  height: 100vh;
 }
 
 hr {

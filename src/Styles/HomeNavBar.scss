@@ -4,11 +4,16 @@ $mainFont: "PT Sans", sans-serif;
 
 .top-nav {
   display: flex;
+  position: fixed;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  height: 60px;
+  margin-left: 110px;
+  width: 92%;
+  height: 70px;
   animation: fadeIn 0.5s ease-in-out forwards;
+  background-color: #131016;
+  border-bottom: 1px solid #1b1824;
+  z-index: 10;
 
   &-left {
     display: flex;

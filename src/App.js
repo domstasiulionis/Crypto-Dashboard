@@ -16,6 +16,7 @@ function App() {
   const [coins, setCoins] = useState([]);
   const [update, setUpdate] = useState(0);
   const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=20&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d
   `;
@@ -38,13 +39,20 @@ function App() {
     <div className="Content">
       <Router>
         <Sidebar activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div></div>}>
           <Routes>
             <Route
               exact
               path="/"
               element={
-                <Home coins={coins} update={update} setUpdate={setUpdate} />
+                <Home
+                  coins={coins}
+                  setCoins={setCoins}
+                  page={page}
+                  setPage={setPage}
+                  hasMore={hasMore}
+                  setHasMore={setHasMore}
+                />
               }
             />
             <Route exact path="/Favourites" element={<Favourites />} />
