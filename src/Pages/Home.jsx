@@ -6,6 +6,7 @@ import "../Styles/Home.scss";
 
 import HomeNavBar from "../Components/HomeNavBar";
 import axios from "axios";
+import DotsLoader from "../Components/DotsLoader";
 const CoinCard = lazy(() => import("../Components/CoinCard"));
 
 const Home = () => {
@@ -57,20 +58,20 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+        `https://cors-anywhere.herokuapp.com/https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
       )
       .then((res) => {
         setCoins(res.data);
         // setTimeout(
         //   () => (update === 1 ? setUpdate(update - 1) : setUpdate(update + 1)),
-        //   30000
+        //   10000
         // );
       });
-  }, []);
+  }, [update]);
 
   const fetchMore = async () => {
     const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+      `https://cors-anywhere.herokuapp.com/https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
     );
     const data = await res.json();
     return data;
@@ -92,7 +93,7 @@ const Home = () => {
             dataLength={coins.length}
             next={fetchData}
             hasMore={hasMore}
-            loader={<div></div>}
+            loader={<DotsLoader />}
             endMessage={<div></div>}
           >
             {coins
