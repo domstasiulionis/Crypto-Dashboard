@@ -257,7 +257,9 @@ $mainSelected: #1b1824;
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
-  margin-left: 200px;
+  align-items: center;
+  margin-top: 1px;
+  margin-left: 12%;
 
   &-col {
     display: flex;
@@ -298,6 +300,58 @@ $mainSelected: #1b1824;
     &--red {
       color: rgb(196, 61, 61);
       margin-top: 2px;
+    }
+  }
+
+  &-clock {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    align-items: center;
+
+    &__icon {
+      color: gray;
+    }
+
+    &__text {
+      color: gray;
+      font-size: 12px;
+    }
+  }
+
+  &-market {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 17%;
+
+    &__cap-total {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    &__text {
+      color: gray;
+      font-size: 14px;
+    }
+  }
+
+  &-volume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 17%;
+
+    &__total {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    &__total-text {
+      color: gray;
+      font-size: 14px;
     }
   }
 }
