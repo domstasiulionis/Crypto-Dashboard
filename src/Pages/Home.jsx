@@ -4,7 +4,6 @@ import Loader from "../Components/Loader";
 import "../Styles/Home.scss";
 
 import HomeNavBar from "../Components/HomeNavBar";
-import DotsLoader from "../Components/DotsLoader";
 const CoinCard = lazy(() => import("../Components/CoinCard"));
 
 const Home = ({ coins }) => {

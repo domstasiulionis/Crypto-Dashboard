@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+@import "./ToolTipOverride";
 
 $mainFont: "PT Sans", sans-serif;
 
@@ -38,6 +39,7 @@ $mainFont: "PT Sans", sans-serif;
       font-size: 16px;
       letter-spacing: 4px;
       color: #c22408;
+      cursor: default;
     }
 
     &__pulsating-circle {

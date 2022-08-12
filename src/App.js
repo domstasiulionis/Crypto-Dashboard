@@ -22,13 +22,13 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
       )
       .then((res) => {
         setCoins(res.data);
         setTimeout(
           () => (update === 1 ? setUpdate(update - 1) : setUpdate(update + 1)),
-          10000
+          30000
         );
       });
   }, [update]);

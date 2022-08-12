@@ -5,11 +5,9 @@ import { Sparklines, SparklinesLine } from "react-sparklines";
 
 import "../Styles/CoinCard.scss";
 
-import { BsArrowUp } from "react-icons/bs";
-import { BsArrowDown } from "react-icons/bs";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
-import { MdOutlineAvTimer } from "react-icons/md";
+import ExpandedCoinCard from "./ExpandedCoinCard";
 
 const CoinCard = ({
   coinid,
@@ -189,49 +187,11 @@ const CoinCard = ({
               </div>
             </div>
           ) : (
-            <div className="ex-coin-top">
-              <div className="ex-coin-top-col">
-                <div className="ex-coin-top__price">{"£" + price}</div>
-                <div className="ex-coin-top-row">
-                  {changePrice > 0 ? (
-                    <BsArrowUp className="ex-coin-top__arrow" />
-                  ) : (
-                    <BsArrowDown className="ex-coin-top__arrow--red" />
-                  )}
-                  <div
-                    className={`${
-                      changePrice > 0
-                        ? "ex-coin-top__percentage"
-                        : "ex-coin-top__percentage--red"
-                    }`}
-                  >
-                    £{changePrice}
-                  </div>
-                </div>
-              </div>
-              <div className="ex-coin-top-clock">
-                <MdOutlineAvTimer className="ex-coin-top-clock__icon" />
-                <p className="ex-coin-top-clock__text">24h</p>
-              </div>
-              <div className="ex-coin-top-market">
-                <div className="ex-coin-top-market__cap-total">
-                  £
-                  {coin.market_data?.market_cap
-                    ? coin.market_data?.market_cap.gbp.toLocaleString()
-                    : null}
-                </div>
-                <p className="ex-coin-top-market__text">Market Cap</p>
-              </div>
-              <div className="ex-coin-top-volume">
-                <div className="ex-coin-top-volume__total">
-                  £
-                  {coin.market_data?.market_cap
-                    ? coin.market_data?.total_volume.gbp.toLocaleString()
-                    : null}
-                </div>
-                <p className="ex-coin-top-volume__total-text">Volume (24h)</p>
-              </div>
-            </div>
+            <ExpandedCoinCard
+              coin={coin}
+              changePrice={changePrice}
+              price={price}
+            />
           )}
         </div>
       </div>

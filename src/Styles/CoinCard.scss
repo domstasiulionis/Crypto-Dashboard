@@ -24,6 +24,7 @@ $mainSelected: #1b1824;
   margin-bottom: 15px;
   border-radius: 20px;
   animation: open 0.3s ease-in-out forwards;
+  overflow: hidden;
 }
 
 .coin-overall-container {
@@ -250,108 +251,5 @@ $mainSelected: #1b1824;
 
   svg {
     height: 100%;
-  }
-}
-
-.ex-coin-top {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 1px;
-  margin-left: 12%;
-
-  &-col {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-  }
-
-  &__price {
-    color: white;
-    font-weight: 600;
-    margin-bottom: 1px;
-    margin-left: auto;
-  }
-
-  &-row {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    align-items: center;
-  }
-
-  &__arrow {
-    color: $positiveGreen;
-    align-items: center;
-    margin-top: 2px;
-    transform: scale(0.95);
-
-    &--red {
-      color: rgb(196, 61, 61);
-    }
-  }
-
-  &__percentage {
-    color: $positiveGreen;
-    margin-top: 2px;
-    transform: scale(0.95);
-
-    &--red {
-      color: rgb(196, 61, 61);
-      margin-top: 2px;
-    }
-  }
-
-  &-clock {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-    align-items: center;
-
-    &__icon {
-      color: gray;
-    }
-
-    &__text {
-      color: gray;
-      font-size: 12px;
-    }
-  }
-
-  &-market {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 17%;
-
-    &__cap-total {
-      color: white;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
-    &__text {
-      color: gray;
-      font-size: 14px;
-    }
-  }
-
-  &-volume {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 17%;
-
-    &__total {
-      color: white;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
-    &__total-text {
-      color: gray;
-      font-size: 14px;
-    }
   }
 }
