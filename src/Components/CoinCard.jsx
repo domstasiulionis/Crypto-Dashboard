@@ -24,6 +24,8 @@ const CoinCard = ({
   priceChart1h,
   priceChart24h,
   priceChart7d,
+  update,
+  setUpdate,
 }) => {
   const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
@@ -36,8 +38,12 @@ const CoinCard = ({
   useEffect(() => {
     axios.get(url).then((res) => {
       setCoin(res.data);
+      setTimeout(
+        () => (update === 1 ? setUpdate(update - 1) : setUpdate(update + 1)),
+        30000
+      );
     });
-  }, [url]);
+  }, [setUpdate, update, url]);
 
   const changeTo1h = () => {
     setSelectedTime("1h");

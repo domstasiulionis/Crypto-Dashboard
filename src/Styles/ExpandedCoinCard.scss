@@ -77,18 +77,24 @@ $mainSelected: #1b1824;
       font-weight: 500;
       color: $positiveGreen;
       background-color: rgb(14, 14, 14);
+      transition: all 0.2s ease-in-out;
       cursor: pointer;
+
+      &:hover {
+        background-color: rgb(29, 29, 29);
+      }
     }
   }
 
   &-price-stats {
     margin-top: -180px;
+
     &-price {
       position: absolute;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 260px;
+      width: 290px;
       top: 60px;
       left: -280px;
 
@@ -140,7 +146,7 @@ $mainSelected: #1b1824;
       top: 160px;
       left: -280px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 135px 135px;
       align-items: center;
       gap: 25px 25px;
 
@@ -167,7 +173,7 @@ $mainSelected: #1b1824;
       align-items: center;
       justify-content: space-between;
       position: absolute;
-      width: 270px;
+      width: 285px;
       top: 395px;
       left: -280px;
 
