@@ -34,7 +34,7 @@ function App() {
   }, [update]);
 
   return (
-    <div className="Content">
+    <div className="content">
       <Router>
         <Sidebar activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
         <Suspense fallback={<div>hi</div>}>

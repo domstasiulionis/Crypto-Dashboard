@@ -1,13 +1,14 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Sparklines, SparklinesLine } from "react-sparklines";
+import axios from "axios";
 
 import "../Styles/CoinCard.scss";
 
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
-import ExpandedCoinCard from "./ExpandedCoinCard";
+
+import DotsLoader from "./DotsLoader";
+const ExpandedCoinCard = lazy(() => import("./ExpandedCoinCard"));
 
 const CoinCard = ({
   coinid,
@@ -187,11 +188,22 @@ const CoinCard = ({
               </div>
             </div>
           ) : (
-            <ExpandedCoinCard
-              coin={coin}
-              changePrice={changePrice}
-              price={price}
-            />
+            <Suspense
+              fallback={
+                <div className="loading-position">
+                  <DotsLoader />
+                </div>
+              }
+            >
+              <ExpandedCoinCard
+                coin={coin}
+                changePrice={changePrice}
+                price={price}
+                change1h={change1h}
+                change24h={change24h}
+                change7d={change7d}
+              />
+            </Suspense>
           )}
         </div>
       </div>
