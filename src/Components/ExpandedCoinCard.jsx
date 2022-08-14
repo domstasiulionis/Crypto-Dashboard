@@ -1,9 +1,8 @@
-import React from "react";
-
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { FaFacebook, FaTwitter, FaReddit, FaGithub } from "react-icons/fa";
 
 import "../Styles/ExpandedCoinCard.scss";
+import Chart from "./Chart";
 
 const ExpandedCoinCard = ({
   coin,
@@ -12,11 +11,11 @@ const ExpandedCoinCard = ({
   change1h,
   change24h,
   change7d,
+  chart,
 }) => {
   return (
     <div className="expanded-card">
       <div className="expanded-card-top">
-        <div className="expanded-card-top__divider" />
         {/* 1h Change % */}
         <div className="expanded-card-top-1h-change">
           <p
@@ -126,12 +125,6 @@ const ExpandedCoinCard = ({
           </p>
           <p className="expanded-card-top-60d-change__text">1y</p>
         </div>
-        <div className="expanded-card-top__divider" />
-      </div>
-      <div className="expanded-card-btn-group">
-        <button className="expanded-card-btn-group__btn-change">1h</button>
-        <button className="expanded-card-btn-group__btn-change">24h</button>
-        <button className="expanded-card-btn-group__btn-change">7d</button>
       </div>
       {/* Price */}
       <div className="expanded-card-price-stats">
@@ -230,6 +223,9 @@ const ExpandedCoinCard = ({
           <FaReddit className="expanded-card-price-stats-icons__icon" />
           <FaGithub className="expanded-card-price-stats-icons__icon" />
         </div>
+      </div>
+      <div className="expanded-card-chart">
+        <Chart />
       </div>
     </div>
   );

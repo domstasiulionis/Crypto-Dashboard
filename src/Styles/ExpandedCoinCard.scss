@@ -1,3 +1,5 @@
+@import "./ToolTipOverride";
+
 $positiveGreen: rgb(91, 190, 132);
 $negativeRed: rgb(196, 61, 61);
 $mainSelected: #1b1824;
@@ -27,8 +29,8 @@ $mainSelected: #1b1824;
 
   &-top {
     display: flex;
-    width: 68vw;
-    margin-left: 50px;
+    width: 69vw;
+    margin-left: 70px;
     margin-right: 50px;
     align-content: center;
     margin-top: -20px;
@@ -62,30 +64,6 @@ $mainSelected: #1b1824;
     }
   }
 
-  &-btn-group {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    width: 68vw;
-    margin-left: 50px;
-    margin-right: 50px;
-
-    &__btn-change {
-      padding: 5px 25px;
-      border-radius: 10px;
-      border: none;
-      font-weight: 500;
-      color: $positiveGreen;
-      background-color: rgb(14, 14, 14);
-      transition: all 0.2s ease-in-out;
-      cursor: pointer;
-
-      &:hover {
-        background-color: rgb(29, 29, 29);
-      }
-    }
-  }
-
   &-price-stats {
     margin-top: -180px;
 
@@ -94,9 +72,12 @@ $mainSelected: #1b1824;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 290px;
-      top: 60px;
-      left: -280px;
+      width: 325px;
+      top: 45px;
+      left: -290px;
+      background-color: #231f2e;
+      padding: 15px;
+      border-radius: 20px;
 
       &__price {
         font-size: 26px;
@@ -143,12 +124,15 @@ $mainSelected: #1b1824;
 
     &-side {
       position: absolute;
-      top: 160px;
-      left: -280px;
+      top: 145px;
+      left: -290px;
       display: grid;
       grid-template-columns: 135px 135px;
       align-items: center;
       gap: 25px 25px;
+      background-color: #231f2e;
+      padding: 15px;
+      border-radius: 20px;
 
       &-market-cap,
       &-24h-volume,
@@ -173,9 +157,12 @@ $mainSelected: #1b1824;
       align-items: center;
       justify-content: space-between;
       position: absolute;
-      width: 285px;
-      top: 395px;
-      left: -280px;
+      width: 325px;
+      top: 380px;
+      left: -290px;
+      background-color: #231f2e;
+      padding: 15px;
+      border-radius: 20px;
 
       &__icon {
         color: rgb(142, 72, 255);
@@ -189,5 +176,16 @@ $mainSelected: #1b1824;
         }
       }
     }
+  }
+
+  &-chart {
+    position: absolute;
+    width: 68vw;
+    height: 382px;
+    top: 45px;
+    left: 77px;
+    background-color: #231f2e;
+    padding: 15px;
+    border-radius: 20px;
   }
 }

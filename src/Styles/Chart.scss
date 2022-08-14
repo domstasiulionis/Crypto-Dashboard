@@ -1,0 +1,24 @@
+$positiveGreen: rgb(91, 190, 132);
+$negativeRed: rgb(196, 61, 61);
+
+.chart {
+  &-btn-group {
+    display: flex;
+    justify-content: space-around;
+
+    &__btn-change {
+      padding: 7px 35px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 500;
+      color: $positiveGreen;
+      background-color: rgb(14, 14, 14);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(29, 29, 29);
+      }
+    }
+  }
+}

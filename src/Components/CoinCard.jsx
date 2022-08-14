@@ -7,7 +7,6 @@ import "../Styles/CoinCard.scss";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
 
-import DotsLoader from "./DotsLoader";
 const ExpandedCoinCard = lazy(() => import("./ExpandedCoinCard"));
 
 const CoinCard = ({
@@ -25,12 +24,12 @@ const CoinCard = ({
   priceChart24h,
   priceChart7d,
   update,
-  setUpdate,
 }) => {
   const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [coin, setCoin] = useState({});
+  const [chart, setChart] = useState({});
 
   const url = `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&sparkline=true
 `;
@@ -38,12 +37,9 @@ const CoinCard = ({
   useEffect(() => {
     axios.get(url).then((res) => {
       setCoin(res.data);
-      setTimeout(
-        () => (update === 1 ? setUpdate(update - 1) : setUpdate(update + 1)),
-        30000
-      );
+      setChart("DATA: " + res?.data?.market_data?.sparkline_7d?.price);
     });
-  }, [setUpdate, update, url]);
+  }, [update, url]);
 
   const changeTo1h = () => {
     setSelectedTime("1h");
@@ -194,13 +190,7 @@ const CoinCard = ({
               </div>
             </div>
           ) : (
-            <Suspense
-              fallback={
-                <div className="loading-position">
-                  <DotsLoader />
-                </div>
-              }
-            >
+            <Suspense fallback={<div></div>}>
               <ExpandedCoinCard
                 coin={coin}
                 changePrice={changePrice}
@@ -208,6 +198,7 @@ const CoinCard = ({
                 change1h={change1h}
                 change24h={change24h}
                 change7d={change7d}
+                chart={chart}
               />
             </Suspense>
           )}
