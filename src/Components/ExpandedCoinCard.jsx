@@ -111,7 +111,7 @@ const ExpandedCoinCard = ({
                 "%"
               : null}
           </p>
-          <p className="expanded-card-top-60d-change__text">30d</p>
+          <p className="expanded-card-top-60d-change__text">60d</p>
         </div>
         <div className="expanded-card-top__divider" />
         {/* 1y Change % */}

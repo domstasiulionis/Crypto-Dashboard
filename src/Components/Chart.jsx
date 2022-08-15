@@ -25,7 +25,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const Chart = ({ coin, update }) => {
+const Chart = ({ coin }) => {
   const [historicData, sethistoricData] = useState();
   const [days, setDays] = useState(1);
   const [activeBtn, setActiveBtn] = useState("24h");
@@ -52,16 +52,16 @@ const Chart = ({ coin, update }) => {
     setDays(60);
   };
 
-  const changeTo90d = () => {
-    setActiveBtn("90d");
-    setDays(90);
+  const changeTo1y = () => {
+    setActiveBtn("1y");
+    setDays(365);
   };
 
   useEffect(() => {
     axios.get(url).then((res) => {
       sethistoricData(res?.data?.prices);
     });
-  }, [days, update, url]);
+  }, [days, url]);
 
   return (
     <div className="chart">
@@ -99,12 +99,12 @@ const Chart = ({ coin, update }) => {
           60d
         </button>
         <button
-          onClick={changeTo90d}
+          onClick={changeTo1y}
           className={`chart-btn-group__btn-change ${
-            activeBtn === "90d" ? "chart-btn-group__btn-change--active" : ""
+            activeBtn === "1y" ? "chart-btn-group__btn-change--active" : ""
           }`}
         >
-          90d
+          1y
         </button>
       </div>
 
