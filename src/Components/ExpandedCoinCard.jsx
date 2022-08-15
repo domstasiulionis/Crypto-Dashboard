@@ -1,8 +1,12 @@
-import { BsArrowUp, BsArrowDown } from "react-icons/bs";
-import { FaFacebook, FaTwitter, FaReddit, FaGithub } from "react-icons/fa";
+import { lazy, Suspense } from "react";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 import "../Styles/ExpandedCoinCard.scss";
-import Chart from "./Chart";
+
+import { BsArrowUp, BsArrowDown } from "react-icons/bs";
+import { FaFacebook, FaTwitter, FaReddit, FaGithub } from "react-icons/fa";
+const Chart = lazy(() => import("./Chart"));
 
 const ExpandedCoinCard = ({
   coin,
@@ -11,7 +15,7 @@ const ExpandedCoinCard = ({
   change1h,
   change24h,
   change7d,
-  chart,
+  update,
 }) => {
   return (
     <div className="expanded-card">
@@ -132,22 +136,29 @@ const ExpandedCoinCard = ({
           <p className="expanded-card-price-stats-price__price">
             {"£" + price}
           </p>
-          <div
-            className={`expanded-card-price-stats-price-change ${
-              changePrice > 0
-                ? ""
-                : "expanded-card-price-stats-price-change--red"
-            }`}
+          <Tippy
+            placement="right"
+            delay={300}
+            theme="custom"
+            content="24h Change"
           >
-            {changePrice > 0 ? (
-              <BsArrowUp className="expanded-card-price-stats-price-change__arrow" />
-            ) : (
-              <BsArrowDown className="expanded-card-price-stats-price-change__arrow--red" />
-            )}
-            <div className="expanded-card-price-stats-price-change__amount">
-              £{changePrice}
+            <div
+              className={`expanded-card-price-stats-price-change ${
+                changePrice > 0
+                  ? ""
+                  : "expanded-card-price-stats-price-change--red"
+              }`}
+            >
+              {changePrice > 0 ? (
+                <BsArrowUp className="expanded-card-price-stats-price-change__arrow" />
+              ) : (
+                <BsArrowDown className="expanded-card-price-stats-price-change__arrow--red" />
+              )}
+              <div className="expanded-card-price-stats-price-change__amount">
+                £{changePrice}
+              </div>
             </div>
-          </div>
+          </Tippy>
         </div>
         <div className="expanded-card-price-stats-side">
           {/* Market Cap */}
@@ -225,7 +236,9 @@ const ExpandedCoinCard = ({
         </div>
       </div>
       <div className="expanded-card-chart">
-        <Chart />
+        <Suspense fallback={<div>loading</div>}>
+          <Chart coin={coin} update={update} />
+        </Suspense>
       </div>
     </div>
   );

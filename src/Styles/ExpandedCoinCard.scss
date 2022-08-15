@@ -93,6 +93,7 @@ $mainSelected: #1b1824;
         background-color: $positiveGreen;
         padding: 2px 10px;
         border-radius: 25px;
+        cursor: default;
 
         &--red {
           background-color: $negativeRed;

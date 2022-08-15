@@ -29,15 +29,13 @@ const CoinCard = ({
   const [isFav, setIsFav] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [coin, setCoin] = useState({});
-  const [chart, setChart] = useState({});
 
   const url = `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&sparkline=true
 `;
 
   useEffect(() => {
     axios.get(url).then((res) => {
-      setCoin(res.data);
-      setChart("DATA: " + res?.data?.market_data?.sparkline_7d?.price);
+      setCoin(res?.data);
     });
   }, [update, url]);
 
@@ -198,7 +196,7 @@ const CoinCard = ({
                 change1h={change1h}
                 change24h={change24h}
                 change7d={change7d}
-                chart={chart}
+                update={update}
               />
             </Suspense>
           )}
