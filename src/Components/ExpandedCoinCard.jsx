@@ -6,6 +6,7 @@ import "../Styles/ExpandedCoinCard.scss";
 
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { FaFacebook, FaTwitter, FaReddit, FaGithub } from "react-icons/fa";
+import DotsLoader from "./DotsLoader";
 const Chart = lazy(() => import("./Chart"));
 
 const ExpandedCoinCard = ({
@@ -236,8 +237,14 @@ const ExpandedCoinCard = ({
         </div>
       </div>
       <div className="expanded-card-chart">
-        <Suspense fallback={<div>loading</div>}>
-          <Chart coin={coin} update={update} />
+        <Suspense
+          fallback={
+            <div>
+              <DotsLoader />
+            </div>
+          }
+        >
+          <Chart coin={coin} update={update} change24h={change24h} />
         </Suspense>
       </div>
     </div>
