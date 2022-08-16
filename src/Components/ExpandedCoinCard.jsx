@@ -16,7 +16,7 @@ const ExpandedCoinCard = ({
   change1h,
   change24h,
   change7d,
-  update,
+  setExpanded,
 }) => {
   return (
     <div className="expanded-card">
@@ -131,6 +131,19 @@ const ExpandedCoinCard = ({
           <p className="expanded-card-top-60d-change__text">1y</p>
         </div>
       </div>
+
+      <div className="expanded-card-chart">
+        <Suspense
+          fallback={
+            <div>
+              <DotsLoader />
+            </div>
+          }
+        >
+          <Chart coin={coin} change24h={change24h} setExpanded={setExpanded} />
+        </Suspense>
+      </div>
+
       {/* Price */}
       <div className="expanded-card-price-stats">
         <div className="expanded-card-price-stats-price">
@@ -235,17 +248,6 @@ const ExpandedCoinCard = ({
           <FaReddit className="expanded-card-price-stats-icons__icon" />
           <FaGithub className="expanded-card-price-stats-icons__icon" />
         </div>
-      </div>
-      <div className="expanded-card-chart">
-        <Suspense
-          fallback={
-            <div>
-              <DotsLoader />
-            </div>
-          }
-        >
-          <Chart coin={coin} update={update} change24h={change24h} />
-        </Suspense>
       </div>
     </div>
   );

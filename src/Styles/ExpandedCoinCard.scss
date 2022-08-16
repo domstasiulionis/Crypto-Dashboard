@@ -26,11 +26,11 @@ $mainSelected: #1b1824;
 
 .expanded-card {
   position: relative;
+  width: 100%;
+  margin-left: 65px;
 
   &-top {
     display: flex;
-    width: 69vw;
-    margin-left: 65px;
     margin-right: 50px;
     align-content: center;
     margin-top: -20px;
@@ -74,7 +74,7 @@ $mainSelected: #1b1824;
       align-items: center;
       width: 325px;
       top: 45px;
-      left: -290px;
+      left: -375px;
       background-color: #231f2e;
       padding: 15px;
       border-radius: 20px;
@@ -97,6 +97,11 @@ $mainSelected: #1b1824;
 
         &--red {
           background-color: $negativeRed;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            background-color: rgb(211, 85, 85);
+          }
         }
 
         &__arrow {
@@ -126,7 +131,7 @@ $mainSelected: #1b1824;
     &-side {
       position: absolute;
       top: 145px;
-      left: -290px;
+      left: -375px;
       display: grid;
       grid-template-columns: 135px 135px;
       align-items: center;
@@ -160,7 +165,7 @@ $mainSelected: #1b1824;
       position: absolute;
       width: 325px;
       top: 380px;
-      left: -290px;
+      left: -375px;
       background-color: #231f2e;
       padding: 15px;
       border-radius: 20px;
@@ -181,10 +186,10 @@ $mainSelected: #1b1824;
 
   &-chart {
     position: absolute;
-    width: 68vw;
+    width: 100%;
     height: 382px;
     top: 45px;
-    left: 77px;
+    left: -27px;
     background-color: #231f2e;
     padding: 15px;
     border-radius: 20px;

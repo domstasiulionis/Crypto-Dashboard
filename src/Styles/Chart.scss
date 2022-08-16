@@ -3,6 +3,8 @@ $negativeRed: #c43d3d;
 $mainSelected: #1b1824;
 
 .chart {
+  max-width: 100%;
+
   &-btn-group {
     display: flex;
     justify-content: space-around;
@@ -20,7 +22,7 @@ $mainSelected: #1b1824;
       cursor: pointer;
 
       &:hover {
-        box-shadow: inset 120px 0 0 0 #b341b1;
+        box-shadow: inset 120px 0 0 0 #8e48ff;
       }
 
       &-max {
@@ -32,6 +34,7 @@ $mainSelected: #1b1824;
 
         &--active {
           background-color: $negativeRed;
+          border: 1px solid $negativeRed;
 
           &:hover {
             box-shadow: inset 150px 0 0 0 $negativeRed;
@@ -42,11 +45,11 @@ $mainSelected: #1b1824;
       &--active {
         background-image: linear-gradient(
           to right,
-          #b341b1 0%,
-          #9c369b 51%,
-          #b341b1 100%
+          #8e48ff 0%,
+          #9156f0 51%,
+          #8e48ff 100%
         );
-        border: 1px solid #853065;
+        border: 1px solid #8e48ff;
         transition: all 0.2s ease-in-out;
       }
     }
@@ -72,13 +75,11 @@ $mainSelected: #1b1824;
 
   .line-chart {
     position: relative;
-    width: 100%;
     height: 324px;
-    margin-top: 7px;
+    padding-bottom: 12px;
 
     #myChart {
       width: 1px;
-      position: absolute;
     }
   }
 }

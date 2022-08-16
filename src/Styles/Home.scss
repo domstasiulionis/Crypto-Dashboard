@@ -5,11 +5,10 @@
   padding: 0px 20px 0px 20px;
   overflow-y: hidden;
   overflow-x: hidden;
-}
 
-.coins-container {
-  width: 93vw;
-  margin-top: 10px;
-  overflow-y: hidden;
-  margin: 70px 0px 20px 110px;
+  .coins-container {
+    margin-top: 10px;
+    overflow-y: hidden;
+    margin: 70px -30px 20px 110px;
+  }
 }

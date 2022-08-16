@@ -60,7 +60,7 @@ const CoinCard = ({
   };
 
   return (
-    <div>
+    <>
       <div
         className={`expand-default ${
           expanded === true ? "expand-true" : "expand-false"
@@ -197,12 +197,13 @@ const CoinCard = ({
                 change24h={change24h}
                 change7d={change7d}
                 update={update}
+                setExpanded={setExpanded}
               />
             </Suspense>
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
