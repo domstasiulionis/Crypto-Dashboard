@@ -91,7 +91,6 @@ $mainSelected: #1b1824;
 .coin-card {
   display: flex;
   height: 82px;
-  width: 100%;
   align-items: center;
   animation: fadeIn 0.2s ease-in-out forwards;
 
@@ -193,20 +192,46 @@ $mainSelected: #1b1824;
   width: 10%;
   flex-direction: column;
   align-items: center;
-  margin-right: 30px;
+  margin-right: 70px;
   cursor: pointer;
 
   &__price {
     color: white;
     font-weight: 600;
-    margin-bottom: 1px;
     margin-left: auto;
+    margin-top: -2px;
+    padding-bottom: 3px;
+
+    &-text {
+      color: grey;
+      font-size: 13px;
+      margin-left: auto;
+    }
   }
 
   &__24hr {
     color: grey;
     &-icon {
       color: grey;
+    }
+  }
+}
+
+.coin-market-cap {
+  width: 130px;
+  align-items: center;
+
+  &__market-cap {
+    color: rgb(187, 187, 187);
+    font-weight: 600;
+    margin-top: -2px;
+    padding-bottom: 3px;
+    text-align: center;
+
+    &-text {
+      color: grey;
+      font-size: 13px;
+      text-align: center;
     }
   }
 }

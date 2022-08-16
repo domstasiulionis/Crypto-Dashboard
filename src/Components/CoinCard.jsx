@@ -24,6 +24,7 @@ const CoinCard = ({
   priceChart24h,
   priceChart7d,
   update,
+  marketCap,
 }) => {
   const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
@@ -106,6 +107,12 @@ const CoinCard = ({
             <div className="coin-overall-container">
               <div className="coin-overall">
                 <div className="coin-overall__price">{"£" + price}</div>
+                <p className="coin-overall__price-text">Price</p>
+              </div>
+
+              <div className="coin-market-cap">
+                <div className="coin-market-cap__market-cap">£{marketCap}</div>
+                <p className="coin-market-cap__market-cap-text">Market Cap</p>
               </div>
 
               <div
@@ -198,6 +205,7 @@ const CoinCard = ({
                 change7d={change7d}
                 update={update}
                 setExpanded={setExpanded}
+                marketCap={marketCap}
               />
             </Suspense>
           )}

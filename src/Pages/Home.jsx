@@ -93,6 +93,7 @@ const Home = ({ coins }) => {
                 )}
                 priceChart24h={display24hChart(coin.sparkline_in_7d.price)}
                 priceChart7d={coin.sparkline_in_7d.price}
+                marketCap={coin.market_cap.toLocaleString()}
               />
             ))}
         </Suspense>

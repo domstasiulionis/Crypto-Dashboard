@@ -17,6 +17,7 @@ const ExpandedCoinCard = ({
   change24h,
   change7d,
   setExpanded,
+  marketCap,
 }) => {
   return (
     <div className="expanded-card">
@@ -73,7 +74,7 @@ const ExpandedCoinCard = ({
             }
           >
             {coin.market_data
-              ? coin.market_data.price_change_percentage_14d.toLocaleString() +
+              ? coin.market_data?.price_change_percentage_14d.toLocaleString() +
                 "%"
               : null}
           </p>
@@ -84,13 +85,13 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-30d-change">
           <p
             className={
-              coin.market_data.price_change_percentage_30d > 0
+              coin.market_data?.price_change_percentage_30d > 0
                 ? "expanded-card-top-30d-change__total"
                 : "expanded-card-top-30d-change__total--red"
             }
           >
             {coin.market_data
-              ? coin.market_data.price_change_percentage_30d.toLocaleString() +
+              ? coin.market_data?.price_change_percentage_30d.toLocaleString() +
                 "%"
               : null}
           </p>
@@ -101,13 +102,13 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-60d-change">
           <p
             className={
-              coin.market_data.price_change_percentage_60d > 0
+              coin.market_data?.price_change_percentage_60d > 0
                 ? "expanded-card-top-60d-change__total"
                 : "expanded-card-top-60d-change__total--red"
             }
           >
             {coin.market_data
-              ? coin.market_data.price_change_percentage_60d.toLocaleString() +
+              ? coin.market_data?.price_change_percentage_60d.toLocaleString() +
                 "%"
               : null}
           </p>
@@ -118,13 +119,13 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-1y-change">
           <p
             className={
-              coin.market_data.price_change_percentage_1y > 0
+              coin.market_data?.price_change_percentage_1y > 0
                 ? "expanded-card-top-1y-change__total"
                 : "expanded-card-top-1y-change__total--red"
             }
           >
             {coin.market_data
-              ? coin.market_data.price_change_percentage_1y.toLocaleString() +
+              ? coin.market_data?.price_change_percentage_1y.toLocaleString() +
                 "%"
               : null}
           </p>
@@ -178,10 +179,7 @@ const ExpandedCoinCard = ({
           {/* Market Cap */}
           <div className="expanded-card-price-stats-side-market-cap">
             <div className="expanded-card-price-stats-side-market-cap__total">
-              £
-              {coin.market_data?.market_cap
-                ? coin.market_data?.market_cap.gbp.toLocaleString()
-                : null}
+              £{marketCap}
             </div>
             <p className="expanded-card-price-stats-side-market-cap__text">
               Market Cap
