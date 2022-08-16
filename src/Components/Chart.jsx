@@ -29,39 +29,56 @@ const Chart = ({ coin }) => {
   const [historicData, sethistoricData] = useState();
   const [days, setDays] = useState(1);
   const [activeBtn, setActiveBtn] = useState("24h");
+  const [custom, setCustom] = useState();
 
   const url = `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=gbp&days=${days}`;
-
-  const changeTo24h = () => {
-    setActiveBtn("24h");
-    setDays(1);
-  };
-
-  const changeTo7d = () => {
-    setActiveBtn("7d");
-    setDays(7);
-  };
-
-  const changeTo30d = () => {
-    setActiveBtn("30d");
-    setDays(30);
-  };
-
-  const changeTo60d = () => {
-    setActiveBtn("60d");
-    setDays(60);
-  };
-
-  const changeTo1y = () => {
-    setActiveBtn("1y");
-    setDays(365);
-  };
 
   useEffect(() => {
     axios.get(url).then((res) => {
       sethistoricData(res?.data?.prices);
     });
   }, [days, url]);
+
+  const changeTo24h = () => {
+    setActiveBtn("24h");
+    setDays(1);
+    setCustom("");
+  };
+
+  const changeTo7d = () => {
+    setActiveBtn("7d");
+    setDays(7);
+    setCustom("");
+  };
+
+  const changeTo30d = () => {
+    setActiveBtn("30d");
+    setDays(30);
+    setCustom("");
+  };
+
+  const changeTo60d = () => {
+    setActiveBtn("60d");
+    setDays(60);
+    setCustom("");
+  };
+
+  const changeTo1y = () => {
+    setActiveBtn("1y");
+    setDays(365);
+    setCustom("");
+  };
+
+  const changeToMax = () => {
+    setActiveBtn("Max");
+    setDays(10000);
+    setCustom("");
+  };
+
+  const customInput = (e) => {
+    setDays(e.target.value);
+    setCustom(e.target.value);
+  };
 
   return (
     <div className="chart">
@@ -106,11 +123,26 @@ const Chart = ({ coin }) => {
         >
           1y
         </button>
+        <button
+          onClick={changeToMax}
+          className={`chart-btn-group__btn-change-max ${
+            activeBtn === "Max" ? "chart-btn-group__btn-change-max--active" : ""
+          }`}
+        >
+          Max
+        </button>
+        <input
+          onChange={customInput}
+          type="number"
+          placeholder="Custom (days)"
+          value={custom}
+          min="1"
+          max="10000"
+        />
       </div>
 
       <div className="line-chart">
         <canvas id="myChart"></canvas>
-
         {!historicData ? (
           <div>
             <DotsLoader />
