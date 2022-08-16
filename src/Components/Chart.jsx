@@ -76,9 +76,15 @@ const Chart = ({ coin }) => {
   };
 
   const customInput = (e) => {
-    setActiveBtn();
-    setDays(e.target.value);
-    setCustom(e.target.value);
+    if (e.target.value === "") {
+      setDays(1);
+      setActiveBtn("24h");
+      setCustom();
+    } else {
+      setActiveBtn();
+      setDays(e.target.value);
+      setCustom(e.target.value);
+    }
   };
 
   return (

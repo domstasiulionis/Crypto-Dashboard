@@ -20,7 +20,7 @@ $mainSelected: #1b1824;
       cursor: pointer;
 
       &:hover {
-        box-shadow: inset 120px 0 0 0 #9c369b;
+        box-shadow: inset 120px 0 0 0 #b341b1;
       }
 
       &-max {
@@ -42,9 +42,9 @@ $mainSelected: #1b1824;
       &--active {
         background-image: linear-gradient(
           to right,
-          #853065 0%,
+          #b341b1 0%,
           #9c369b 51%,
-          #853065 100%
+          #b341b1 100%
         );
         border: 1px solid #853065;
         transition: all 0.2s ease-in-out;
