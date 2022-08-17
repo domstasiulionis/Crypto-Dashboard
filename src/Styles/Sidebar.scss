@@ -105,3 +105,9 @@ $primary-color: #1b1824;
     }
   }
 }
+
+@media (max-width: 1370px) {
+  .sidenav {
+    display: none;
+  }
+}

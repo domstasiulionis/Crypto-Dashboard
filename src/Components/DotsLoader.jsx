@@ -28,7 +28,7 @@ const DotsLoader = ({ setExpanded }) => {
           interactive={true}
           content={
             <>
-              <h3>Why is this happening?</h3>
+              <h3>Waiting for a while?</h3>
               <p>
                 Long waits for data retrieval can be caused by the CORS policy.
                 The server becomes overloaded with requests for data and can
