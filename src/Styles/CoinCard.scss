@@ -4,6 +4,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+@mixin hide {
+  display: none;
+}
+
 $positiveGreen: rgb(91, 190, 132);
 $negativeRed: rgb(196, 61, 61);
 $mainSelected: #1b1824;
@@ -199,8 +203,8 @@ $mainSelected: #1b1824;
     color: white;
     font-weight: 600;
     margin-left: auto;
-    margin-top: -2px;
-    padding-bottom: 3px;
+    margin-top: -3px;
+    padding-bottom: 4px;
 
     &-text {
       color: grey;
@@ -224,8 +228,8 @@ $mainSelected: #1b1824;
   &__market-cap {
     color: rgb(187, 187, 187);
     font-weight: 600;
-    margin-top: -2px;
-    padding-bottom: 3px;
+    margin-top: -3px;
+    padding-bottom: 4px;
     text-align: center;
 
     &-text {
@@ -287,5 +291,30 @@ $mainSelected: #1b1824;
 
   svg {
     height: 100%;
+  }
+}
+
+//increases size of sparkline charts for larger screens
+@media (min-width: 2200px) {
+  .mini-chart-container {
+    svg {
+      width: 400px;
+    }
+  }
+}
+
+// hides market cap stat and adjusts time boxes to create more room
+@media (max-width: 1610px) {
+  .coin-market-cap {
+    @include hide();
+  }
+
+  .coin-overall {
+    margin-right: 25px;
+  }
+
+  .time {
+    margin-left: 30px;
+    width: 110px;
   }
 }

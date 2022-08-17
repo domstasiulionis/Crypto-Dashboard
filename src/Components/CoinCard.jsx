@@ -106,7 +106,7 @@ const CoinCard = ({
           {expanded === false ? (
             <div className="coin-overall-container">
               <div className="coin-overall">
-                <div className="coin-overall__price">{"£" + price}</div>
+                <div className="coin-overall__price">£{price}</div>
                 <p className="coin-overall__price-text">Price</p>
               </div>
 

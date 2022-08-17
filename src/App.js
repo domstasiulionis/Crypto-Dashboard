@@ -37,7 +37,7 @@ function App() {
     <div className="content">
       <Router>
         <Sidebar activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
-        <Suspense fallback={<div>hi</div>}>
+        <Suspense fallback={<div></div>}>
           <Routes>
             <Route exact path="/" element={<Home coins={coins} />} />
             <Route exact path="/Favourites" element={<Favourites />} />

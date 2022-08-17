@@ -71,7 +71,11 @@ const Home = ({ coins }) => {
                 name={coin.name}
                 short={coin.symbol.toUpperCase()}
                 image={coin.image}
-                price={coin.current_price.toLocaleString()}
+                price={
+                  coin.current_price > 0.01
+                    ? coin.current_price.toLocaleString()
+                    : coin.current_price.toPrecision(3)
+                }
                 changePrice={Math.round(coin.price_change_24h * 1000) / 1000}
                 change1h={
                   Math.round(

@@ -89,6 +89,13 @@ const Chart = ({ coin, setExpanded }) => {
     }
   };
 
+  const updateAfterError = () => {
+    // setExpanded(false);
+    // setTimeout(() => {
+    //   setExpanded(true);
+    // }, 5000);
+  };
+
   return (
     <div className="chart">
       <div className="chart-btn-group">
@@ -154,7 +161,8 @@ const Chart = ({ coin, setExpanded }) => {
         <canvas id="myChart"></canvas>
         {!historicData ? (
           <div>
-            <DotsLoader />
+            <DotsLoader setExpanded={setExpanded} />
+            {updateAfterError()}
           </div>
         ) : (
           <ErrorBoundary

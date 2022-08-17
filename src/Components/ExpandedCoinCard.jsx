@@ -6,7 +6,6 @@ import "../Styles/ExpandedCoinCard.scss";
 
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { FaFacebook, FaTwitter, FaReddit, FaGithub } from "react-icons/fa";
-import DotsLoader from "./DotsLoader";
 const Chart = lazy(() => import("./Chart"));
 
 const ExpandedCoinCard = ({
@@ -133,24 +132,10 @@ const ExpandedCoinCard = ({
         </div>
       </div>
 
-      <div className="expanded-card-chart">
-        <Suspense
-          fallback={
-            <div>
-              <DotsLoader />
-            </div>
-          }
-        >
-          <Chart coin={coin} change24h={change24h} setExpanded={setExpanded} />
-        </Suspense>
-      </div>
-
       {/* Price */}
       <div className="expanded-card-price-stats">
         <div className="expanded-card-price-stats-price">
-          <p className="expanded-card-price-stats-price__price">
-            {"£" + price}
-          </p>
+          <p className="expanded-card-price-stats-price__price">£{price}</p>
           <Tippy
             placement="right"
             delay={300}
@@ -246,6 +231,11 @@ const ExpandedCoinCard = ({
           <FaReddit className="expanded-card-price-stats-icons__icon" />
           <FaGithub className="expanded-card-price-stats-icons__icon" />
         </div>
+      </div>
+      <div className="expanded-card-chart">
+        <Suspense fallback={<div></div>}>
+          <Chart coin={coin} change24h={change24h} setExpanded={setExpanded} />
+        </Suspense>
       </div>
     </div>
   );
