@@ -16,9 +16,7 @@ const DotsLoader = ({ setExpanded }) => {
   return (
     <div className="loader-container">
       <div className="dot-elastic" />
-      <p className="fetching-msg">
-        Trying to fetch data... (Please allow up to 2 minutes)
-      </p>
+      <p className="fetching-msg">Fetching data...</p>
       <div className="dont-ref">
         <p>
           <b>Please do not refresh the page</b>
@@ -34,9 +32,9 @@ const DotsLoader = ({ setExpanded }) => {
               <p>
                 Long waits for data retrieval can be caused by the CORS policy.
                 The server becomes overloaded with requests for data and can
-                temporary stop responding, this issue typically resolves itself
-                shortly. You can use the refresh button below to refresh this
-                specific coin. <b>We apologise for this delay!</b>
+                temporarily stop responding, this issue typically resolves
+                itself shortly. You can use the refresh button below to refresh
+                this specific coin. <b>We apologise for this delay!</b>
               </p>
               <div className="ref">
                 <div onClick={refreshHandler} className="ref-items">

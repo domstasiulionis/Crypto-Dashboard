@@ -240,6 +240,36 @@ $mainSelected: #1b1824;
   }
 }
 
+.coin-low,
+.coin-high {
+  width: 130px;
+  align-items: center;
+
+  &__24h {
+    color: rgb(187, 187, 187);
+    font-weight: 600;
+    margin-top: -3px;
+    padding-bottom: 4px;
+    text-align: center;
+
+    &-text {
+      color: grey;
+      font-size: 13px;
+      text-align: center;
+    }
+  }
+}
+
+.coin-high {
+  margin-left: 35px;
+  margin-right: 10px;
+}
+
+.coin-low {
+  margin-right: -18px;
+  margin-left: 8px;
+}
+
 .time {
   display: flex;
   flex-direction: column;
@@ -300,6 +330,14 @@ $mainSelected: #1b1824;
     svg {
       width: 400px;
     }
+  }
+}
+
+//increases size of sparkline charts for larger screens
+@media (max-width: 2000px) {
+  .coin-low,
+  .coin-high {
+    @include hide();
   }
 }
 
