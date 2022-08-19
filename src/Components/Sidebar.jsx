@@ -26,7 +26,7 @@ const Sidebar = ({ activeIcon, setActiveIcon }) => {
         {/* Logo */}
         <img src={logo} className="sidenav__logo" alt="logo" />
         <h3 className="logo__text logo__text--moon">MOON</h3>
-        <h3 className="logo__text logo__text--cake">CHEF</h3>
+        <h3 className="logo__text logo__text--chef">CHEF</h3>
 
         {/* Top icons */}
         <Tippy placement="right" delay={300} theme="custom" content="Home">

@@ -16,11 +16,11 @@ const DotsLoader = ({ setExpanded }) => {
   return (
     <div className="loader-container">
       <div className="dot-elastic" />
-      <p className="fetching-msg">Fetching data...</p>
+      <p className="fetching-msg">
+        Fetching data, <b>please do not refresh the page</b>
+      </p>
       <div className="dont-ref">
-        <p>
-          <b>Please do not refresh the page</b>
-        </p>
+        <p>Waiting for a while?</p>
         <Tippy
           placement="right"
           delay={100}
@@ -28,9 +28,9 @@ const DotsLoader = ({ setExpanded }) => {
           interactive={true}
           content={
             <>
-              <h3>Waiting for a while?</h3>
+              <h3>Why is this happening?</h3>
               <p>
-                Long waits for data retrieval can be caused by the CORS policy.
+                Long waits for data retrieval can be caused by the CORS error.
                 The server becomes overloaded with requests for data and can
                 temporarily stop responding, this issue typically resolves
                 itself shortly. You can use the refresh button below to refresh

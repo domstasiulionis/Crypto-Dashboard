@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap");
+
+.hmb {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  object-fit: contain;
+
+  &-overlay {
+    position: absolute;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    width: 100vw;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+
+  .hmb-container {
+    position: absolute;
+    margin-left: -5px;
+    padding-left: 5px;
+    animation: slide-in 0.2s forwards;
+    background-color: white;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    &-close {
+      @extend .hmb-container;
+      animation: slide-out 0.4s forwards;
+      background-color: green;
+    }
+  }
+
+  &-inner {
+    padding: 20px 40px;
+    transition: all 0.3s ease-in-out;
+
+    .hmb-inner-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 80px;
+
+      &__close-icon {
+        margin-top: -155px;
+        margin-left: -15px;
+        color: rgb(75, 0, 196);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          color: rgb(128, 68, 224);
+          transform: scale(1.1);
+        }
+      }
+
+      &-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-weight: 700;
+        width: 100%;
+
+        &__logo {
+          width: 86px;
+          height: auto;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          margin-top: 30px;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        &--moon,
+        &--chef {
+          font-size: 34px;
+          font-family: "Lato", sans-serif;
+          line-height: 1;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        &--moon {
+          color: rgb(161, 161, 161);
+        }
+
+        &--chef {
+          color: rgb(75, 0, 196);
+        }
+      }
+    }
+
+    &-list {
+      width: 100%;
+      transform: scale(0.8);
+
+      &__home,
+      &__fav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        margin-bottom: 100px;
+        padding: 20px;
+        transition: all 0.3s ease-in-out;
+        border-left: 2px solid rgb(75, 0, 196);
+        border-right: 2px solid rgb(75, 0, 196);
+        cursor: pointer;
+
+        &-icon {
+          margin-right: 15px;
+        }
+
+        &:hover {
+          color: rgb(162, 10, 233);
+          box-shadow: inset 20px 0 0 0 rgb(75, 0, 196);
+        }
+      }
+    }
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 450px;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    width: 450px;
+  }
+
+  100% {
+    width: 0px;
+  }
+}

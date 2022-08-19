@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Styles/App.scss";
 
 import Sidebar from "./Components/Sidebar";
+import HamburgerMenu from "./Components/HamburgerMenu";
 const Home = lazy(() => import("./Pages/Home"));
 const Favourites = lazy(() => import("./Pages/Favourites"));
 
@@ -14,6 +15,7 @@ function App() {
   );
   const [coins, setCoins] = useState([]);
   const [update, setUpdate] = useState(0);
+  const [hamburgerMenu, setHamburgerMenu] = useState(false);
 
   useEffect(() => {
     sessionStorage.setItem("icon", activeIcon);
@@ -36,10 +38,28 @@ function App() {
   return (
     <div className="content">
       <Router>
+        {hamburgerMenu ? (
+          <HamburgerMenu
+            hamburgerMenu={hamburgerMenu}
+            setHamburgerMenu={setHamburgerMenu}
+          />
+        ) : (
+          ""
+        )}
         <Sidebar activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
         <Suspense fallback={<div></div>}>
           <Routes>
-            <Route exact path="/" element={<Home coins={coins} />} />
+            <Route
+              exact
+              path="/"
+              element={
+                <Home
+                  coins={coins}
+                  hamburgerMenu={hamburgerMenu}
+                  setHamburgerMenu={setHamburgerMenu}
+                />
+              }
+            />
             <Route exact path="/Favourites" element={<Favourites />} />
           </Routes>
         </Suspense>

@@ -24,6 +24,19 @@ $mainFont: "PT Sans", sans-serif;
   border-bottom: 1px solid #1b1824;
   z-index: 10;
 
+  &-hamburger {
+    display: none;
+    transform: scale(0.6);
+
+    &__line {
+      width: 50px;
+      height: 5px;
+      background-color: #ecf0f1;
+      display: block;
+      margin: 8px auto;
+    }
+  }
+
   &-left {
     display: flex;
     align-items: center;
@@ -155,5 +168,21 @@ $mainFont: "PT Sans", sans-serif;
 
   .top-nav {
     margin-left: -3px;
+
+    &-hamburger {
+      display: block;
+    }
+
+    &-left {
+      margin-left: 50px;
+
+      &__live {
+        display: none;
+      }
+
+      &__pulsating-circle {
+        margin-left: 10px;
+      }
+    }
   }
 }

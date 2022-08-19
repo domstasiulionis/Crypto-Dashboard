@@ -6,7 +6,7 @@ import "../Styles/Home.scss";
 import HomeNavBar from "../Components/HomeNavBar";
 const CoinCard = lazy(() => import("../Components/CoinCard"));
 
-const Home = ({ coins }) => {
+const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
   const [searchText, setSearchText] = useState("");
 
   const display1hChart = (sevenDays) => {
@@ -50,7 +50,11 @@ const Home = ({ coins }) => {
 
   return (
     <div className="home-container">
-      <HomeNavBar setSearchText={setSearchText} />
+      <HomeNavBar
+        setSearchText={setSearchText}
+        hamburgerMenu={hamburgerMenu}
+        setHamburgerMenu={setHamburgerMenu}
+      />
       <div className="coins-container">
         <Suspense fallback={<Loader />}>
           {coins

@@ -4,10 +4,6 @@
   font-family: "Roboto", sans-serif;
 }
 
-@mixin hide {
-  display: none;
-}
-
 $positiveGreen: rgb(91, 190, 132);
 $negativeRed: rgb(196, 61, 61);
 $mainSelected: #1b1824;
@@ -337,14 +333,14 @@ $mainSelected: #1b1824;
 @media (max-width: 2000px) {
   .coin-low,
   .coin-high {
-    @include hide();
+    display: none;
   }
 }
 
 // hides market cap stat and adjusts time boxes to create more room
 @media (max-width: 1610px) {
   .coin-market-cap {
-    @include hide();
+    display: none;
   }
 
   .coin-overall {
