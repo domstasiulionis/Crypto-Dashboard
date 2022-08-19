@@ -125,6 +125,7 @@ $mainSelected: #1b1824;
   align-items: center;
   margin-left: 30px;
   cursor: pointer;
+  z-index: 5000;
 
   &__img-container {
     display: flex;
@@ -189,16 +190,17 @@ $mainSelected: #1b1824;
 
 .coin-overall {
   display: flex;
-  width: 10%;
+  width: 100px;
   flex-direction: column;
   align-items: center;
-  margin-right: 70px;
+  margin-right: 40px;
   cursor: pointer;
 
   &__price {
     color: white;
     font-weight: 600;
     margin-left: auto;
+    margin-right: 10px;
     margin-top: -3px;
     padding-bottom: 4px;
 
@@ -206,6 +208,7 @@ $mainSelected: #1b1824;
       color: grey;
       font-size: 13px;
       margin-left: auto;
+      margin-right: 10px;
     }
   }
 
@@ -350,5 +353,45 @@ $mainSelected: #1b1824;
   .time {
     margin-left: 30px;
     width: 110px;
+  }
+}
+
+@media (max-width: 1230px) {
+  .time {
+    margin-left: 15px;
+    width: 100px;
+  }
+
+  #time-1h {
+    margin-left: 10px;
+  }
+
+  .mini-chart-container {
+    margin-left: 20px;
+    margin-right: 0px;
+  }
+
+  .coin-card {
+    .rank {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+@media (max-width: 1110px) {
+  .mini-chart-container {
+    svg {
+      width: 190px;
+    }
+  }
+
+  .time {
+    margin-left: 10px;
+    width: 80px;
+  }
+
+  .coin-overall {
+    margin-right: 0px;
   }
 }

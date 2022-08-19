@@ -132,6 +132,36 @@ const ExpandedCoinCard = ({
         </div>
       </div>
 
+      {/* Price - small screens */}
+      <div className="expanded-card-res-price-stats">
+        <div className="expanded-card-res-price">
+          <p className="expanded-card-res-price-stats-price__price">£{price}</p>
+          <Tippy
+            placement="right"
+            delay={300}
+            theme="custom"
+            content="24h Change"
+          >
+            <div
+              className={`expanded-card-res-price-stats-price-change ${
+                changePrice > 0
+                  ? ""
+                  : "expanded-card-res-price-stats-price-change--red"
+              }`}
+            >
+              {changePrice > 0 ? (
+                <BsArrowUp className="expanded-card-res-price-stats-price-change__arrow" />
+              ) : (
+                <BsArrowDown className="expanded-card-res-price-stats-price-change__arrow--red" />
+              )}
+              <div className="expanded-card-res-price-stats-price-change__amount">
+                £{changePrice}
+              </div>
+            </div>
+          </Tippy>
+        </div>
+      </div>
+
       {/* Price */}
       <div className="expanded-card-price-stats">
         <div className="expanded-card-price-stats-price">

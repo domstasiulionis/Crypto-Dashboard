@@ -31,10 +31,10 @@ const DotsLoader = ({ setExpanded }) => {
               <h3>Why is this happening?</h3>
               <p>
                 Long waits for data retrieval can be caused by the CORS error.
-                The server becomes overloaded with requests for data and can
-                temporarily stop responding, this issue typically resolves
-                itself shortly. You can use the refresh button below to refresh
-                this specific coin. <b>We apologise for this delay!</b>
+                This is when the server becomes overloaded with requests for
+                data and can temporarily stop responding. This issue typically
+                resolves itself shortly. You can use the refresh button below to
+                refresh this specific coin. <b>We apologise for this delay!</b>
               </p>
               <div className="ref">
                 <div onClick={refreshHandler} className="ref-items">

@@ -27,6 +27,7 @@ $mainFont: "PT Sans", sans-serif;
   &-hamburger {
     display: none;
     transform: scale(0.6);
+    cursor: pointer;
 
     &__line {
       width: 50px;

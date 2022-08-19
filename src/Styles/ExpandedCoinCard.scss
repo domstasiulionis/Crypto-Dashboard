@@ -64,6 +64,51 @@ $mainSelected: #1b1824;
     }
   }
 
+  &-res-price-stats {
+    position: relative;
+    top: 18px;
+    left: -23px;
+    display: flex;
+    background-color: #231f2e;
+    padding: 15px 20px;
+    border-radius: 20px;
+
+    &-price {
+      @extend .expanded-card-price-stats-price;
+
+      &__price {
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 2px;
+      }
+
+      &-change {
+        @extend .expanded-card-price-stats-price-change;
+
+        &--red {
+          @extend .expanded-card-price-stats-price-change--red;
+
+          &:hover {
+            background-color: rgb(211, 85, 85);
+          }
+        }
+
+        &__arrow {
+          @extend .expanded-card-price-stats-price-change__arrow;
+
+          &--red {
+            @extend .expanded-card-price-stats-price-change__arrow--red;
+          }
+        }
+
+        &__amount {
+          @extend .expanded-card-price-stats-price-change__amount;
+        }
+      }
+    }
+  }
+
   &-price-stats {
     margin-top: -180px;
 
@@ -118,13 +163,6 @@ $mainSelected: #1b1824;
           color: white;
           font-size: 15px;
         }
-
-        &__24h-text {
-          color: gray;
-          font-size: 12px;
-          margin-top: 2px;
-          margin-left: 4px;
-        }
       }
     }
 
@@ -137,7 +175,7 @@ $mainSelected: #1b1824;
       align-items: center;
       gap: 25px 25px;
       background-color: #231f2e;
-      padding: 15px;
+      padding: 22px 15px;
       border-radius: 20px;
 
       &-market-cap,
@@ -164,7 +202,7 @@ $mainSelected: #1b1824;
       justify-content: space-between;
       position: absolute;
       width: 325px;
-      top: 380px;
+      top: 392px;
       left: -375px;
       background-color: #231f2e;
       padding: 15px;
@@ -187,11 +225,37 @@ $mainSelected: #1b1824;
   &-chart {
     position: absolute;
     width: 100%;
-    height: 382px;
+    height: 393px;
     top: 45px;
     left: -27px;
+    right: 0;
     background-color: #231f2e;
     padding: 15px;
     border-radius: 20px;
+  }
+}
+
+@media (max-width: 1230px) {
+  .expanded-card {
+    margin-left: -265px;
+
+    &-chart {
+      height: 305px;
+      top: 230px;
+      left: -24px;
+      width: 100%;
+      background-color: #231f2e;
+      padding: 15px;
+      border-radius: 20px;
+    }
+
+    &-price-stats {
+      margin: 0;
+    }
+
+    &-top {
+      margin: 80px 0 0 260px;
+      transform: scale(0.9);
+    }
   }
 }

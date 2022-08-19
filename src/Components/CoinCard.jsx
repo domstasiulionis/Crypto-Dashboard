@@ -131,6 +131,7 @@ const CoinCard = ({
                 className={`time ${
                   selectedTime === "1h" ? "time--active" : ""
                 }`}
+                id="time-1h"
                 onClick={changeTo1h}
               >
                 <div
@@ -146,6 +147,7 @@ const CoinCard = ({
                 className={`time ${
                   selectedTime === "24h" ? "time--active" : ""
                 }`}
+                id="time-24h"
                 onClick={changeTo24h}
               >
                 <div
@@ -161,6 +163,7 @@ const CoinCard = ({
                 className={`time ${
                   selectedTime === "7d" ? "time--active" : ""
                 }`}
+                id="time-7d"
                 onClick={changeTo7d}
               >
                 <div

@@ -12,7 +12,7 @@ import "../Styles/HamburgerMenu.scss";
 const HamburgerMenu = ({ hamburgerMenu, setHamburgerMenu }) => {
   const [open, setOpen] = useState(hamburgerMenu);
 
-  const toggleSlide = async () => {
+  const toggleSlide = () => {
     setOpen(false);
     setTimeout(() => {
       setHamburgerMenu(false);

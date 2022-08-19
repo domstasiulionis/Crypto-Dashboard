@@ -3,7 +3,7 @@ $negativeRed: #c43d3d;
 $mainSelected: #1b1824;
 
 .chart {
-  max-width: 100%;
+  width: 100%;
 
   &-btn-group {
     display: flex;
@@ -19,6 +19,7 @@ $mainSelected: #1b1824;
       color: white;
       background-color: #231f2e;
       transition: all 0.2s ease-in-out;
+      z-index: 20;
       cursor: pointer;
 
       &:hover {
@@ -37,7 +38,7 @@ $mainSelected: #1b1824;
           border: 1px solid $negativeRed;
 
           &:hover {
-            box-shadow: inset 150px 0 0 0 $negativeRed;
+            box-shadow: inset 120px 0 0 0 $negativeRed;
           }
         }
       }
@@ -66,20 +67,50 @@ $mainSelected: #1b1824;
     }
   }
 
-  &__chart {
-    width: 800px;
-    height: 300px;
-    background-color: rgb(22, 22, 53);
-    z-index: 50;
-  }
-
   .line-chart {
     position: relative;
-    height: 324px;
+    width: 100%;
+    height: 340px;
     padding-bottom: 12px;
 
     #myChart {
       width: 1px;
+    }
+  }
+}
+
+@media (max-width: 1230px) {
+  .chart {
+    .line-chart {
+      width: 100%;
+      height: 235px;
+      margin-top: 0px;
+      padding-bottom: 0;
+    }
+
+    .chart-btn-group {
+      &__btn-change,
+      input[type="number"] {
+        transform: scale(0.8);
+      }
+
+      &__btn-change {
+        &:hover {
+          background-color: #8e48ff;
+        }
+
+        &-max {
+          &:hover {
+            background-color: $negativeRed;
+          }
+
+          &--active {
+            &:hover {
+              background-color: $negativeRed;
+            }
+          }
+        }
+      }
     }
   }
 }
