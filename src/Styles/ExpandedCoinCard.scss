@@ -81,10 +81,15 @@ $mainSelected: #1b1824;
         color: white;
         font-weight: 600;
         letter-spacing: 2px;
+        margin-left: 10px;
+        margin-right: 30px;
       }
 
       &-change {
         @extend .expanded-card-price-stats-price-change;
+        transform: scale(0.9);
+        margin-left: 10px;
+        margin-right: 30px;
 
         &--red {
           @extend .expanded-card-price-stats-price-change--red;
@@ -104,6 +109,31 @@ $mainSelected: #1b1824;
 
         &__amount {
           @extend .expanded-card-price-stats-price-change__amount;
+        }
+      }
+    }
+
+    &-mid {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+
+      &-market-cap,
+      &-24h-volume,
+      &-24h-high,
+      &-24h-low,
+      &-hashing,
+      &-trust {
+        @include container-side();
+        transform: scale(0.9);
+
+        &__total {
+          @include total-amount();
+        }
+
+        &__text {
+          @include total-text();
         }
       }
     }

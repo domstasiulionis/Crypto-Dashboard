@@ -160,6 +160,54 @@ const ExpandedCoinCard = ({
             </div>
           </Tippy>
         </div>
+        <div className="expanded-card-top__divider" />
+        <div className="expanded-card-res-price-stats-mid">
+          {/* Market Cap */}
+          <div className="expanded-card-res-price-stats-mid-market-cap">
+            <div className="expanded-card-res-price-stats-mid-market-cap__total">
+              £{marketCap}
+            </div>
+            <p className="expanded-card-res-price-stats-mid-market-cap__text">
+              Market Cap
+            </p>
+          </div>
+          {/* 24h Volume */}
+          <div className="expanded-card-res-price-stats-mid-24h-volume">
+            <div className="expanded-card-res-price-stats-mid-24h-volume__total">
+              £
+              {coin.market_data?.market_cap
+                ? coin.market_data?.total_volume.gbp.toLocaleString()
+                : null}
+            </div>
+            <p className="expanded-card-res-price-stats-mid-24h-volume__text">
+              Volume (24h)
+            </p>
+          </div>
+          {/* 24h High */}
+          <div className="expanded-card-res-price-stats-mid-24h-high">
+            <div className="expanded-card-res-price-stats-mid-24h-high__total">
+              £
+              {coin.market_data?.high_24h
+                ? coin.market_data?.high_24h.gbp.toLocaleString()
+                : null}
+            </div>
+            <p className="expanded-card-res-price-stats-mid-24h-high__text">
+              24h High
+            </p>
+          </div>
+          {/* 24h low */}
+          <div className="expanded-card-res-price-stats-mid-24h-low">
+            <div className="expanded-card-res-price-stats-mid-24h-low__total">
+              £
+              {coin.market_data?.low_24h
+                ? coin.market_data?.low_24h.gbp.toLocaleString()
+                : null}
+            </div>
+            <p className="expanded-card-res-price-stats-mid-24h-low__text">
+              24h Low
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Price */}
@@ -224,7 +272,7 @@ const ExpandedCoinCard = ({
               24h High
             </p>
           </div>
-          {/* 24h High */}
+          {/* 24h Low */}
           <div className="expanded-card-price-stats-side-24h-low">
             <div className="expanded-card-price-stats-side-24h-low__total">
               £
