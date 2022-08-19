@@ -37,6 +37,11 @@ $primary-color: #1b1824;
     top: -35px;
     width: 75px;
     height: auto;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      @include popEffect();
+    }
   }
 
   .logo__text {

@@ -10,6 +10,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "./ErrorFallback";
 import axios from "axios";
 
 import DotsLoader from "./DotsLoader";
@@ -163,40 +165,45 @@ const Chart = ({ coin, setExpanded }) => {
             {updateAfterError()}
           </div>
         ) : (
-          <Line
-            data={{
-              labels: historicData.map((coin) => {
-                let date = new Date(coin[0]);
-                let time =
-                  date.getHours() > 12
-                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                    : `${date.getHours()}:${date.getMinutes()} AM`;
-                return days === 1 ? time : date.toLocaleDateString();
-              }),
+          <ErrorBoundary
+            FallbackComponent={ErrorFallback}
+            onReset={() => console.log("error!")}
+          >
+            <Line
+              data={{
+                labels: historicData.map((coin) => {
+                  let date = new Date(coin[0]);
+                  let time =
+                    date.getHours() > 12
+                      ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                      : `${date.getHours()}:${date.getMinutes()} AM`;
+                  return days === 1 ? time : date.toLocaleDateString();
+                }),
 
-              datasets: [
-                {
-                  data: historicData.map((coin) => coin[1]),
-                  label: `Price (GBP)`,
-                  borderColor: "#c593ee",
+                datasets: [
+                  {
+                    data: historicData.map((coin) => coin[1]),
+                    label: `Price (GBP)`,
+                    borderColor: "#c593ee",
+                  },
+                ],
+              }}
+              options={{
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
                 },
-              ],
-            }}
-            options={{
-              plugins: {
-                legend: {
-                  display: false,
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                  point: {
+                    radius: 2,
+                  },
                 },
-              },
-              responsive: true,
-              maintainAspectRatio: false,
-              elements: {
-                point: {
-                  radius: 2,
-                },
-              },
-            }}
-          />
+              }}
+            />
+          </ErrorBoundary>
         )}
       </div>
     </div>
