@@ -186,3 +186,24 @@ $mainFont: "PT Sans", sans-serif;
     }
   }
 }
+
+@media (max-width: 770px) {
+  .top-nav {
+    input[type="text"] {
+      transform: scale(0.9);
+    }
+
+    .search-bar {
+      &__icon {
+        top: 8px;
+        right: 25px;
+      }
+    }
+
+    &-left {
+      transform: scale(0.9);
+      margin-top: 1px;
+      margin-left: -10px;
+    }
+  }
+}

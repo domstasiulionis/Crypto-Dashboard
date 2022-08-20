@@ -79,7 +79,10 @@ const ExpandedCoinCard = ({
           </p>
           <p className="expanded-card-top-14d-change__text">14d</p>
         </div>
-        <div className="expanded-card-top__divider" />
+        <div
+          id="fourteen-day__divider"
+          className="expanded-card-top__divider"
+        />
         {/* 30d Change % */}
         <div className="expanded-card-top-30d-change">
           <p
@@ -96,7 +99,7 @@ const ExpandedCoinCard = ({
           </p>
           <p className="expanded-card-top-30d-change__text">30d</p>
         </div>
-        <div className="expanded-card-top__divider" />
+        <div id="thirty-day__divider" className="expanded-card-top__divider" />
         {/* 60d Change % */}
         <div className="expanded-card-top-60d-change">
           <p
@@ -113,7 +116,7 @@ const ExpandedCoinCard = ({
           </p>
           <p className="expanded-card-top-60d-change__text">60d</p>
         </div>
-        <div className="expanded-card-top__divider" />
+        <div id="sixty-day__divider" className="expanded-card-top__divider" />
         {/* 1y Change % */}
         <div className="expanded-card-top-1y-change">
           <p
@@ -160,7 +163,7 @@ const ExpandedCoinCard = ({
             </div>
           </Tippy>
         </div>
-        <div className="expanded-card-top__divider" />
+        <div className="expanded-card-res-price-stats__divider" />
         <div className="expanded-card-res-price-stats-mid">
           {/* Market Cap */}
           <div className="expanded-card-res-price-stats-mid-market-cap">

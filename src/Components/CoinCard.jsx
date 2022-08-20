@@ -6,6 +6,7 @@ import "../Styles/CoinCard.scss";
 
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
+import { BiChevronRight } from "react-icons/bi";
 
 const ExpandedCoinCard = lazy(() => import("./ExpandedCoinCard"));
 
@@ -88,6 +89,16 @@ const CoinCard = ({
             }`}
           >
             <div className="coin-info__img-container" onClick={expandCard}>
+              <div className="coin-info-res" onClick={expandCard}>
+                <BiChevronRight
+                  onClick={expandCard}
+                  className={
+                    expanded === true
+                      ? "coin-info-res__chevron-down"
+                      : "coin-info-res__chevron"
+                  }
+                />
+              </div>
               <img className="coin-info__img" src={image} alt="coin" />
             </div>
             <div className="coin-info-column" onClick={expandCard}>

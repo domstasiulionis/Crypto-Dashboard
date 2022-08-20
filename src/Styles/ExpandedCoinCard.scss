@@ -66,30 +66,41 @@ $mainSelected: #1b1824;
 
   &-res-price-stats {
     position: relative;
+    height: 80px;
     top: 18px;
     left: -23px;
     display: flex;
     background-color: #231f2e;
-    padding: 15px 20px;
+    padding: 15px 15px;
     border-radius: 20px;
+    padding-left: 30px;
+
+    &__divider {
+      border-right: 1px solid rgb(99, 99, 99);
+      margin-left: 30px;
+    }
 
     &-price {
-      @extend .expanded-card-price-stats-price;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       &__price {
         font-size: 20px;
         color: white;
         font-weight: 600;
         letter-spacing: 2px;
-        margin-left: 10px;
-        margin-right: 30px;
+        text-align: center;
       }
 
       &-change {
-        @extend .expanded-card-price-stats-price-change;
+        display: flex;
+        margin: 3px 20px;
+        background-color: $positiveGreen;
+        padding: 2px 10px;
+        border-radius: 25px;
+        cursor: default;
         transform: scale(0.9);
-        margin-left: 10px;
-        margin-right: 30px;
 
         &--red {
           @extend .expanded-card-price-stats-price-change--red;
@@ -163,7 +174,6 @@ $mainSelected: #1b1824;
 
       &-change {
         display: flex;
-        flex-direction: row;
         margin-top: 5px;
         background-color: $positiveGreen;
         padding: 2px 10px;
@@ -192,6 +202,8 @@ $mainSelected: #1b1824;
         &__amount {
           color: white;
           font-size: 15px;
+          margin-right: auto;
+          margin-left: auto;
         }
       }
     }
@@ -270,22 +282,128 @@ $mainSelected: #1b1824;
     margin-left: -265px;
 
     &-chart {
-      height: 305px;
+      height: 310px;
       top: 230px;
       left: -24px;
-      width: 100%;
-      background-color: #231f2e;
-      padding: 15px;
-      border-radius: 20px;
     }
 
     &-price-stats {
+      display: none;
       margin: 0;
     }
 
     &-top {
       margin: 80px 0 0 260px;
       transform: scale(0.9);
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .expanded-card {
+    #fourteen-day__divider {
+      display: none;
+    }
+
+    &-top {
+      &-14d-change {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .expanded-card {
+    margin-left: -237px;
+
+    &-chart {
+      height: 307px;
+    }
+
+    &-res-price-stats {
+      padding-left: 15px;
+
+      &__divider {
+        margin-left: 15px;
+      }
+
+      &-price {
+        &__price {
+          transform: scale(0.9);
+          margin-top: 2px;
+        }
+
+        &-change {
+          transform: scale(0.85);
+          margin-top: 0px;
+        }
+      }
+
+      &-mid {
+        transform: scale(0.9);
+
+        &-market-cap,
+        &-24h-volume,
+        &-24h-high,
+        &-24h-low,
+        &-hashing,
+        &-trust {
+          &__total {
+            transform: scale(0.9);
+          }
+
+          &__text {
+            transform: scale(0.9);
+          }
+        }
+      }
+    }
+
+    #sixty-day__divider {
+      display: none;
+    }
+
+    &-top {
+      margin-left: 35%;
+      align-content: center;
+
+      &-60d-change {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 710px) {
+  .expanded-card {
+    &-top {
+      margin-left: 35%;
+      align-content: center;
+      transform: scale(0.8);
+    }
+
+    &-res-price-stats {
+      &-mid {
+        &-24h-volume {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 595px) {
+  .expanded-card {
+    #thirty-day__divider {
+      display: none;
+    }
+    &-top {
+      margin-left: 40%;
+      transform: scale(0.8);
+      &-1y-change {
+        display: none;
+      }
     }
   }
 }

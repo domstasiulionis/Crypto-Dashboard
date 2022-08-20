@@ -9,7 +9,7 @@ $negativeRed: rgb(196, 61, 61);
 $mainSelected: #1b1824;
 
 .expand-default {
-  margin-right: 30px;
+  margin-right: 29px;
   border-bottom: 1px solid $mainSelected;
 
   &:hover {
@@ -127,6 +127,27 @@ $mainSelected: #1b1824;
   cursor: pointer;
   z-index: 5000;
 
+  &-res {
+    display: none;
+    align-items: center;
+
+    &__chevron {
+      width: 22px;
+      height: auto;
+      background-color: $mainSelected;
+      border-radius: 50px;
+      margin-right: 12px;
+      color: white;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &__chevron-down {
+      @extend .coin-info-res__chevron;
+      transform: rotate(90deg);
+      background-color: #524577;
+    }
+  }
+
   &__img-container {
     display: flex;
     align-items: center;
@@ -194,7 +215,7 @@ $mainSelected: #1b1824;
   flex-direction: column;
   align-items: center;
   margin-right: 40px;
-  cursor: pointer;
+  cursor: default;
 
   &__price {
     color: white;
@@ -273,11 +294,12 @@ $mainSelected: #1b1824;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 35px;
+  margin-left: 30px;
   padding: 0px 5px;
   width: 120px;
   height: 70px;
   border-radius: 5px;
+  border: 1px solid #18151b;
   cursor: pointer;
 
   &:hover {
@@ -332,7 +354,6 @@ $mainSelected: #1b1824;
   }
 }
 
-//increases size of sparkline charts for larger screens
 @media (max-width: 2000px) {
   .coin-low,
   .coin-high {
@@ -340,14 +361,13 @@ $mainSelected: #1b1824;
   }
 }
 
-// hides market cap stat and adjusts time boxes to create more room
 @media (max-width: 1610px) {
   .coin-market-cap {
     display: none;
   }
 
   .coin-overall {
-    margin-right: 25px;
+    margin-right: 0px;
   }
 
   .time {
@@ -368,7 +388,7 @@ $mainSelected: #1b1824;
 
   .mini-chart-container {
     margin-left: 20px;
-    margin-right: 0px;
+    margin-right: 10px;
   }
 
   .coin-card {
@@ -393,5 +413,94 @@ $mainSelected: #1b1824;
 
   .coin-overall {
     margin-right: 0px;
+  }
+}
+
+@media (max-width: 950px) {
+  .time {
+    margin-right: -0px;
+    border: none;
+    background-color: transparent;
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  #time-7d {
+    margin-right: -30px;
+  }
+
+  .mini-chart-container {
+    svg {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .time {
+    width: 80px;
+  }
+}
+
+@media (max-width: 770px) {
+  .coin-info {
+    &__chevron {
+      display: none;
+    }
+
+    &-res {
+      display: flex;
+    }
+  }
+
+  .coin-card {
+    .fav {
+      margin: 25px 20px 20px 10px;
+    }
+
+    .time {
+      margin-left: 0px;
+    }
+  }
+
+  .coin-info {
+    transform: scale(0.9);
+    margin-left: 5px;
+  }
+
+  .time {
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  .coin-overall {
+    &__price {
+      margin-top: 2px;
+      font-size: 14px;
+      color: rgb(218, 218, 218);
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  #time-7d {
+    display: none;
+  }
+
+  #time-24h {
+    margin-right: -30px;
+  }
+}
+
+@media (max-width: 595px) {
+  #time-24h {
+    display: none;
+  }
+
+  #time-1h {
+    margin-right: -30px;
   }
 }
