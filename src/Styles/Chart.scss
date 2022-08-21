@@ -125,3 +125,30 @@ $mainSelected: #1b1824;
     }
   }
 }
+
+@media (max-width: 770px) {
+  .chart {
+    &-btn-group {
+      &__btn-change {
+        &-max {
+          display: none;
+        }
+      }
+    }
+    .line-chart {
+      height: 235px;
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .chart {
+    &-btn-group {
+      &__btn-change {
+        &-60d {
+          display: none;
+        }
+      }
+    }
+  }
+}

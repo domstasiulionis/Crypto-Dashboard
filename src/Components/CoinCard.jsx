@@ -232,6 +232,7 @@ const CoinCard = ({
                 update={update}
                 setExpanded={setExpanded}
                 marketCap={marketCap}
+                rank={rank}
               />
             </Suspense>
           )}

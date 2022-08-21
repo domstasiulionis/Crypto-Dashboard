@@ -194,6 +194,7 @@ $mainFont: "PT Sans", sans-serif;
     }
 
     .search-bar {
+      margin-right: -15px;
       &__icon {
         top: 8px;
         right: 25px;
@@ -204,6 +205,46 @@ $mainFont: "PT Sans", sans-serif;
       transform: scale(0.9);
       margin-top: 1px;
       margin-left: -10px;
+    }
+  }
+}
+
+@media (max-width: 495px) {
+  .top-nav {
+    &-left {
+      &__title {
+        display: none;
+      }
+
+      &__icon {
+        display: none;
+      }
+
+      &__live {
+        display: none;
+      }
+
+      &__pulsating-circle {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 495px) {
+  .top-nav {
+    &-left {
+      &-hamburger {
+        transform: scale(0.6);
+      }
+    }
+
+    .search-bar {
+      transform: scale(0.85);
+      &__icon {
+        top: 8px;
+        right: 25px;
+      }
     }
   }
 }

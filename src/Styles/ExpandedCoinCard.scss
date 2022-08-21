@@ -39,6 +39,17 @@ $mainSelected: #1b1824;
       border-right: 1px solid rgb(99, 99, 99);
     }
 
+    &-rank {
+      @include container-side();
+      display: none;
+
+      &__rank {
+        @include total-amount();
+        font-size: 18px;
+        margin-top: 2px;
+      }
+    }
+
     &-1h-change,
     &-24h-change,
     &-7d-change,
@@ -395,14 +406,41 @@ $mainSelected: #1b1824;
 
 @media (max-width: 595px) {
   .expanded-card {
+    margin-left: -200px;
+
+    &-chart {
+      height: 300px;
+    }
+
     #thirty-day__divider {
       display: none;
     }
+
+    &-res-price-stats {
+      top: 28px;
+      &-mid {
+        &-24h-high,
+        &-24h-low {
+          display: none;
+        }
+        &-market-cap {
+          transform: scale(1);
+        }
+      }
+    }
+
     &-top {
-      margin-left: 40%;
-      transform: scale(0.8);
+      &-1h-change,
+      &-24h-change,
+      &-7d-change,
+      &-14d-change,
+      &-30d-change,
+      &-60d-change,
       &-1y-change {
         display: none;
+      }
+      &-rank {
+        display: flex;
       }
     }
   }

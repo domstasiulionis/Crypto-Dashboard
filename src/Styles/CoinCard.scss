@@ -460,10 +460,10 @@ $mainSelected: #1b1824;
     .fav {
       margin: 25px 20px 20px 10px;
     }
+  }
 
-    .time {
-      margin-left: 0px;
-    }
+  .time {
+    margin-left: 0px;
   }
 
   .coin-info {
@@ -502,5 +502,85 @@ $mainSelected: #1b1824;
 
   #time-1h {
     margin-right: -30px;
+    margin-left: 20px;
+  }
+
+  .coin-card {
+    .fav {
+      margin: 25px 20px 20px 10px;
+    }
+
+    .rank {
+      display: none;
+    }
+  }
+
+  .coin-info {
+    margin-left: -10px;
+  }
+}
+
+@media (max-width: 495px) {
+  #time-1h {
+    margin-left: 0px;
+  }
+
+  .coin-card {
+    .fav {
+      transform: scale(0.9);
+    }
+  }
+}
+
+@media (max-width: 465px) {
+  #time-1h {
+    display: none;
+  }
+
+  .coin-overall {
+    margin-right: -30px;
+  }
+}
+
+@media (max-width: 380px) {
+  .coin-info {
+    transform: scale(0.85);
+    margin-left: -20px;
+  }
+
+  .coin-overall {
+    transform: scale(0.95);
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 369px) {
+  .coin-info {
+    &-column {
+      width: 70px;
+    }
+  }
+}
+
+@media (max-width: 335px) {
+  .coin-info {
+    &-column {
+      width: 150px;
+    }
+  }
+
+  .coin-overall {
+    display: none;
+  }
+
+  .coin-info {
+    margin-left: -10px;
+
+    &-res {
+      &__chevron {
+        margin-left: -10px;
+        margin-right: 10px;
+      }
+    }
   }
 }

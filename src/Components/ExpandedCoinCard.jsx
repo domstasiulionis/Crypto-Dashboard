@@ -17,10 +17,14 @@ const ExpandedCoinCard = ({
   change7d,
   setExpanded,
   marketCap,
+  rank,
 }) => {
   return (
     <div className="expanded-card">
       <div className="expanded-card-top">
+        <div className="expanded-card-top-rank">
+          <div className="expanded-card-top-rank__rank">Rank #{rank}</div>
+        </div>
         {/* 1h Change % */}
         <div className="expanded-card-top-1h-change">
           <p
