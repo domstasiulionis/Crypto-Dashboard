@@ -103,7 +103,7 @@ const ExpandedCoinCard = ({
           </p>
           <p className="expanded-card-top-30d-change__text">30d</p>
         </div>
-        <div id="thirty-day__divider" className="expanded-card-top__divider" />
+        <div className="expanded-card-top__divider" />
         {/* 60d Change % */}
         <div className="expanded-card-top-60d-change">
           <p
@@ -169,6 +169,10 @@ const ExpandedCoinCard = ({
         </div>
         <div className="expanded-card-res-price-stats__divider" />
         <div className="expanded-card-res-price-stats-mid">
+          {/* Rank - visible at 400px width and below */}
+          <div className="expanded-card-res-price-stats-mid__rank">
+            Rank #{rank}
+          </div>
           {/* Market Cap */}
           <div className="expanded-card-res-price-stats-mid-market-cap">
             <div className="expanded-card-res-price-stats-mid-market-cap__total">

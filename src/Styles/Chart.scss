@@ -141,14 +141,26 @@ $mainSelected: #1b1824;
   }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 595px) {
   .chart {
-    &-btn-group {
-      &__btn-change {
-        &-60d {
-          display: none;
-        }
-      }
+    #chart-60d {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .chart {
+    #chart-1y {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 335px) {
+  .chart {
+    #chart-30d {
+      display: none;
     }
   }
 }

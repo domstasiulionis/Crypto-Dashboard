@@ -116,6 +116,7 @@ const Chart = ({ coin, setExpanded }) => {
           7d
         </button>
         <button
+          id="chart-30d"
           onClick={changeTo30d}
           className={`chart-btn-group__btn-change ${
             activeBtn === "30d" ? "chart-btn-group__btn-change--active" : ""
@@ -133,6 +134,7 @@ const Chart = ({ coin, setExpanded }) => {
           60d
         </button>
         <button
+          id="chart-1y"
           onClick={changeTo1y}
           className={`chart-btn-group__btn-change ${
             activeBtn === "1y" ? "chart-btn-group__btn-change--active" : ""

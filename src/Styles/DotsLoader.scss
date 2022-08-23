@@ -5,6 +5,7 @@
   top: 125px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 
   .dot-elastic {
     width: 10px;
@@ -42,7 +43,6 @@
     position: relative;
     display: flex;
     justify-content: center;
-
     .ref-items {
       position: relative;
 
@@ -196,5 +196,24 @@
     top: 65px;
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 580px) {
+  .loader-container {
+    .info {
+      display: none;
+    }
+
+    .dont-ref {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 435px) {
+  .loader-container {
+    transform: scale(0.9);
+    font-size: 14px;
   }
 }

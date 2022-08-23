@@ -141,6 +141,10 @@ $mainSelected: #1b1824;
       justify-content: space-evenly;
       width: 100%;
 
+      &__rank {
+        display: none;
+      }
+
       &-market-cap,
       &-24h-volume,
       &-24h-high,
@@ -441,6 +445,81 @@ $mainSelected: #1b1824;
       }
       &-rank {
         display: flex;
+        justify-content: flex-end;
+      }
+
+      &__divider {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .expanded-card {
+    margin-left: -200px;
+
+    &-top {
+      &-rank {
+        display: none;
+      }
+    }
+
+    &-chart {
+      height: 300px;
+      top: 217px;
+      left: -24px;
+    }
+
+    #thirty-day__divider {
+      display: none;
+    }
+
+    &-res-price-stats {
+      top: 45px;
+
+      &-mid {
+        &__rank {
+          display: block;
+          color: white;
+          font-weight: 600;
+          margin-bottom: 5px;
+          margin-top: 2px;
+          transform: scale(0.9);
+        }
+
+        &-market-cap {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .expanded-card {
+    margin-left: -192px;
+  }
+}
+
+@media (max-width: 369px) {
+  .expanded-card {
+    margin-left: -140px;
+  }
+}
+
+@media (max-width: 335px) {
+  .expanded-card {
+    margin-left: -188px;
+
+    &-res-price {
+      margin-left: -10px;
+      transform: scale(0.9);
+    }
+
+    &-res-price-stats {
+      &__divider {
+        display: none;
       }
     }
   }

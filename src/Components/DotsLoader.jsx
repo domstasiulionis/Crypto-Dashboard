@@ -27,7 +27,7 @@ const DotsLoader = ({ setExpanded }) => {
           theme="custom"
           interactive={true}
           content={
-            <>
+            <div>
               <h3>Why is this happening?</h3>
               <p>
                 Long waits for data retrieval can be caused by the CORS error.
@@ -42,7 +42,7 @@ const DotsLoader = ({ setExpanded }) => {
                   <FiRefreshCw className="ref-items-icon" />
                 </div>
               </div>
-            </>
+            </div>
           }
         >
           <div className="info">i</div>
