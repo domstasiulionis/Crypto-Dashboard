@@ -4,9 +4,19 @@ import Loader from "../Components/Loader";
 import "../Styles/Home.scss";
 
 import HomeNavBar from "../Components/HomeNavBar";
+import SignModal from "../Components/SignModal";
 const CoinCard = lazy(() => import("../Components/CoinCard"));
+const Pagination = lazy(() => import("../Components/Pagination"));
 
-const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
+const Home = ({
+  hamburgerMenu,
+  setHamburgerMenu,
+  coins,
+  coinsPerPage,
+  totalCoins,
+  paginate,
+  showModal,
+}) => {
   const [searchText, setSearchText] = useState("");
 
   const display1hChart = (sevenDays) => {
@@ -50,6 +60,7 @@ const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
 
   return (
     <div className="home-container">
+      {showModal ? <SignModal /> : ""}
       <HomeNavBar
         setSearchText={setSearchText}
         hamburgerMenu={hamburgerMenu}
@@ -106,6 +117,11 @@ const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
                 high24h={coin.high_24h}
               />
             ))}
+          <Pagination
+            coinsPerPage={coinsPerPage}
+            totalCoins={totalCoins}
+            paginate={paginate}
+          />
         </Suspense>
       </div>
     </div>

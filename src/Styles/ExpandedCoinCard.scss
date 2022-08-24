@@ -27,7 +27,7 @@ $mainSelected: #1b1824;
 .expanded-card {
   position: relative;
   width: 100%;
-  margin-left: 65px;
+  margin-left: 68px;
 
   &-top {
     display: flex;
@@ -85,6 +85,7 @@ $mainSelected: #1b1824;
     padding: 15px 15px;
     border-radius: 20px;
     padding-left: 30px;
+    display: none;
 
     &__divider {
       border-right: 1px solid rgb(99, 99, 99);
@@ -296,6 +297,13 @@ $mainSelected: #1b1824;
   .expanded-card {
     margin-left: -265px;
 
+    &-res-price-stats {
+      display: flex;
+
+      &-mid {
+        margin-top: 5px;
+      }
+    }
     &-chart {
       height: 310px;
       top: 230px;

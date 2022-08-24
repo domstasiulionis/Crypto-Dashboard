@@ -8,7 +8,7 @@ import "../Styles/Sidebar.scss";
 // Icons
 import { IoHome, IoHomeOutline } from "react-icons/io5";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { BsGear, BsGearFill } from "react-icons/bs";
+import { BsFillPersonFill, BsPerson } from "react-icons/bs";
 
 // Images
 import logo from "../Assets/moon-logo.png";
@@ -16,7 +16,7 @@ import logo from "../Assets/moon-logo.png";
 const Sidebar = ({ activeIcon, setActiveIcon }) => {
   const [popUp, setpPopUp] = useState(false);
 
-  const selectedSettings = () => {
+  const selectedAccount = () => {
     setpPopUp((popUp) => !popUp);
   };
 
@@ -86,21 +86,17 @@ const Sidebar = ({ activeIcon, setActiveIcon }) => {
       </div>
 
       {/* Bottom icons */}
-      <Tippy placement="right" delay={300} theme="custom" content="Settings">
+      <Tippy placement="right" delay={300} theme="custom" content="Account">
         <div className="sidenav-bottom-container">
           {popUp === true ? (
-            <BsGearFill
-              onClick={() => selectedSettings()}
-              className={`icon icon--spin ${
-                popUp === true ? "icon--active" : ""
-              }`}
+            <BsFillPersonFill
+              onClick={() => selectedAccount()}
+              className={`icon  ${popUp === true ? "icon--active" : ""}`}
             />
           ) : (
-            <BsGear
-              onClick={() => selectedSettings()}
-              className={`icon icon--spin ${
-                popUp === true ? "icon--active" : ""
-              }`}
+            <BsPerson
+              onClick={() => selectedAccount()}
+              className={`icon ${popUp === true ? "icon--active" : ""}`}
             />
           )}
         </div>

@@ -5,7 +5,6 @@
   top: 125px;
   display: flex;
   flex-direction: column;
-  text-align: center;
 
   .dot-elastic {
     width: 10px;
@@ -215,5 +214,6 @@
   .loader-container {
     transform: scale(0.9);
     font-size: 14px;
+    text-align: center;
   }
 }

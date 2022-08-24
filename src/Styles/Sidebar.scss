@@ -20,6 +20,7 @@ $primary-color: #1b1824;
   justify-content: space-between;
   margin-top: 35px;
   margin-left: 12px;
+  padding-bottom: 15px;
   width: 100px;
   height: 95vh;
   background-color: $primary-color;
@@ -97,16 +98,6 @@ $primary-color: #1b1824;
 
     &--active {
       color: white;
-    }
-  }
-
-  .icon--spin {
-    @extend .icon;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    &:hover {
-      transform: rotate(90deg);
     }
   }
 }

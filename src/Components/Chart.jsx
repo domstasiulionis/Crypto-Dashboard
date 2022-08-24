@@ -10,8 +10,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "./ErrorFallback";
 import axios from "axios";
 
 import DotsLoader from "./DotsLoader";
@@ -31,7 +29,7 @@ const Chart = ({ coin, setExpanded }) => {
   const [historicData, sethistoricData] = useState();
   const [days, setDays] = useState(1);
   const [activeBtn, setActiveBtn] = useState("24h");
-  const [custom, setCustom] = useState();
+  const [custom, setCustom] = useState("");
 
   const url = `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=gbp&days=${days}`;
 
@@ -87,13 +85,6 @@ const Chart = ({ coin, setExpanded }) => {
       setDays(e.target.value);
       setCustom(e.target.value);
     }
-  };
-
-  const updateAfterError = () => {
-    // setExpanded(false);
-    // setTimeout(() => {
-    //   setExpanded(true);
-    // }, 5000);
   };
 
   return (
@@ -165,48 +156,42 @@ const Chart = ({ coin, setExpanded }) => {
         {!historicData ? (
           <div>
             <DotsLoader setExpanded={setExpanded} />
-            {updateAfterError()}
           </div>
         ) : (
-          <ErrorBoundary
-            FallbackComponent={ErrorFallback}
-            onReset={() => console.log("error!")}
-          >
-            <Line
-              data={{
-                labels: historicData.map((coin) => {
-                  let date = new Date(coin[0]);
-                  let time =
-                    date.getHours() > 12
-                      ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                      : `${date.getHours()}:${date.getMinutes()} AM`;
-                  return days === 1 ? time : date.toLocaleDateString();
-                }),
+          <Line
+            data={{
+              labels: historicData.map((coin) => {
+                let date = new Date(coin[0]);
+                let time =
+                  date.getHours() > 12
+                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                    : `${date.getHours()}:${date.getMinutes()} AM`;
+                return days === 1 ? time : date.toLocaleDateString();
+              }),
 
-                datasets: [
-                  {
-                    data: historicData.map((coin) => coin[1]),
-                    label: `Price (GBP)`,
-                    borderColor: "#c593ee",
-                  },
-                ],
-              }}
-              options={{
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
+              datasets: [
+                {
+                  data: historicData.map((coin) => coin[1]),
+                  label: `Price (GBP)`,
+                  borderColor: "#c593ee",
                 },
-                responsive: true,
-                maintainAspectRatio: false,
-                elements: {
-                  point: {
-                    radius: 2,
-                  },
+              ],
+            }}
+            options={{
+              plugins: {
+                legend: {
+                  display: false,
                 },
-              }}
-            />
-          </ErrorBoundary>
+              },
+              responsive: true,
+              maintainAspectRatio: false,
+              elements: {
+                point: {
+                  radius: 2,
+                },
+              },
+            }}
+          />
         )}
       </div>
     </div>

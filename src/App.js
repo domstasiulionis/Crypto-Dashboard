@@ -13,9 +13,19 @@ function App() {
   const [activeIcon, setActiveIcon] = useState(
     () => sessionStorage.getItem("icon") || "home"
   );
+
   const [coins, setCoins] = useState([]);
   const [update, setUpdate] = useState(0);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [coinsPerPage] = useState(20);
+  const [showModal, setShowModal] = useState(false);
+
+  const indexOfLastCoin = currentPage * coinsPerPage;
+  const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
+  const currentPosts = coins.slice(indexOfFirstCoin, indexOfLastCoin);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     sessionStorage.setItem("icon", activeIcon);
@@ -24,7 +34,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
       )
       .then((res) => {
         setCoins(res.data);
@@ -46,7 +56,11 @@ function App() {
         ) : (
           ""
         )}
-        <Sidebar activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
+        <Sidebar
+          activeIcon={activeIcon}
+          setActiveIcon={setActiveIcon}
+          showModal={showModal}
+        />
         <Suspense fallback={<div></div>}>
           <Routes>
             <Route
@@ -54,9 +68,12 @@ function App() {
               path="/"
               element={
                 <Home
-                  coins={coins}
+                  coins={currentPosts}
                   hamburgerMenu={hamburgerMenu}
                   setHamburgerMenu={setHamburgerMenu}
+                  coinsPerPage={coinsPerPage}
+                  totalCoins={coins.length}
+                  paginate={paginate}
                 />
               }
             />
