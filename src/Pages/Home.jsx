@@ -1,12 +1,12 @@
 import { useState, lazy, Suspense } from "react";
-import Loader from "../Components/Loader";
 
 import "../Styles/Home.scss";
 
 import HomeNavBar from "../Components/HomeNavBar";
-import SignModal from "../Components/SignModal";
+import FormMain from "../Components/Forms/FormMain";
+import Loader from "../Components/Loader";
 const CoinCard = lazy(() => import("../Components/CoinCard"));
-const Pagination = lazy(() => import("../Components/Pagination"));
+// const Pagination = lazy(() => import("../Components/Pagination"));
 
 const Home = ({
   hamburgerMenu,
@@ -60,7 +60,6 @@ const Home = ({
 
   return (
     <div className="home-container">
-      {showModal ? <SignModal /> : ""}
       <HomeNavBar
         setSearchText={setSearchText}
         hamburgerMenu={hamburgerMenu}
@@ -117,13 +116,14 @@ const Home = ({
                 high24h={coin.high_24h}
               />
             ))}
-          <Pagination
+          {/* <Pagination
             coinsPerPage={coinsPerPage}
             totalCoins={totalCoins}
             paginate={paginate}
-          />
+          /> */}
         </Suspense>
       </div>
+      {showModal ? <FormMain /> : ""}
     </div>
   );
 };

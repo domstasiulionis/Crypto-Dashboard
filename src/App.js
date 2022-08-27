@@ -18,7 +18,7 @@ function App() {
   const [update, setUpdate] = useState(0);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [coinsPerPage] = useState(20);
+  const [coinsPerPage] = useState(25);
   const [showModal, setShowModal] = useState(false);
 
   const indexOfLastCoin = currentPage * coinsPerPage;
@@ -34,13 +34,13 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
       )
       .then((res) => {
         setCoins(res.data);
         setTimeout(
           () => (update === 1 ? setUpdate(update - 1) : setUpdate(update + 1)),
-          30000
+          60000
         );
       });
   }, [update]);
@@ -60,6 +60,7 @@ function App() {
           activeIcon={activeIcon}
           setActiveIcon={setActiveIcon}
           showModal={showModal}
+          setShowModal={setShowModal}
         />
         <Suspense fallback={<div></div>}>
           <Routes>

@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap");
+
+@mixin fields {
+  height: 40px;
+  width: 400px;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 16px;
+  border: 2px solid #333;
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9001;
+
+  &-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9002;
+  }
+
+  &-con {
+    position: relative;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &-content-logout {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 700px;
+      height: 350px;
+      background-color: white;
+      border-radius: 20px;
+      z-index: 9003;
+      animation: fade 0.15s ease-in-out forwards;
+    }
+  }
+
+  h2 {
+    font-size: 50px;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    margin: 80px 0 65px 0;
+    color: rgb(144, 56, 245);
+    letter-spacing: 2px;
+    cursor: default;
+    user-select: none;
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgb(75, 0, 196);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(180, 8, 8);
+      transform: scale(1.1);
+    }
+  }
+
+  &-form-elements {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    &-header {
+      &__email {
+        text-align: center;
+        margin-top: -40px;
+      }
+    }
+
+    &__logout-btn {
+      background-color: white;
+      color: white;
+      width: 410px;
+      font-size: 15px;
+      border: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 5px;
+      background-color: rgb(204, 26, 26);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(163, 14, 14);
+      }
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

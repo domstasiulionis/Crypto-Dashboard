@@ -26,7 +26,7 @@ const HomeNavBar = ({ setHamburgerMenu, setSearchText }) => {
             placement="right"
             delay={300}
             theme="custom"
-            content="Updated every 30 seconds!"
+            content="Updated every minute!"
           >
             <div className="top-nav-left__pulsating-circle"></div>
           </Tippy>
