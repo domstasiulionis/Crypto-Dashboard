@@ -1,0 +1,22 @@
+@import "./ScrollBar";
+
+.fav-container {
+  width: 100%;
+  padding: 0px 20px 0px 20px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  .coins-container {
+    margin-top: 10px;
+    overflow-y: hidden;
+    margin: 70px -30px 20px 110px;
+  }
+}
+
+@media (max-width: 1370px) {
+  .home-container {
+    .coins-container {
+      margin: 70px -30px 20px -3px;
+    }
+  }
+}
