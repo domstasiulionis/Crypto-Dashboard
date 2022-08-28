@@ -1,12 +1,37 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserAuth } from "../../../Context/AuthContext";
+import LoginFormContext from "../../../Context/LoginFormContext";
+
 import SignUpModal from "../SignUp/SignUpModal";
 
 import "./LoginModal.scss";
 
 import { MdOutlineClose } from "react-icons/md";
 
-const SignModal = ({ show }) => {
+const SignModal = ({
+  show,
+  checkUserStatus,
+  setCheckUserStatus,
+  afterLogin,
+}) => {
   const [changeToSignUp, setchangeToSignUp] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { signIn } = UserAuth();
+
+  const { status, setStatus } = useContext(LoginFormContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signIn(email, password);
+      console.log("logged in");
+      setStatus(true);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 
   return (
     <>
@@ -15,7 +40,7 @@ const SignModal = ({ show }) => {
           <div className="modal-overlay" onClick={show} />
           <div className="modal-con">
             <div className="modal-con-content">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="close-icon" onClick={show}>
                   <MdOutlineClose size={30} />
                 </div>
@@ -26,11 +51,17 @@ const SignModal = ({ show }) => {
                   <label className="modal-form-elements__label">
                     Email Address
                   </label>
-                  <input type="email" />
+                  <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                  />
                 </div>
                 <div className="modal-form-elements">
                   <label className="modal-form-elements__label">Password</label>
-                  <input type="password" />
+                  <input
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                  />
                 </div>
                 <div className="modal-form-elements">
                   <button className="modal-form-elements__login-btn">

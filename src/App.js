@@ -6,6 +6,10 @@ import "./Styles/App.scss";
 
 import Sidebar from "./Components/Sidebar";
 import HamburgerMenu from "./Components/HamburgerMenu";
+
+import { AuthContextProvider } from "./Context/AuthContext";
+import { LoginStatusProvider } from "./Context/LoginFormContext";
+
 const Home = lazy(() => import("./Pages/Home"));
 const Favourites = lazy(() => import("./Pages/Favourites"));
 
@@ -46,43 +50,47 @@ function App() {
   }, [update]);
 
   return (
-    <div className="content">
-      <Router>
-        {hamburgerMenu ? (
-          <HamburgerMenu
-            hamburgerMenu={hamburgerMenu}
-            setHamburgerMenu={setHamburgerMenu}
-          />
-        ) : (
-          ""
-        )}
-        <Sidebar
-          activeIcon={activeIcon}
-          setActiveIcon={setActiveIcon}
-          showModal={showModal}
-          setShowModal={setShowModal}
-        />
-        <Suspense fallback={<div></div>}>
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <Home
-                  coins={currentPosts}
-                  hamburgerMenu={hamburgerMenu}
-                  setHamburgerMenu={setHamburgerMenu}
-                  coinsPerPage={coinsPerPage}
-                  totalCoins={coins.length}
-                  paginate={paginate}
-                />
-              }
+    <AuthContextProvider>
+      <LoginStatusProvider>
+        <div className="content">
+          <Router>
+            {hamburgerMenu ? (
+              <HamburgerMenu
+                hamburgerMenu={hamburgerMenu}
+                setHamburgerMenu={setHamburgerMenu}
+              />
+            ) : (
+              ""
+            )}
+            <Sidebar
+              activeIcon={activeIcon}
+              setActiveIcon={setActiveIcon}
+              showModal={showModal}
+              setShowModal={setShowModal}
             />
-            <Route exact path="/Favourites" element={<Favourites />} />
-          </Routes>
-        </Suspense>
-      </Router>
-    </div>
+            <Suspense fallback={<div></div>}>
+              <Routes>
+                <Route
+                  exact
+                  path="/"
+                  element={
+                    <Home
+                      coins={currentPosts}
+                      hamburgerMenu={hamburgerMenu}
+                      setHamburgerMenu={setHamburgerMenu}
+                      coinsPerPage={coinsPerPage}
+                      totalCoins={coins.length}
+                      paginate={paginate}
+                    />
+                  }
+                />
+                <Route exact path="/Favourites" element={<Favourites />} />
+              </Routes>
+            </Suspense>
+          </Router>
+        </div>
+      </LoginStatusProvider>
+    </AuthContextProvider>
   );
 }
 

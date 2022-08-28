@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LoginModal from "../LogIn/LoginModal";
+import { UserAuth } from "../../../Context/AuthContext";
 
 import "./SignUpModal.scss";
 
@@ -7,6 +8,20 @@ import { MdOutlineClose } from "react-icons/md";
 
 const SignUpModal = ({ show }) => {
   const [changeToSignUp, setchangeToSignUp] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { signUp } = UserAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signUp(email, password);
+    } catch (e) {
+      setError(e.message);
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -15,7 +30,7 @@ const SignUpModal = ({ show }) => {
           <div className="modal-overlay" onClick={show} />
           <div className="modal-con">
             <div className="modal-con-content">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="close-icon" onClick={show}>
                   <MdOutlineClose size={30} />
                 </div>
@@ -24,11 +39,17 @@ const SignUpModal = ({ show }) => {
                   <label className="modal-form-elements__label">
                     Email Address
                   </label>
-                  <input type="email" />
+                  <input
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
                 <div className="modal-form-elements">
                   <label className="modal-form-elements__label">Password</label>
-                  <input type="password" />
+                  <input
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
                 <div className="modal-form-elements">
                   <button className="modal-form-elements__signup-btn">

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext } from "react";
+import LoginFormContext from "../../Context/LoginFormContext";
+
 import LoginModal from "./LogIn/LoginModal";
 import LogOutModal from "./LogOut/LogOutModal";
 
 const Form = ({ show }) => {
-  const [dummySignedIn, setdummySignedIn] = useState(false);
+  const { status, setStatus } = useContext(LoginFormContext);
 
   return (
     <div>
-      {dummySignedIn ? <LogOutModal show={show} /> : <LoginModal show={show} />}
+      {status ? <LogOutModal show={show} /> : <LoginModal show={show} x />}
     </div>
   );
 };
