@@ -1,8 +1,13 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, useContext, lazy, Suspense } from "react";
 import { Sparklines, SparklinesLine } from "react-sparklines";
+import { UserAuth } from "../Context/AuthContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
 import axios from "axios";
 
 import "../Styles/CoinCard.scss";
+
+import FavCoinsContext from "../Context/FavCoinsContext";
 
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
@@ -34,6 +39,39 @@ const CoinCard = ({
   const [expanded, setExpanded] = useState(false);
   const [coin, setCoin] = useState({});
 
+  const { user } = UserAuth();
+  const { favCoins, setFavCoins } = useContext(FavCoinsContext);
+
+  const coinPath = doc(db, "users", `${user?.email}`);
+  const saveCoin = async () => {
+    if (user?.email) {
+      setIsFav(true);
+      await updateDoc(coinPath, {
+        favs: arrayUnion({
+          key: coinid,
+          coinid: coinid,
+          name: name,
+          short: short,
+          image: image,
+          price: price,
+          changePrice: changePrice,
+          change1h: change1h,
+          change24h: change24h,
+          change7d: change7d,
+          rank: rank,
+          priceChart1h: priceChart1h,
+          priceChart24h: priceChart24h,
+          priceChart7d: priceChart7d,
+          marketCap: marketCap,
+          low24: low24h,
+          high24h: high24h,
+        }),
+      });
+    } else {
+      alert("Please sign in to save a coin to your favourites");
+    }
+  };
+
   const url = `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&sparkline=true
 `;
 
@@ -42,6 +80,12 @@ const CoinCard = ({
       setCoin(res?.data);
     });
   }, [update, url]);
+
+  useEffect(() => {
+    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+      setFavCoins(doc.data()?.favs);
+    });
+  }, [user?.email]);
 
   const changeTo1h = () => {
     setSelectedTime("1h");
@@ -71,7 +115,7 @@ const CoinCard = ({
         }`}
       >
         <div className="coin-card">
-          <div className="coin__star">
+          <div className="coin__star" onClick={saveCoin}>
             {isFav === true ? (
               <AiFillStar onClick={toggleFav} className="fav" />
             ) : (

@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import FavNavBar from "../Components/FavNavBar";
 import CoinCard from "../Components/CoinCard";
 
-import "../Styles/Favourites.scss";
+import FavCoinsContext from "../Context/FavCoinsContext";
 
-const Favourites = (activeIcon, setActiveIcon) => {
-  const [favCoins, setFavCoins] = useState([]);
+import "../Styles/Favourites.scss";
+import FavCoinCard from "../Components/FavCoinCard";
+
+const Favourites = () => {
   const [searchText, setSearchText] = useState("");
+  const { favCoins, setFavCoins } = useContext(FavCoinsContext);
 
   const display1hChart = (sevenDays) => {
     let overall = [];
@@ -23,16 +26,6 @@ const Favourites = (activeIcon, setActiveIcon) => {
     const upperBound = calc * 0.75 + lastHour;
 
     overall.push(lastHour, lowerBound, upperBound, currentHour);
-
-    // FOR TESTING OUTPUTS
-    // console.log("name:  " + name);
-    // console.log("last hour: " + lastHour);
-    // console.log("lowerBound: " + lowerBound);
-    // console.log("upperBound: " + upperBound);
-    // console.log("current hour: " + currentHour);
-    // console.log("calc: " + calc);
-    // console.log("overall: " + overall);
-    // console.log("--------------------");
 
     return overall;
   };
@@ -64,38 +57,23 @@ const Favourites = (activeIcon, setActiveIcon) => {
           })
           .map((coin) => (
             <CoinCard
-              key={coin.id}
-              coinid={coin.id}
+              key={coin.coinid}
+              coinid={coin.coinid}
               name={coin.name}
-              short={coin.symbol.toUpperCase()}
+              short={coin.short}
               image={coin.image}
-              price={
-                coin.current_price > 0.01
-                  ? coin.current_price.toLocaleString()
-                  : coin.current_price.toPrecision(3)
-              }
-              changePrice={Math.round(coin.price_change_24h * 1000) / 1000}
-              change1h={
-                Math.round(coin.price_change_percentage_1h_in_currency * 1000) /
-                1000
-              }
-              change24h={
-                Math.round(coin.price_change_percentage_24h * 100) / 100
-              }
-              change7d={
-                Math.round(coin.price_change_percentage_7d_in_currency * 100) /
-                100
-              }
-              rank={coin.market_cap_rank}
-              priceChart1h={display1hChart(
-                coin.sparkline_in_7d.price,
-                coin.symbol
-              )}
-              priceChart24h={display24hChart(coin.sparkline_in_7d.price)}
-              priceChart7d={coin.sparkline_in_7d.price}
-              marketCap={coin.market_cap.toLocaleString()}
-              low24h={coin.low_24h}
-              high24h={coin.high_24h}
+              price={coin.price}
+              changePrice={coin.changePrice}
+              change1h={coin.change1h}
+              change24h={coin.change24h}
+              change7d={coin.change7d}
+              rank={coin.rank}
+              priceChart1h={coin.priceChart1h}
+              priceChart24h={coin.priceChart24h}
+              priceChart7d={coin.priceChart7d}
+              marketCap={coin.marketCap}
+              low24h={coin.low24h}
+              high24h={coin.high24h}
             />
           ))}
       </div>

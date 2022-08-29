@@ -30,6 +30,7 @@ const SignModal = ({
       setStatus(true);
     } catch (e) {
       console.log(e.message);
+      setStatus(false);
     }
   };
 

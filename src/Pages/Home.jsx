@@ -67,55 +67,56 @@ const Home = ({
       />
       <div className="coins-container">
         <Suspense fallback={<Loader />}>
-          {coins
-            .filter((value) => {
-              if (searchText === "") {
-                return value;
-              } else if (
-                value.name.toLowerCase().includes(searchText.toLowerCase())
-              ) {
-                return value;
-              }
-              return null;
-            })
-            .map((coin) => (
-              <CoinCard
-                key={coin.id}
-                coinid={coin.id}
-                name={coin.name}
-                short={coin.symbol.toUpperCase()}
-                image={coin.image}
-                price={
-                  coin.current_price > 0.01
-                    ? coin.current_price.toLocaleString()
-                    : coin.current_price.toPrecision(3)
+          {coins &&
+            coins
+              .filter((value) => {
+                if (searchText === "") {
+                  return value;
+                } else if (
+                  value.name.toLowerCase().includes(searchText.toLowerCase())
+                ) {
+                  return value;
                 }
-                changePrice={Math.round(coin.price_change_24h * 1000) / 1000}
-                change1h={
-                  Math.round(
-                    coin.price_change_percentage_1h_in_currency * 1000
-                  ) / 1000
-                }
-                change24h={
-                  Math.round(coin.price_change_percentage_24h * 100) / 100
-                }
-                change7d={
-                  Math.round(
-                    coin.price_change_percentage_7d_in_currency * 100
-                  ) / 100
-                }
-                rank={coin.market_cap_rank}
-                priceChart1h={display1hChart(
-                  coin.sparkline_in_7d.price,
-                  coin.symbol
-                )}
-                priceChart24h={display24hChart(coin.sparkline_in_7d.price)}
-                priceChart7d={coin.sparkline_in_7d.price}
-                marketCap={coin.market_cap.toLocaleString()}
-                low24h={coin.low_24h}
-                high24h={coin.high_24h}
-              />
-            ))}
+                return null;
+              })
+              .map((coin) => (
+                <CoinCard
+                  key={coin.id}
+                  coinid={coin.id}
+                  name={coin.name}
+                  short={coin.symbol.toUpperCase()}
+                  image={coin.image}
+                  price={
+                    coin.current_price > 0.01
+                      ? coin.current_price.toLocaleString()
+                      : coin.current_price.toPrecision(3)
+                  }
+                  changePrice={Math.round(coin.price_change_24h * 1000) / 1000}
+                  change1h={
+                    Math.round(
+                      coin.price_change_percentage_1h_in_currency * 1000
+                    ) / 1000
+                  }
+                  change24h={
+                    Math.round(coin.price_change_percentage_24h * 100) / 100
+                  }
+                  change7d={
+                    Math.round(
+                      coin.price_change_percentage_7d_in_currency * 100
+                    ) / 100
+                  }
+                  rank={coin.market_cap_rank}
+                  priceChart1h={display1hChart(
+                    coin.sparkline_in_7d.price,
+                    coin.symbol
+                  )}
+                  priceChart24h={display24hChart(coin.sparkline_in_7d.price)}
+                  priceChart7d={coin.sparkline_in_7d.price}
+                  marketCap={coin.market_cap.toLocaleString()}
+                  low24h={coin.low_24h}
+                  high24h={coin.high_24h}
+                />
+              ))}
           {/* <Pagination
             coinsPerPage={coinsPerPage}
             totalCoins={totalCoins}
