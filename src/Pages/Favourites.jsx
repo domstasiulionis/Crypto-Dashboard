@@ -5,44 +5,14 @@ import CoinCard from "../Components/CoinCard";
 import FavCoinsContext from "../Context/FavCoinsContext";
 
 import "../Styles/Favourites.scss";
-import FavCoinCard from "../Components/FavCoinCard";
 
 const Favourites = () => {
   const [searchText, setSearchText] = useState("");
   const { favCoins, setFavCoins } = useContext(FavCoinsContext);
 
-  const display1hChart = (sevenDays) => {
-    let overall = [];
-
-    const lastHour = sevenDays[165];
-    const currentHour = sevenDays[166];
-    let calc = lastHour - currentHour;
-
-    if (lastHour < currentHour) {
-      calc = -calc;
-    }
-
-    const lowerBound = calc * 0.25 + lastHour;
-    const upperBound = calc * 0.75 + lastHour;
-
-    overall.push(lastHour, lowerBound, upperBound, currentHour);
-
-    return overall;
-  };
-
-  const display24hChart = (sevenDays) => {
-    let overall = [];
-
-    const total = sevenDays.length;
-    const twentyFourHours = total - 24;
-    overall = sevenDays.slice(twentyFourHours, total);
-
-    return overall;
-  };
-
   return (
     <div className="fav-container">
-      <FavNavBar />
+      <FavNavBar setSearchText={setSearchText} />
       <div className="coins-container">
         {favCoins
           .filter((value) => {
