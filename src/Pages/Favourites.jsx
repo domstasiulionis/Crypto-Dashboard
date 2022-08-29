@@ -1,18 +1,23 @@
 import { useEffect, useState, useContext } from "react";
 import FavNavBar from "../Components/FavNavBar";
 import CoinCard from "../Components/CoinCard";
+import FavCoinCard from "../Components/FavCoinCard";
 
 import FavCoinsContext from "../Context/FavCoinsContext";
 
 import "../Styles/Favourites.scss";
 
-const Favourites = () => {
+const Favourites = ({ hamburgerMenu, setHamburgerMenu }) => {
   const [searchText, setSearchText] = useState("");
   const { favCoins, setFavCoins } = useContext(FavCoinsContext);
 
   return (
     <div className="fav-container">
-      <FavNavBar setSearchText={setSearchText} />
+      <FavNavBar
+        setSearchText={setSearchText}
+        hamburgerMenu={hamburgerMenu}
+        setHamburgerMenu={setHamburgerMenu}
+      />
       <div className="coins-container">
         {favCoins
           .filter((value) => {
@@ -26,7 +31,7 @@ const Favourites = () => {
             return null;
           })
           .map((coin) => (
-            <CoinCard
+            <FavCoinCard
               key={coin.coinid}
               coinid={coin.coinid}
               name={coin.name}

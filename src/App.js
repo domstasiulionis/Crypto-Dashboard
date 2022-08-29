@@ -86,7 +86,16 @@ function App() {
                       />
                     }
                   />
-                  <Route exact path="/Favourites" element={<Favourites />} />
+                  <Route
+                    exact
+                    path="/Favourites"
+                    element={
+                      <Favourites
+                        hamburgerMenu={hamburgerMenu}
+                        setHamburgerMenu={setHamburgerMenu}
+                      />
+                    }
+                  />
                 </Routes>
               </Suspense>
             </Router>

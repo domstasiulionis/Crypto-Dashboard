@@ -9,7 +9,7 @@ import "../Styles/CoinCard.scss";
 
 import FavCoinsContext from "../Context/FavCoinsContext";
 
-import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
 import { BiChevronRight } from "react-icons/bi";
 
@@ -72,6 +72,19 @@ const CoinCard = ({
     }
   };
 
+  const deleteCoin = async (passedid) => {
+    try {
+      const result = favCoins.filter((item) => item.key !== passedid);
+      await updateDoc(coinPath, {
+        favs: result,
+      });
+
+      setFavCoins(result);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   const url = `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&sparkline=true
 `;
 
@@ -115,12 +128,8 @@ const CoinCard = ({
         }`}
       >
         <div className="coin-card">
-          <div className="coin__star" onClick={saveCoin}>
-            {isFav === true ? (
-              <AiFillStar className="fav" />
-            ) : (
-              <AiOutlineStar className="fav--empty" />
-            )}
+          <div className="coin__star">
+            <AiFillStar className="fav" onClick={() => deleteCoin(coinid)} />
           </div>
 
           <div className={`rank ${expanded === true ? "" : ""}`}>
