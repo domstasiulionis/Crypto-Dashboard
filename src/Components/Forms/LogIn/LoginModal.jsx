@@ -17,9 +17,7 @@ const SignModal = ({
   const [changeToSignUp, setchangeToSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const { signIn } = UserAuth();
-
   const { status, setStatus } = useContext(LoginFormContext);
 
   const handleSubmit = async (e) => {
@@ -30,7 +28,6 @@ const SignModal = ({
       setStatus(true);
     } catch (e) {
       console.log(e.message);
-      setStatus(false);
     }
   };
 

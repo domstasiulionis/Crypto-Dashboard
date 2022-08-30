@@ -17,6 +17,7 @@ const SignUpModal = ({ show }) => {
     e.preventDefault();
     try {
       await signUp(email, password);
+      setchangeToSignUp(true);
     } catch (e) {
       setError(e.message);
       console.log(error);

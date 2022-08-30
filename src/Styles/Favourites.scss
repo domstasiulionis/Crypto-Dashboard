@@ -13,6 +13,45 @@
   }
 }
 
+.no-coins {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 25px;
+
+  h1 {
+    color: rgb(194, 194, 194);
+    font-size: 50px;
+  }
+
+  p {
+    color: rgb(194, 194, 194);
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  button {
+    width: 250px;
+    height: 50px;
+    color: rgb(215, 181, 255);
+    background-color: transparent;
+    border: 2px solid rgb(144, 56, 245);
+    border-radius: 10px;
+    font-size: 18px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: inset 255px 0 0 0 #8e48ff;
+      color: white;
+    }
+  }
+}
+
 @media (max-width: 1370px) {
   .fav-container {
     .coins-container {

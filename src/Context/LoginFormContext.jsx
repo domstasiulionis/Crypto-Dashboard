@@ -1,9 +1,9 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const LoginFormContext = createContext();
 
 export function LoginStatusProvider({ children }) {
-  const [status, setStatus] = useState(() => sessionStorage.getItem("status"));
+  const [status, setStatus] = useState(false);
 
   return (
     <LoginFormContext.Provider value={{ status, setStatus }}>

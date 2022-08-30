@@ -124,7 +124,6 @@ const Home = ({
           /> */}
         </Suspense>
       </div>
-      {showModal ? <FormMain /> : ""}
     </div>
   );
 };
