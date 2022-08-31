@@ -18,7 +18,7 @@ const SignModal = ({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signIn } = UserAuth();
-  const { status, setStatus } = useContext(LoginFormContext);
+  const { setStatus } = useContext(LoginFormContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,9 +1,9 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, useEffect, useContext, lazy, Suspense } from "react";
 
 import "../Styles/Home.scss";
 
 import HomeNavBar from "../Components/HomeNavBar";
-import FormMain from "../Components/Forms/FormMain";
+import SidebarIconContext from "../Context/SidebarIconContext";
 import Loader from "../Components/Loader";
 const CoinCard = lazy(() => import("../Components/CoinCard"));
 // const Pagination = lazy(() => import("../Components/Pagination"));
@@ -18,6 +18,11 @@ const Home = ({
   showModal,
 }) => {
   const [searchText, setSearchText] = useState("");
+  const { activeIcon, setActiveIcon } = useContext(SidebarIconContext);
+
+  useEffect(() => {
+    setActiveIcon("home");
+  }, [activeIcon, setActiveIcon]);
 
   const display1hChart = (sevenDays) => {
     let overall = [];

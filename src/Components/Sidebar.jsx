@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import SidebarIconContext from "../Context/SidebarIconContext";
 import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -15,8 +16,10 @@ import logo from "../Assets/moon-logo.png";
 
 import FormMain from "./Forms/FormMain";
 
-const Sidebar = ({ activeIcon, setActiveIcon, showModal, setShowModal }) => {
+const Sidebar = ({ showModal, setShowModal }) => {
   const [popUp, setPopUp] = useState(false);
+
+  const { activeIcon, setActiveIcon } = useContext(SidebarIconContext);
 
   const show = () => {
     if (showModal) {

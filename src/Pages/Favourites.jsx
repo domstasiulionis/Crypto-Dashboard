@@ -1,17 +1,21 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import FavNavBar from "../Components/FavNavBar";
-import CoinCard from "../Components/CoinCard";
 import FavCoinCard from "../Components/FavCoinCard";
 import FavCoinsContext from "../Context/FavCoinsContext";
-
-import { BsArrowUpRight } from "react-icons/bs";
+import SidebarIconContext from "../Context/SidebarIconContext";
 
 import "../Styles/Favourites.scss";
 
 const Favourites = ({ hamburgerMenu, setHamburgerMenu }) => {
   const [searchText, setSearchText] = useState("");
-  const { favCoins, setFavCoins } = useContext(FavCoinsContext);
+  const { favCoins } = useContext(FavCoinsContext);
+
+  const { activeIcon, setActiveIcon } = useContext(SidebarIconContext);
+
+  useEffect(() => {
+    setActiveIcon("favourites");
+  }, [activeIcon, setActiveIcon]);
 
   return (
     <>

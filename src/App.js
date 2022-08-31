@@ -10,15 +10,12 @@ import HamburgerMenu from "./Components/HamburgerMenu";
 import { AuthContextProvider } from "./Context/AuthContext";
 import { LoginStatusProvider } from "./Context/LoginFormContext";
 import { FavCoinsProvider } from "./Context/FavCoinsContext";
+import { SidebarIconProvider } from "./Context/SidebarIconContext";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Favourites = lazy(() => import("./Pages/Favourites"));
 
 function App() {
-  const [activeIcon, setActiveIcon] = useState(
-    () => sessionStorage.getItem("icon") || "home"
-  );
-
   const [coins, setCoins] = useState([]);
   const [update, setUpdate] = useState(0);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
@@ -31,10 +28,6 @@ function App() {
   const currentPosts = coins.slice(indexOfFirstCoin, indexOfLastCoin);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  useEffect(() => {
-    sessionStorage.setItem("icon", activeIcon);
-  }, [activeIcon]);
 
   useEffect(() => {
     axios
@@ -53,54 +46,51 @@ function App() {
   return (
     <AuthContextProvider>
       <LoginStatusProvider>
-        <FavCoinsProvider>
-          <div className="content">
-            <Router>
-              {hamburgerMenu ? (
-                <HamburgerMenu
-                  hamburgerMenu={hamburgerMenu}
-                  setHamburgerMenu={setHamburgerMenu}
-                />
-              ) : (
-                ""
-              )}
-              <Sidebar
-                activeIcon={activeIcon}
-                setActiveIcon={setActiveIcon}
-                showModal={showModal}
-                setShowModal={setShowModal}
-              />
-              <Suspense fallback={<div></div>}>
-                <Routes>
-                  <Route
-                    exact
-                    path="/"
-                    element={
-                      <Home
-                        coins={currentPosts}
-                        hamburgerMenu={hamburgerMenu}
-                        setHamburgerMenu={setHamburgerMenu}
-                        coinsPerPage={coinsPerPage}
-                        totalCoins={coins.length}
-                        paginate={paginate}
-                      />
-                    }
+        <SidebarIconProvider>
+          <FavCoinsProvider>
+            <div className="content">
+              <Router>
+                {hamburgerMenu ? (
+                  <HamburgerMenu
+                    hamburgerMenu={hamburgerMenu}
+                    setHamburgerMenu={setHamburgerMenu}
                   />
-                  <Route
-                    exact
-                    path="/Favourites"
-                    element={
-                      <Favourites
-                        hamburgerMenu={hamburgerMenu}
-                        setHamburgerMenu={setHamburgerMenu}
-                      />
-                    }
-                  />
-                </Routes>
-              </Suspense>
-            </Router>
-          </div>
-        </FavCoinsProvider>
+                ) : (
+                  ""
+                )}
+                <Sidebar showModal={showModal} setShowModal={setShowModal} />
+                <Suspense fallback={<div></div>}>
+                  <Routes>
+                    <Route
+                      exact
+                      path="/"
+                      element={
+                        <Home
+                          coins={currentPosts}
+                          hamburgerMenu={hamburgerMenu}
+                          setHamburgerMenu={setHamburgerMenu}
+                          coinsPerPage={coinsPerPage}
+                          totalCoins={coins.length}
+                          paginate={paginate}
+                        />
+                      }
+                    />
+                    <Route
+                      exact
+                      path="/Favourites"
+                      element={
+                        <Favourites
+                          hamburgerMenu={hamburgerMenu}
+                          setHamburgerMenu={setHamburgerMenu}
+                        />
+                      }
+                    />
+                  </Routes>
+                </Suspense>
+              </Router>
+            </div>
+          </FavCoinsProvider>
+        </SidebarIconProvider>
       </LoginStatusProvider>
     </AuthContextProvider>
   );
