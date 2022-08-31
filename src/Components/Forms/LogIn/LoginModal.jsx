@@ -18,14 +18,14 @@ const SignModal = ({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signIn } = UserAuth();
-  const { setStatus } = useContext(LoginFormContext);
+  const { status, setStatus } = useContext(LoginFormContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signIn(email, password);
-      console.log("logged in");
-      setStatus(true);
+      console.log("logged");
+      setStatus("check");
     } catch (e) {
       console.log(e.message);
     }

@@ -9,7 +9,11 @@ const Form = ({ show }) => {
 
   return (
     <div>
-      {status ? <LogOutModal show={show} /> : <LoginModal show={show} />}
+      {status === "check" ? (
+        <LogOutModal show={show} />
+      ) : (
+        <LoginModal show={show} />
+      )}
     </div>
   );
 };

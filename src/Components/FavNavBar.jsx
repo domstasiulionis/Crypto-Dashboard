@@ -17,7 +17,7 @@ const HomeNavBar = ({ setHamburgerMenu, setSearchText }) => {
             <span className="fav-nav-hamburger__line"></span>
             <span className="fav-nav-hamburger__line"></span>
           </div>
-          <AiFillStar className="top-nav-left__icon" />
+          <AiFillStar className="fav-nav-left__icon" />
           <h3 className="fav-nav-left__title">Favourites</h3>
         </div>
 
