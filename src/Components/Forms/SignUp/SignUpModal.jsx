@@ -71,7 +71,7 @@ const SignUpModal = ({ show }) => {
           </div>
         </div>
       ) : (
-        <LoginModal show={show} />
+        <LoginModal show={show} newEmail={email} />
       )}
     </>
   );

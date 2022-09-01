@@ -13,6 +13,7 @@ const SignModal = ({
   checkUserStatus,
   setCheckUserStatus,
   afterLogin,
+  newEmail,
 }) => {
   const [changeToSignUp, setchangeToSignUp] = useState(false);
   const [email, setEmail] = useState("");
@@ -52,6 +53,7 @@ const SignModal = ({
                   <input
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
+                    value={newEmail}
                   />
                 </div>
                 <div className="modal-form-elements">

@@ -121,7 +121,8 @@
       transform: scale(0.8);
 
       &__home,
-      &__fav {
+      &__fav,
+      &__account {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -129,6 +130,7 @@
         letter-spacing: 1.5px;
         margin-bottom: 100px;
         padding: 20px 30px;
+        color: #551a8b;
         transition: all 0.3s ease-in-out;
         border-left: 2px dotted rgb(75, 0, 196);
         border-right: 2px dotted rgb(75, 0, 196);

@@ -54,6 +54,8 @@ function App() {
                   <HamburgerMenu
                     hamburgerMenu={hamburgerMenu}
                     setHamburgerMenu={setHamburgerMenu}
+                    showModal={showModal}
+                    setShowModal={setShowModal}
                   />
                 ) : (
                   ""

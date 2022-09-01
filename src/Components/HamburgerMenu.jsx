@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import LoginFormContext from "../Context/LoginFormContext";
 
 import { MdOutlineClose } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 import { AiFillStar } from "react-icons/ai";
+import { BsFillPersonFill } from "react-icons/bs";
 
 import logo from "../Assets/moon-logo.png";
 
 import "../Styles/HamburgerMenu.scss";
 
-const HamburgerMenu = ({ hamburgerMenu, setHamburgerMenu }) => {
+const HamburgerMenu = ({
+  hamburgerMenu,
+  setHamburgerMenu,
+  showModal,
+  setShowModal,
+}) => {
   const [open, setOpen] = useState(hamburgerMenu);
 
   const toggleSlide = () => {
@@ -17,6 +24,11 @@ const HamburgerMenu = ({ hamburgerMenu, setHamburgerMenu }) => {
     setTimeout(() => {
       setHamburgerMenu(false);
     }, 165);
+  };
+
+  const mobilePopUp = () => {
+    toggleSlide();
+    setShowModal(true);
   };
 
   return (
@@ -44,18 +56,33 @@ const HamburgerMenu = ({ hamburgerMenu, setHamburgerMenu }) => {
               </div>
             </div>
             <div className="hmb-inner-list">
-              <Link to="/" style={{ textDecoration: "none" }}>
+              <Link
+                to="/"
+                style={{ textDecoration: "none" }}
+                onClick={toggleSlide}
+              >
                 <div className="hmb-inner-list__home">
                   <IoHome size={28} className="hmb-inner-list__home-icon" />
                   <h2>HOME</h2>
                 </div>
               </Link>
-              <Link to="/Favourites" style={{ textDecoration: "none" }}>
+              <Link
+                to="/Favourites"
+                style={{ textDecoration: "none" }}
+                onClick={toggleSlide}
+              >
                 <div className="hmb-inner-list__fav">
                   <AiFillStar size={28} className="hmb-inner-list__fav-icon" />
                   <h2>FAVOURITES</h2>
                 </div>
               </Link>
+              <div className="hmb-inner-list__account" onClick={mobilePopUp}>
+                <BsFillPersonFill
+                  size={28}
+                  className="hmb-inner-list__account-icon"
+                />
+                <h2>ACCOUNT</h2>
+              </div>
             </div>
           </div>
         </div>
