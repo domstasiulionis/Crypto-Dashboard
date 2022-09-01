@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import LoginModal from "../LogIn/LoginModal";
 import { UserAuth } from "../../../Context/AuthContext";
+import LoginFormContext from "../../../Context/LoginFormContext";
 
 import "./SignUpModal.scss";
 
@@ -11,13 +12,16 @@ const SignUpModal = ({ show }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const { status, setStatus } = useContext(LoginFormContext);
   const { signUp } = UserAuth();
+  const { signIn } = UserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signUp(email, password);
-      setchangeToSignUp(true);
+      await signIn(email, password);
+      setStatus("check");
     } catch (e) {
       setError(e.message);
       console.log(error);
@@ -71,7 +75,7 @@ const SignUpModal = ({ show }) => {
           </div>
         </div>
       ) : (
-        <LoginModal show={show} newEmail={email} />
+        <LoginModal show={show} />
       )}
     </>
   );
