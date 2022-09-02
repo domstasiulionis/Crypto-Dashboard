@@ -29,19 +29,34 @@ function App() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const options = {
+    method: "GET",
+    url: "https://coinranking1.p.rapidapi.com/coins",
+    params: {
+      referenceCurrencyUuid: "yhjMzLPhuIDl",
+      timePeriod: "7d",
+      "tiers[0]": "1",
+      orderBy: "marketCap",
+      orderDirection: "desc",
+      limit: "100",
+      offset: "0",
+    },
+    headers: {
+      "X-RapidAPI-Key": "87a84376eamshe0fe6404a684850p19482cjsn9cb0e1926c47",
+      "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
+    },
+  };
+
   useEffect(() => {
     axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
-      )
-      .then((res) => {
-        setCoins(res.data);
-        setTimeout(
-          () => (update === 1 ? setUpdate(update - 1) : setUpdate(update + 1)),
-          60000
-        );
+      .request(options)
+      .then(function (response) {
+        setCoins(response?.data?.data?.coins);
+      })
+      .catch(function (error) {
+        console.error(error);
       });
-  }, [update]);
+  }, []);
 
   return (
     <AuthContextProvider>

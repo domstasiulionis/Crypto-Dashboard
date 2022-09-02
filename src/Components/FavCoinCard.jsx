@@ -172,22 +172,22 @@ const CoinCard = ({
           {expanded === false ? (
             <div className="coin-overall-container">
               <div className="coin-overall">
-                <div className="coin-overall__price">£{price}</div>
+                <div className="coin-overall__price">${price}</div>
                 <p className="coin-overall__price-text">Price</p>
               </div>
 
               <div className="coin-market-cap">
-                <div className="coin-market-cap__market-cap">£{marketCap}</div>
+                <div className="coin-market-cap__market-cap">${marketCap}</div>
                 <p className="coin-market-cap__market-cap-text">Market Cap</p>
               </div>
 
               <div className="coin-high">
-                <div className="coin-high__24h">£{high24h}</div>
+                <div className="coin-high__24h">${high24h}</div>
                 <p className="coin-high__24h-text">24h High</p>
               </div>
 
               <div className="coin-low">
-                <div className="coin-low__24h">£{low24h}</div>
+                <div className="coin-low__24h">${low24h}</div>
                 <p className="coin-low__24h-text">24h Low</p>
               </div>
 

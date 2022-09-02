@@ -142,7 +142,7 @@ const ExpandedCoinCard = ({
       {/* Price - small screens */}
       <div className="expanded-card-res-price-stats">
         <div className="expanded-card-res-price">
-          <p className="expanded-card-res-price-stats-price__price">£{price}</p>
+          <p className="expanded-card-res-price-stats-price__price">${price}</p>
           <Tippy
             placement="right"
             delay={300}
@@ -162,7 +162,7 @@ const ExpandedCoinCard = ({
                 <BsArrowDown className="expanded-card-res-price-stats-price-change__arrow--red" />
               )}
               <div className="expanded-card-res-price-stats-price-change__amount">
-                £{changePrice}
+                ${changePrice}
               </div>
             </div>
           </Tippy>
@@ -176,7 +176,7 @@ const ExpandedCoinCard = ({
           {/* Market Cap */}
           <div className="expanded-card-res-price-stats-mid-market-cap">
             <div className="expanded-card-res-price-stats-mid-market-cap__total">
-              £{marketCap}
+              ${marketCap}
             </div>
             <p className="expanded-card-res-price-stats-mid-market-cap__text">
               Market Cap
@@ -185,7 +185,7 @@ const ExpandedCoinCard = ({
           {/* 24h Volume */}
           <div className="expanded-card-res-price-stats-mid-24h-volume">
             <div className="expanded-card-res-price-stats-mid-24h-volume__total">
-              £
+              $
               {coin.market_data?.market_cap
                 ? coin.market_data?.total_volume.gbp.toLocaleString()
                 : null}
@@ -197,7 +197,7 @@ const ExpandedCoinCard = ({
           {/* 24h High */}
           <div className="expanded-card-res-price-stats-mid-24h-high">
             <div className="expanded-card-res-price-stats-mid-24h-high__total">
-              £
+              $
               {coin.market_data?.high_24h
                 ? coin.market_data?.high_24h.gbp.toLocaleString()
                 : null}
@@ -209,7 +209,7 @@ const ExpandedCoinCard = ({
           {/* 24h low */}
           <div className="expanded-card-res-price-stats-mid-24h-low">
             <div className="expanded-card-res-price-stats-mid-24h-low__total">
-              £
+              $
               {coin.market_data?.low_24h
                 ? coin.market_data?.low_24h.gbp.toLocaleString()
                 : null}
@@ -224,7 +224,7 @@ const ExpandedCoinCard = ({
       {/* Price */}
       <div className="expanded-card-price-stats">
         <div className="expanded-card-price-stats-price">
-          <p className="expanded-card-price-stats-price__price">£{price}</p>
+          <p className="expanded-card-price-stats-price__price">${price}</p>
           <Tippy
             placement="right"
             delay={300}
@@ -244,7 +244,7 @@ const ExpandedCoinCard = ({
                 <BsArrowDown className="expanded-card-price-stats-price-change__arrow--red" />
               )}
               <div className="expanded-card-price-stats-price-change__amount">
-                £{changePrice}
+                ${changePrice}
               </div>
             </div>
           </Tippy>
@@ -253,7 +253,7 @@ const ExpandedCoinCard = ({
           {/* Market Cap */}
           <div className="expanded-card-price-stats-side-market-cap">
             <div className="expanded-card-price-stats-side-market-cap__total">
-              £{marketCap}
+              ${marketCap}
             </div>
             <p className="expanded-card-price-stats-side-market-cap__text">
               Market Cap
@@ -262,7 +262,7 @@ const ExpandedCoinCard = ({
           {/* 24h Volume */}
           <div className="expanded-card-price-stats-side-24h-volume">
             <div className="expanded-card-price-stats-side-24h-volume__total">
-              £
+              $
               {coin.market_data?.market_cap
                 ? coin.market_data?.total_volume.gbp.toLocaleString()
                 : null}
@@ -274,7 +274,7 @@ const ExpandedCoinCard = ({
           {/* 24h High */}
           <div className="expanded-card-price-stats-side-24h-high">
             <div className="expanded-card-price-stats-side-24h-high__total">
-              £
+              $
               {coin.market_data?.high_24h
                 ? coin.market_data?.high_24h.gbp.toLocaleString()
                 : null}
@@ -286,7 +286,7 @@ const ExpandedCoinCard = ({
           {/* 24h Low */}
           <div className="expanded-card-price-stats-side-24h-low">
             <div className="expanded-card-price-stats-side-24h-low__total">
-              £
+              $
               {coin.market_data?.low_24h
                 ? coin.market_data?.low_24h.gbp.toLocaleString()
                 : null}
@@ -321,11 +321,11 @@ const ExpandedCoinCard = ({
           <FaGithub className="expanded-card-price-stats-icons__icon" />
         </div>
       </div>
-      <div className="expanded-card-chart">
+      {/* <div className="expanded-card-chart">
         <Suspense fallback={<div></div>}>
           <Chart coin={coin} change24h={change24h} setExpanded={setExpanded} />
         </Suspense>
-      </div>
+      </div> */}
     </div>
   );
 };

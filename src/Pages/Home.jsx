@@ -24,6 +24,11 @@ const Home = ({
     setActiveIcon("home");
   }, [activeIcon, setActiveIcon]);
 
+  const converter = (str) => {
+    const converted = str * 1;
+    return converted.toLocaleString();
+  };
+
   const display1hChart = (sevenDays) => {
     let overall = [];
 
@@ -86,16 +91,12 @@ const Home = ({
               })
               .map((coin) => (
                 <CoinCard
-                  key={coin.id}
-                  coinid={coin.id}
+                  key={coin.uuid}
+                  coinid={coin.uuid}
                   name={coin.name}
-                  short={coin.symbol.toUpperCase()}
-                  image={coin.image}
-                  price={
-                    coin.current_price > 0.01
-                      ? coin.current_price.toLocaleString()
-                      : coin.current_price.toPrecision(3)
-                  }
+                  short={coin.symbol}
+                  image={coin.iconUrl}
+                  price={converter(coin.price)}
                   changePrice={Math.round(coin.price_change_24h * 1000) / 1000}
                   change1h={
                     Math.round(
@@ -105,19 +106,12 @@ const Home = ({
                   change24h={
                     Math.round(coin.price_change_percentage_24h * 100) / 100
                   }
-                  change7d={
-                    Math.round(
-                      coin.price_change_percentage_7d_in_currency * 100
-                    ) / 100
-                  }
-                  rank={coin.market_cap_rank}
-                  priceChart1h={display1hChart(
-                    coin.sparkline_in_7d.price,
-                    coin.symbol
-                  )}
-                  priceChart24h={display24hChart(coin.sparkline_in_7d.price)}
-                  priceChart7d={coin.sparkline_in_7d.price}
-                  marketCap={coin.market_cap.toLocaleString()}
+                  change7d={Math.round(coin.change * 100) / 100}
+                  rank={coin.rank}
+                  priceChart1h={display1hChart(coin.sparkline)}
+                  priceChart24h={display24hChart(coin.sparkline)}
+                  priceChart7d={coin.sparkline}
+                  marketCap={converter(coin.marketCap)}
                   low24h={coin.low_24h}
                   high24h={coin.high_24h}
                 />
