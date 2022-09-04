@@ -321,11 +321,11 @@ const ExpandedCoinCard = ({
           <FaGithub className="expanded-card-price-stats-icons__icon" />
         </div>
       </div>
-      {/* <div className="expanded-card-chart">
+      <div className="expanded-card-chart">
         <Suspense fallback={<div></div>}>
           <Chart coin={coin} change24h={change24h} setExpanded={setExpanded} />
         </Suspense>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -72,15 +72,6 @@ const CoinCard = ({
     }
   };
 
-  const url = `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&sparkline=true
-`;
-
-  useEffect(() => {
-    axios.get(url).then((res) => {
-      setCoin(res?.data);
-    });
-  }, [update, url]);
-
   useEffect(() => {
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
       setFavCoins(doc.data()?.favs);
