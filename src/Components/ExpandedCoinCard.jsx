@@ -68,7 +68,7 @@ const ExpandedCoinCard = ({
         </div>
         <div className="expanded-card-top__divider" />
         {/* 14d Change % */}
-        <div className="expanded-card-top-14d-change">
+        {/* <div className="expanded-card-top-14d-change">
           <p
             className={
               coin.market_data.price_change_percentage_14d > 0
@@ -82,7 +82,7 @@ const ExpandedCoinCard = ({
               : null}
           </p>
           <p className="expanded-card-top-14d-change__text">14d</p>
-        </div>
+        </div> */}
         <div
           id="fourteen-day__divider"
           className="expanded-card-top__divider"

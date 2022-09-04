@@ -70,11 +70,6 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    setCoins(...coins, extraInfo);
-    console.log(coins);
-  }, []);
-
   return (
     <AuthContextProvider>
       <LoginStatusProvider>

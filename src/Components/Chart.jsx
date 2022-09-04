@@ -25,59 +25,74 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const Chart = ({ coin, setExpanded }) => {
+const Chart = ({ coin, setExpanded, ids }) => {
   const [historicData, sethistoricData] = useState();
-  const [days, setDays] = useState(1);
+  const [days, setDays] = useState("24h");
   const [activeBtn, setActiveBtn] = useState("24h");
   const [custom, setCustom] = useState("");
 
-  const url = `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=gbp&days=${days}`;
+  const options = {
+    method: "GET",
+    url: `https://coinranking1.p.rapidapi.com/coin/${ids}/history`,
+    params: { referenceCurrencyUuid: "yhjMzLPhuIDl", timePeriod: days },
+    headers: {
+      "X-RapidAPI-Key": "87a84376eamshe0fe6404a684850p19482cjsn9cb0e1926c47",
+      "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
+    },
+  };
+
+  console.log(ids);
 
   useEffect(() => {
-    axios.get(url).then((res) => {
-      sethistoricData(res?.data?.prices);
-    });
-  }, [days, url]);
+    axios
+      .request(options)
+      .then(function (response) {
+        sethistoricData(response?.data?.data?.history.reverse());
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, [days]);
 
   const changeTo24h = () => {
     setActiveBtn("24h");
-    setDays(1);
+    setDays("24h");
     setCustom("");
   };
 
   const changeTo7d = () => {
     setActiveBtn("7d");
-    setDays(7);
+    setDays("7d");
     setCustom("");
   };
 
   const changeTo30d = () => {
     setActiveBtn("30d");
-    setDays(30);
+    setDays("30d");
     setCustom("");
   };
 
   const changeTo60d = () => {
     setActiveBtn("60d");
-    setDays(60);
+    setDays("60d");
     setCustom("");
   };
 
   const changeTo1y = () => {
     setActiveBtn("1y");
-    setDays(365);
+    setDays("1y");
     setCustom("");
   };
 
   const changeToMax = () => {
     setActiveBtn("Max");
-    setDays(10000);
+    setDays("1y");
     setCustom("");
   };
 
   const customInput = (e) => {
     if (e.target.value === "") {
-      setDays(1);
+      setDays("24h");
       setActiveBtn("24h");
       setCustom();
     } else {
@@ -161,18 +176,14 @@ const Chart = ({ coin, setExpanded }) => {
           <Line
             data={{
               labels: historicData.map((coin) => {
-                let date = new Date(coin[0]);
-                let time =
-                  date.getHours() > 12
-                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                    : `${date.getHours()}:${date.getMinutes()} AM`;
-                return days === 1 ? time : date.toLocaleDateString();
+                let date = new Date(coin?.timestamp * 1000);
+                return date.toLocaleDateString();
               }),
 
               datasets: [
                 {
-                  data: historicData.map((coin) => coin[1]),
-                  label: `Price (GBP)`,
+                  data: historicData.map((coin) => coin?.price),
+                  label: `Price (USD)`,
                   borderColor: "#c593ee",
                 },
               ],
