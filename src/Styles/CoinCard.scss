@@ -294,17 +294,12 @@ $mainSelected: #1b1824;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 10px;
   padding: 0px 5px;
   width: 120px;
   height: 70px;
   border-radius: 5px;
-  border: 1px solid #18151b;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(66, 66, 66, 0.1);
-  }
+  cursor: default;
 
   &--active {
     background-color: $mainSelected;
@@ -336,7 +331,7 @@ $mainSelected: #1b1824;
 
 .mini-chart-container {
   height: 65px;
-  margin-left: 30px;
+  margin-left: 10px;
   margin-right: 20px;
   user-select: none;
 

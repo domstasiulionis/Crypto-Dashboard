@@ -1,6 +1,7 @@
-import { useEffect, useState, lazy, Suspense } from "react";
+import { useEffect, useState, useContext, lazy, Suspense } from "react";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import axios from "axios";
 
 import "../Styles/ExpandedCoinCard.scss";
 
@@ -8,15 +9,31 @@ import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { FaFacebook, FaTwitter, FaReddit, FaGithub } from "react-icons/fa";
 const Chart = lazy(() => import("./Chart"));
 
-const ExpandedCoinCard = ({
-  price,
-  setExpanded,
-  marketCap,
-  rank,
-  coinid,
-  coin,
-}) => {
+const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
+  const [coin, setCoin] = useState({});
+
   const dummy = 1;
+
+  const options = {
+    method: "GET",
+    url: `https://coinranking1.p.rapidapi.com/coin/${coinid}`,
+    params: { referenceCurrencyUuid: "yhjMzLPhuIDl", timePeriod: "24h" },
+    headers: {
+      "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+      "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
+    },
+  };
+
+  useEffect(() => {
+    axios
+      .request(options)
+      .then(function (response) {
+        setCoin(response?.data?.data?.coin);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
 
   const converter = (str) => {
     const converted = str * 1;
@@ -139,7 +156,8 @@ const ExpandedCoinCard = ({
             placement="right"
             delay={300}
             theme="custom"
-            content="24h Change"
+            content="24h "
+            Change
           >
             <div
               className={`expanded-card-res-price-stats-price-change ${
@@ -154,7 +172,7 @@ const ExpandedCoinCard = ({
                 <BsArrowDown className="expanded-card-res-price-stats-price-change__arrow--red" />
               )}
               <div className="expanded-card-res-price-stats-price-change__amount">
-                ${coin?.change && converter(coin?.change)}
+                {coin?.change && converter(coin?.change)}%
               </div>
             </div>
           </Tippy>
@@ -174,7 +192,7 @@ const ExpandedCoinCard = ({
               Market Cap
             </p>
           </div>
-          {/* 24h Volume */}
+          {/* All Time High*/}
           <div className="expanded-card-res-price-stats-mid-24h-volume">
             <div className="expanded-card-res-price-stats-mid-24h-volume__total">
               ${converter(coin?.allTimeHigh?.price)}
@@ -183,7 +201,7 @@ const ExpandedCoinCard = ({
               All Time High
             </p>
           </div>
-          {/* 24h High */}
+          {/* Diluted MC */}
           <div className="expanded-card-res-price-stats-mid-24h-high">
             <div className="expanded-card-res-price-stats-mid-24h-high__total">
               $
@@ -197,7 +215,7 @@ const ExpandedCoinCard = ({
           {/* 24h low */}
           <div className="expanded-card-res-price-stats-mid-24h-low">
             <div className="expanded-card-res-price-stats-mid-24h-low__total">
-              ${dummy}
+              ${converter(coin["24hVolume"])}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-low__text">
               24h Low
@@ -229,7 +247,7 @@ const ExpandedCoinCard = ({
                 <BsArrowDown className="expanded-card-price-stats-price-change__arrow--red" />
               )}
               <div className="expanded-card-price-stats-price-change__amount">
-                ${coin?.change && converter(coin?.change)}
+                {coin?.change && converter(coin?.change)}%
               </div>
             </div>
           </Tippy>
@@ -264,31 +282,13 @@ const ExpandedCoinCard = ({
               Fully Diluted MC
             </p>
           </div>
-          {/* 24h Low */}
+          {/* 24h Volume */}
           <div className="expanded-card-price-stats-side-24h-low">
             <div className="expanded-card-price-stats-side-24h-low__total">
-              ${dummy}
+              ${converter(coin["24hVolume"])}
             </div>
             <p className="expanded-card-price-stats-side-24h-low__text">
-              24h Low
-            </p>
-          </div>
-          {/* Hashing Algorithm */}
-          <div className="expanded-card-price-stats-side-hashing">
-            <div className="expanded-card-price-stats-side-hashing__total">
-              {dummy}
-            </div>
-            <p className="expanded-card-price-stats-side-hashing__text">
-              Hashing Algorithm
-            </p>
-          </div>
-          {/* Trust Score*/}
-          <div className="expanded-card-price-stats-side-trust">
-            <div className="expanded-card-price-stats-side-trust__total">
-              {dummy}
-            </div>
-            <p className="expanded-card-price-stats-side-trust__text">
-              Trust Score
+              24h Volume
             </p>
           </div>
         </div>

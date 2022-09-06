@@ -8,12 +8,7 @@ import "./LoginModal.scss";
 
 import { MdOutlineClose } from "react-icons/md";
 
-const SignModal = ({
-  show,
-  checkUserStatus,
-  setCheckUserStatus,
-  afterLogin,
-}) => {
+const SignModal = ({ show }) => {
   const [changeToSignUp, setchangeToSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

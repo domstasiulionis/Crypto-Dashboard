@@ -37,7 +37,7 @@ const HomeNavBar = ({ setHamburgerMenu, setSearchText }) => {
             <input
               onChange={(e) => setSearchText(e.target.value)}
               type="text"
-              placeholder="Search..."
+              placeholder="Search for a coin..."
             />
             <BsSearch className="search-bar__icon" />
           </div>

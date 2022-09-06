@@ -3,7 +3,6 @@ import { Sparklines, SparklinesLine } from "react-sparklines";
 import { UserAuth } from "../Context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
-import axios from "axios";
 
 import "../Styles/CoinCard.scss";
 
@@ -37,31 +36,9 @@ const CoinCard = ({
   const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [coin, setCoin] = useState({});
 
   const { user } = UserAuth();
   const { favCoins, setFavCoins } = useContext(FavCoinsContext);
-
-  const options = {
-    method: "GET",
-    url: `https://coinranking1.p.rapidapi.com/coin/${coinid}`,
-    params: { referenceCurrencyUuid: "yhjMzLPhuIDl", timePeriod: "24h" },
-    headers: {
-      "X-RapidAPI-Key": "87a84376eamshe0fe6404a684850p19482cjsn9cb0e1926c47",
-      "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
-    },
-  };
-
-  useEffect(() => {
-    axios
-      .request(options)
-      .then(function (response) {
-        setCoin(response?.data?.data?.coin);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
 
   const coinPath = doc(db, "users", `${user?.email}`);
   const saveCoin = async () => {
@@ -190,45 +167,7 @@ const CoinCard = ({
                 <p className="coin-low__24h-text">24h Low</p>
               </div>
 
-              <div
-                className={`time ${
-                  selectedTime === "1h" ? "time--active" : ""
-                }`}
-                id="time-1h"
-                onClick={changeTo1h}
-              >
-                <div
-                  className={`${
-                    change1h > 0 ? "time__percentage" : "time__percentage--red"
-                  }`}
-                >
-                  {change1h}%
-                </div>
-                <div className="time__period">1h</div>
-              </div>
-              <div
-                className={`time ${
-                  selectedTime === "24h" ? "time--active" : ""
-                }`}
-                id="time-24h"
-                onClick={changeTo24h}
-              >
-                <div
-                  className={`${
-                    change24h > 0 ? "time__percentage" : "time__percentage--red"
-                  }`}
-                >
-                  {change24h}%
-                </div>
-                <div className="time__period">24h</div>
-              </div>
-              <div
-                className={`time ${
-                  selectedTime === "7d" ? "time--active" : ""
-                }`}
-                id="time-7d"
-                onClick={changeTo7d}
-              >
+              <div className="time" id="time-1h" onClick={changeTo7d}>
                 <div
                   className={`${
                     change7d > 0 ? "time__percentage" : "time__percentage--red"
@@ -282,7 +221,6 @@ const CoinCard = ({
                 marketCap={marketCap}
                 rank={rank}
                 coinid={coinid}
-                coin={coin}
               />
             </Suspense>
           )}

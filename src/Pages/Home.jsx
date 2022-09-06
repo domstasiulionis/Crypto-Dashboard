@@ -5,6 +5,7 @@ import "../Styles/Home.scss";
 import HomeNavBar from "../Components/HomeNavBar";
 import SidebarIconContext from "../Context/SidebarIconContext";
 import Loader from "../Components/Loader";
+import TrendingCoins from "../Components/TrendingCoins";
 const CoinCard = lazy(() => import("../Components/CoinCard"));
 // const Pagination = lazy(() => import("../Components/Pagination"));
 
@@ -75,6 +76,7 @@ const Home = ({
         hamburgerMenu={hamburgerMenu}
         setHamburgerMenu={setHamburgerMenu}
       />
+      <TrendingCoins />
       <div className="coins-container">
         <Suspense fallback={<Loader />}>
           {coins &&
