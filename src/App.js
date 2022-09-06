@@ -17,7 +17,6 @@ const Favourites = lazy(() => import("./Pages/Favourites"));
 
 function App() {
   const [coins, setCoins] = useState([]);
-  const [extraInfo, setExtraInfo] = useState([]);
   const [update, setUpdate] = useState(0);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,7 +42,7 @@ function App() {
       offset: "0",
     },
     headers: {
-      "X-RapidAPI-Key": "87a84376eamshe0fe6404a684850p19482cjsn9cb0e1926c47",
+      "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
       "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
     },
   };
@@ -56,17 +55,6 @@ function App() {
       })
       .catch(function (error) {
         console.error(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=25&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
-      )
-      .then((res) => {
-        setExtraInfo(res.data);
-        console.log(extraInfo);
       });
   }, []);
 

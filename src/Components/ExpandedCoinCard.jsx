@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
@@ -9,16 +9,20 @@ import { FaFacebook, FaTwitter, FaReddit, FaGithub } from "react-icons/fa";
 const Chart = lazy(() => import("./Chart"));
 
 const ExpandedCoinCard = ({
-  coin,
-  changePrice,
   price,
-  change1h,
-  change24h,
-  change7d,
   setExpanded,
   marketCap,
   rank,
+  coinid,
+  coin,
 }) => {
+  const dummy = 1;
+
+  const converter = (str) => {
+    const converted = str * 1;
+    return converted.toLocaleString();
+  };
+
   return (
     <div className="expanded-card">
       <div className="expanded-card-top">
@@ -29,12 +33,12 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-1h-change">
           <p
             className={
-              change1h > 0
+              dummy > 0
                 ? "expanded-card-top-1h-change__total"
                 : "expanded-card-top-1h-change__total--red"
             }
           >
-            {change1h + "%"}
+            {dummy + "%"}
           </p>
           <p className="expanded-card-top-1h-change__text">1h</p>
         </div>
@@ -43,12 +47,12 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-24h-change">
           <p
             className={
-              change24h > 0
+              dummy > 0
                 ? "expanded-card-top-24h-change__total"
                 : "expanded-card-top-24h-change__total--red"
             }
           >
-            {change24h + "%"}
+            {dummy + "%"}
           </p>
           <p className="expanded-card-top-24h-change__text">24h</p>
         </div>
@@ -57,32 +61,29 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-7d-change">
           <p
             className={
-              change7d > 0
+              dummy > 0
                 ? "expanded-card-top-7d-change__total"
                 : "expanded-card-top-7d-change__total--red"
             }
           >
-            {change7d + "%"}
+            {dummy + "%"}
           </p>
           <p className="expanded-card-top-7d-change__text">7d</p>
         </div>
         <div className="expanded-card-top__divider" />
         {/* 14d Change % */}
-        {/* <div className="expanded-card-top-14d-change">
+        <div className="expanded-card-top-14d-change">
           <p
             className={
-              coin.market_data.price_change_percentage_14d > 0
+              dummy > 0
                 ? "expanded-card-top-14d-change__total"
                 : "expanded-card-top-14d-change__total--red"
             }
           >
-            {coin.market_data
-              ? coin.market_data?.price_change_percentage_14d.toLocaleString() +
-                "%"
-              : null}
+            {dummy}
           </p>
           <p className="expanded-card-top-14d-change__text">14d</p>
-        </div> */}
+        </div>
         <div
           id="fourteen-day__divider"
           className="expanded-card-top__divider"
@@ -91,15 +92,12 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-30d-change">
           <p
             className={
-              coin.market_data?.price_change_percentage_30d > 0
+              dummy > 0
                 ? "expanded-card-top-30d-change__total"
                 : "expanded-card-top-30d-change__total--red"
             }
           >
-            {coin.market_data
-              ? coin.market_data?.price_change_percentage_30d.toLocaleString() +
-                "%"
-              : null}
+            {dummy}
           </p>
           <p className="expanded-card-top-30d-change__text">30d</p>
         </div>
@@ -108,15 +106,12 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-60d-change">
           <p
             className={
-              coin.market_data?.price_change_percentage_60d > 0
+              dummy > 0
                 ? "expanded-card-top-60d-change__total"
                 : "expanded-card-top-60d-change__total--red"
             }
           >
-            {coin.market_data
-              ? coin.market_data?.price_change_percentage_60d.toLocaleString() +
-                "%"
-              : null}
+            {dummy}
           </p>
           <p className="expanded-card-top-60d-change__text">60d</p>
         </div>
@@ -125,15 +120,12 @@ const ExpandedCoinCard = ({
         <div className="expanded-card-top-1y-change">
           <p
             className={
-              coin.market_data?.price_change_percentage_1y > 0
+              dummy > 0
                 ? "expanded-card-top-1y-change__total"
                 : "expanded-card-top-1y-change__total--red"
             }
           >
-            {coin.market_data
-              ? coin.market_data?.price_change_percentage_1y.toLocaleString() +
-                "%"
-              : null}
+            {dummy}
           </p>
           <p className="expanded-card-top-60d-change__text">1y</p>
         </div>
@@ -151,18 +143,18 @@ const ExpandedCoinCard = ({
           >
             <div
               className={`expanded-card-res-price-stats-price-change ${
-                changePrice > 0
+                coin?.change && converter(coin?.change) > 0
                   ? ""
                   : "expanded-card-res-price-stats-price-change--red"
               }`}
             >
-              {changePrice > 0 ? (
+              {coin?.change && converter(coin?.change) > 0 ? (
                 <BsArrowUp className="expanded-card-res-price-stats-price-change__arrow" />
               ) : (
                 <BsArrowDown className="expanded-card-res-price-stats-price-change__arrow--red" />
               )}
               <div className="expanded-card-res-price-stats-price-change__amount">
-                ${changePrice}
+                ${coin?.change && converter(coin?.change)}
               </div>
             </div>
           </Tippy>
@@ -185,22 +177,18 @@ const ExpandedCoinCard = ({
           {/* 24h Volume */}
           <div className="expanded-card-res-price-stats-mid-24h-volume">
             <div className="expanded-card-res-price-stats-mid-24h-volume__total">
-              $
-              {coin.market_data?.market_cap
-                ? coin.market_data?.total_volume.gbp.toLocaleString()
-                : null}
+              ${converter(coin?.allTimeHigh?.price)}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-volume__text">
-              Volume (24h)
+              All Time High
             </p>
           </div>
           {/* 24h High */}
           <div className="expanded-card-res-price-stats-mid-24h-high">
             <div className="expanded-card-res-price-stats-mid-24h-high__total">
               $
-              {coin.market_data?.high_24h
-                ? coin.market_data?.high_24h.gbp.toLocaleString()
-                : null}
+              {coin?.fullyDilutedMarketCap &&
+                converter(coin?.fullyDilutedMarketCap)}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-high__text">
               24h High
@@ -209,10 +197,7 @@ const ExpandedCoinCard = ({
           {/* 24h low */}
           <div className="expanded-card-res-price-stats-mid-24h-low">
             <div className="expanded-card-res-price-stats-mid-24h-low__total">
-              $
-              {coin.market_data?.low_24h
-                ? coin.market_data?.low_24h.gbp.toLocaleString()
-                : null}
+              ${dummy}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-low__text">
               24h Low
@@ -233,18 +218,18 @@ const ExpandedCoinCard = ({
           >
             <div
               className={`expanded-card-price-stats-price-change ${
-                changePrice > 0
+                coin?.change && converter(coin?.change) > 0
                   ? ""
                   : "expanded-card-price-stats-price-change--red"
               }`}
             >
-              {changePrice > 0 ? (
+              {coin?.change && converter(coin?.change) > 0 ? (
                 <BsArrowUp className="expanded-card-price-stats-price-change__arrow" />
               ) : (
                 <BsArrowDown className="expanded-card-price-stats-price-change__arrow--red" />
               )}
               <div className="expanded-card-price-stats-price-change__amount">
-                ${changePrice}
+                ${coin?.change && converter(coin?.change)}
               </div>
             </div>
           </Tippy>
@@ -262,34 +247,27 @@ const ExpandedCoinCard = ({
           {/* 24h Volume */}
           <div className="expanded-card-price-stats-side-24h-volume">
             <div className="expanded-card-price-stats-side-24h-volume__total">
-              $
-              {coin.market_data?.market_cap
-                ? coin.market_data?.total_volume.gbp.toLocaleString()
-                : null}
+              ${converter(coin?.allTimeHigh?.price)}
             </div>
             <p className="expanded-card-price-stats-side-24h-volume__text">
-              Volume (24h)
+              All Time High
             </p>
           </div>
           {/* 24h High */}
           <div className="expanded-card-price-stats-side-24h-high">
             <div className="expanded-card-price-stats-side-24h-high__total">
               $
-              {coin.market_data?.high_24h
-                ? coin.market_data?.high_24h.gbp.toLocaleString()
-                : null}
+              {coin?.fullyDilutedMarketCap &&
+                converter(coin?.fullyDilutedMarketCap)}
             </div>
             <p className="expanded-card-price-stats-side-24h-high__text">
-              24h High
+              Fully Diluted MC
             </p>
           </div>
           {/* 24h Low */}
           <div className="expanded-card-price-stats-side-24h-low">
             <div className="expanded-card-price-stats-side-24h-low__total">
-              $
-              {coin.market_data?.low_24h
-                ? coin.market_data?.low_24h.gbp.toLocaleString()
-                : null}
+              ${dummy}
             </div>
             <p className="expanded-card-price-stats-side-24h-low__text">
               24h Low
@@ -298,7 +276,7 @@ const ExpandedCoinCard = ({
           {/* Hashing Algorithm */}
           <div className="expanded-card-price-stats-side-hashing">
             <div className="expanded-card-price-stats-side-hashing__total">
-              {coin.hashing_algorithm ? coin.hashing_algorithm : "-"}
+              {dummy}
             </div>
             <p className="expanded-card-price-stats-side-hashing__text">
               Hashing Algorithm
@@ -307,7 +285,7 @@ const ExpandedCoinCard = ({
           {/* Trust Score*/}
           <div className="expanded-card-price-stats-side-trust">
             <div className="expanded-card-price-stats-side-trust__total">
-              {coin.tickers ? coin.liquidity_score.toFixed() : "-"}
+              {dummy}
             </div>
             <p className="expanded-card-price-stats-side-trust__text">
               Trust Score
@@ -323,7 +301,7 @@ const ExpandedCoinCard = ({
       </div>
       <div className="expanded-card-chart">
         <Suspense fallback={<div></div>}>
-          <Chart coin={coin} change24h={change24h} setExpanded={setExpanded} />
+          <Chart coin={coin} setExpanded={setExpanded} coinid={coinid} />
         </Suspense>
       </div>
     </div>

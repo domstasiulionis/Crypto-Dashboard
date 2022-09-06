@@ -42,6 +42,27 @@ const CoinCard = ({
   const { user } = UserAuth();
   const { favCoins, setFavCoins } = useContext(FavCoinsContext);
 
+  const options = {
+    method: "GET",
+    url: `https://coinranking1.p.rapidapi.com/coin/${coinid}`,
+    params: { referenceCurrencyUuid: "yhjMzLPhuIDl", timePeriod: "24h" },
+    headers: {
+      "X-RapidAPI-Key": "87a84376eamshe0fe6404a684850p19482cjsn9cb0e1926c47",
+      "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
+    },
+  };
+
+  useEffect(() => {
+    axios
+      .request(options)
+      .then(function (response) {
+        setCoin(response?.data?.data?.coin);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
+
   const coinPath = doc(db, "users", `${user?.email}`);
   const saveCoin = async () => {
     if (user?.email) {
@@ -89,10 +110,6 @@ const CoinCard = ({
   const changeTo7d = () => {
     setSelectedTime("7d");
   };
-
-  // const toggleFav = () => {
-  //   setIsFav((isFav) => !isFav);
-  // };
 
   const expandCard = () => {
     setExpanded((expanded) => !expanded);
@@ -259,16 +276,13 @@ const CoinCard = ({
           ) : (
             <Suspense fallback={<div></div>}>
               <ExpandedCoinCard
-                coin={coin}
-                changePrice={changePrice}
                 price={price}
-                change1h={change1h}
-                change24h={change24h}
-                change7d={change7d}
                 update={update}
                 setExpanded={setExpanded}
                 marketCap={marketCap}
                 rank={rank}
+                coinid={coinid}
+                coin={coin}
               />
             </Suspense>
           )}

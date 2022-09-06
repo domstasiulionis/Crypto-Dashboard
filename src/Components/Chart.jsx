@@ -25,7 +25,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const Chart = ({ coin, setExpanded, ids }) => {
+const Chart = ({ coinid, setExpanded, ids }) => {
   const [historicData, sethistoricData] = useState();
   const [days, setDays] = useState("24h");
   const [activeBtn, setActiveBtn] = useState("24h");
@@ -40,8 +40,6 @@ const Chart = ({ coin, setExpanded, ids }) => {
       "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
     },
   };
-
-  console.log(ids);
 
   useEffect(() => {
     axios
