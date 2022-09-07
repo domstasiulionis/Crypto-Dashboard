@@ -75,6 +75,25 @@ $mainSelected: #1b1824;
     }
   }
 
+  .about-info {
+    width: 19px;
+    height: 19px;
+    background-color: rgb(131, 206, 80);
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    padding-top: 1px;
+    color: black;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(95, 167, 47);
+    }
+  }
+
   &-res-price-stats {
     position: relative;
     height: 80px;
@@ -257,14 +276,30 @@ $mainSelected: #1b1824;
     &-icons {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
       position: absolute;
       width: 325px;
       top: 392px;
       left: -375px;
       background-color: #231f2e;
-      padding: 15px;
+      padding: 16px 0 12px 0;
       border-radius: 20px;
+
+      &-con {
+        display: flex;
+      }
+
+      &__website {
+        color: rgb(142, 72, 255);
+        text-decoration: none;
+        margin-left: 10px;
+        margin-top: -1px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          color: rgb(86, 18, 196);
+        }
+      }
 
       &__icon {
         color: rgb(142, 72, 255);
@@ -283,13 +318,22 @@ $mainSelected: #1b1824;
   &-chart {
     position: absolute;
     width: 100%;
-    height: 393px;
-    top: 45px;
+    height: 460px;
+    top: -20px;
     left: -27px;
     right: 0;
     background-color: #231f2e;
     padding: 15px;
     border-radius: 20px;
+  }
+
+  // overriding some more tooltip styles
+  .tippy-box[data-theme~="custom"] {
+    width: 920px;
+    text-align: left;
+    height: 400px;
+    padding: 0 10px;
+    overflow-y: scroll;
   }
 }
 

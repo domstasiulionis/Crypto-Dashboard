@@ -1,18 +1,19 @@
-import { useEffect, useState, useContext, lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import DOMPurify from "dompurify";
 import axios from "axios";
 
 import "../Styles/ExpandedCoinCard.scss";
 
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
-import { FaFacebook, FaTwitter, FaReddit, FaGithub } from "react-icons/fa";
+import { TbWorld } from "react-icons/tb";
+
 const Chart = lazy(() => import("./Chart"));
 
 const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
   const [coin, setCoin] = useState({});
-
-  const dummy = 1;
 
   const options = {
     method: "GET",
@@ -45,106 +46,6 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
       <div className="expanded-card-top">
         <div className="expanded-card-top-rank">
           <div className="expanded-card-top-rank__rank">Rank #{rank}</div>
-        </div>
-        {/* 1h Change % */}
-        <div className="expanded-card-top-1h-change">
-          <p
-            className={
-              dummy > 0
-                ? "expanded-card-top-1h-change__total"
-                : "expanded-card-top-1h-change__total--red"
-            }
-          >
-            {dummy + "%"}
-          </p>
-          <p className="expanded-card-top-1h-change__text">1h</p>
-        </div>
-        <div className="expanded-card-top__divider" />
-        {/* 24h Change % */}
-        <div className="expanded-card-top-24h-change">
-          <p
-            className={
-              dummy > 0
-                ? "expanded-card-top-24h-change__total"
-                : "expanded-card-top-24h-change__total--red"
-            }
-          >
-            {dummy + "%"}
-          </p>
-          <p className="expanded-card-top-24h-change__text">24h</p>
-        </div>
-        <div className="expanded-card-top__divider" />
-        {/* 7d Change % */}
-        <div className="expanded-card-top-7d-change">
-          <p
-            className={
-              dummy > 0
-                ? "expanded-card-top-7d-change__total"
-                : "expanded-card-top-7d-change__total--red"
-            }
-          >
-            {dummy + "%"}
-          </p>
-          <p className="expanded-card-top-7d-change__text">7d</p>
-        </div>
-        <div className="expanded-card-top__divider" />
-        {/* 14d Change % */}
-        <div className="expanded-card-top-14d-change">
-          <p
-            className={
-              dummy > 0
-                ? "expanded-card-top-14d-change__total"
-                : "expanded-card-top-14d-change__total--red"
-            }
-          >
-            {dummy}
-          </p>
-          <p className="expanded-card-top-14d-change__text">14d</p>
-        </div>
-        <div
-          id="fourteen-day__divider"
-          className="expanded-card-top__divider"
-        />
-        {/* 30d Change % */}
-        <div className="expanded-card-top-30d-change">
-          <p
-            className={
-              dummy > 0
-                ? "expanded-card-top-30d-change__total"
-                : "expanded-card-top-30d-change__total--red"
-            }
-          >
-            {dummy}
-          </p>
-          <p className="expanded-card-top-30d-change__text">30d</p>
-        </div>
-        <div className="expanded-card-top__divider" />
-        {/* 60d Change % */}
-        <div className="expanded-card-top-60d-change">
-          <p
-            className={
-              dummy > 0
-                ? "expanded-card-top-60d-change__total"
-                : "expanded-card-top-60d-change__total--red"
-            }
-          >
-            {dummy}
-          </p>
-          <p className="expanded-card-top-60d-change__text">60d</p>
-        </div>
-        <div id="sixty-day__divider" className="expanded-card-top__divider" />
-        {/* 1y Change % */}
-        <div className="expanded-card-top-1y-change">
-          <p
-            className={
-              dummy > 0
-                ? "expanded-card-top-1y-change__total"
-                : "expanded-card-top-1y-change__total--red"
-            }
-          >
-            {dummy}
-          </p>
-          <p className="expanded-card-top-60d-change__text">1y</p>
         </div>
       </div>
 
@@ -209,16 +110,16 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
                 converter(coin?.fullyDilutedMarketCap)}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-high__text">
-              24h High
+              Fully Diluted MC
             </p>
           </div>
-          {/* 24h low */}
+          {/* 24h Volume */}
           <div className="expanded-card-res-price-stats-mid-24h-low">
             <div className="expanded-card-res-price-stats-mid-24h-low__total">
               ${converter(coin["24hVolume"])}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-low__text">
-              24h Low
+              24h Volume
             </p>
           </div>
         </div>
@@ -291,17 +192,64 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
               24h Volume
             </p>
           </div>
+          {/* Tier */}
+          <div className="expanded-card-price-stats-side-24h-low">
+            <div className="expanded-card-price-stats-side-24h-low__total">
+              {coin.tier}
+            </div>
+            <p className="expanded-card-price-stats-side-24h-low__text">Tier</p>
+          </div>
+          {/* Desc */}
+          <div className="expanded-card-price-stats-side-24h-low">
+            <div className="expanded-card-price-stats-side-24h-low__total">
+              <div>
+                <Tippy
+                  placement="right"
+                  delay={100}
+                  theme="custom"
+                  interactive={true}
+                  content={
+                    <div>
+                      <h3>About {coin.name}</h3>
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(
+                            coin.description ? coin.description : ""
+                          ),
+                        }}
+                      ></p>
+                    </div>
+                  }
+                >
+                  <div className="about-info">i</div>
+                </Tippy>
+              </div>
+            </div>
+            <p className="expanded-card-price-stats-side-24h-low__text">
+              About Coin
+            </p>
+          </div>
         </div>
         <div className="expanded-card-price-stats-icons">
-          <FaFacebook className="expanded-card-price-stats-icons__icon" />
-          <FaTwitter className="expanded-card-price-stats-icons__icon" />
-          <FaReddit className="expanded-card-price-stats-icons__icon" />
-          <FaGithub className="expanded-card-price-stats-icons__icon" />
+          {coin?.links && (
+            <div className="expanded-card-price-stats-icons-con">
+              <a href={coin?.links[0]?.url} target="_blank">
+                <TbWorld className="expanded-card-price-stats-icons__icon" />
+              </a>
+              <a
+                href={coin?.links[0]?.url}
+                target="_blank"
+                className="expanded-card-price-stats-icons__website"
+              >
+                Website
+              </a>
+            </div>
+          )}
         </div>
       </div>
       <div className="expanded-card-chart">
         <Suspense fallback={<div></div>}>
-          <Chart coin={coin} setExpanded={setExpanded} coinid={coinid} />
+          <Chart setExpanded={setExpanded} coinid={coinid} />
         </Suspense>
       </div>
     </div>

@@ -9,6 +9,21 @@ $mainSelected: #1b1824;
     display: flex;
     justify-content: space-around;
 
+    &-change {
+      display: flex;
+      align-items: center;
+      margin-top: 2px;
+
+      &__value {
+        color: $positiveGreen;
+        font-weight: 600;
+
+        &--red {
+          color: $negativeRed;
+        }
+      }
+    }
+
     &__btn-change {
       width: 90px;
       height: 30px;
@@ -23,24 +38,7 @@ $mainSelected: #1b1824;
       cursor: pointer;
 
       &:hover {
-        box-shadow: inset 120px 0 0 0 #8e48ff;
-      }
-
-      &-max {
-        @extend .chart-btn-group__btn-change;
-
-        &:hover {
-          box-shadow: inset 120px 0 0 0 $negativeRed;
-        }
-
-        &--active {
-          background-color: $negativeRed;
-          border: 1px solid $negativeRed;
-
-          &:hover {
-            box-shadow: inset 120px 0 0 0 $negativeRed;
-          }
-        }
+        box-shadow: inset 100px 0 0 0 #8e48ff;
       }
 
       &--active {
@@ -70,8 +68,9 @@ $mainSelected: #1b1824;
   .line-chart {
     position: relative;
     width: 100%;
-    height: 340px;
+    height: 400px;
     padding-bottom: 12px;
+    cursor: crosshair;
 
     #myChart {
       width: 1px;

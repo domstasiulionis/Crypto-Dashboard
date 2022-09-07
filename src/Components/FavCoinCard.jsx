@@ -3,13 +3,12 @@ import { Sparklines, SparklinesLine } from "react-sparklines";
 import { UserAuth } from "../Context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
-import axios from "axios";
 
 import "../Styles/CoinCard.scss";
 
 import FavCoinsContext from "../Context/FavCoinsContext";
 
-import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
 import { BiChevronRight } from "react-icons/bi";
 
@@ -21,23 +20,15 @@ const CoinCard = ({
   short,
   image,
   price,
-  changePrice,
-  change1h,
-  change24h,
   change7d,
   rank,
-  priceChart1h,
-  priceChart24h,
   priceChart7d,
   update,
   marketCap,
-  low24h,
-  high24h,
 }) => {
   const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [coin, setCoin] = useState({});
 
   const { user } = UserAuth();
   const { favCoins, setFavCoins } = useContext(FavCoinsContext);
@@ -54,17 +45,10 @@ const CoinCard = ({
           short: short,
           image: image,
           price: price,
-          changePrice: changePrice,
-          change1h: change1h,
-          change24h: change24h,
           change7d: change7d,
           rank: rank,
-          priceChart1h: priceChart1h,
-          priceChart24h: priceChart24h,
           priceChart7d: priceChart7d,
           marketCap: marketCap,
-          low24: low24h,
-          high24h: high24h,
         }),
       });
     } else {
@@ -85,36 +69,15 @@ const CoinCard = ({
     }
   };
 
-  const url = `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&sparkline=true
-`;
-
-  useEffect(() => {
-    axios.get(url).then((res) => {
-      setCoin(res?.data);
-    });
-  }, [update, url]);
-
   useEffect(() => {
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
       setFavCoins(doc.data()?.favs);
     });
   }, [user?.email]);
 
-  const changeTo1h = () => {
-    setSelectedTime("1h");
-  };
-
-  const changeTo24h = () => {
-    setSelectedTime("24h");
-  };
-
   const changeTo7d = () => {
     setSelectedTime("7d");
   };
-
-  // const toggleFav = () => {
-  //   setIsFav((isFav) => !isFav);
-  // };
 
   const expandCard = () => {
     setExpanded((expanded) => !expanded);
@@ -181,55 +144,7 @@ const CoinCard = ({
                 <p className="coin-market-cap__market-cap-text">Market Cap</p>
               </div>
 
-              <div className="coin-high">
-                <div className="coin-high__24h">${high24h}</div>
-                <p className="coin-high__24h-text">24h High</p>
-              </div>
-
-              <div className="coin-low">
-                <div className="coin-low__24h">${low24h}</div>
-                <p className="coin-low__24h-text">24h Low</p>
-              </div>
-
-              <div
-                className={`time ${
-                  selectedTime === "1h" ? "time--active" : ""
-                }`}
-                id="time-1h"
-                onClick={changeTo1h}
-              >
-                <div
-                  className={`${
-                    change1h > 0 ? "time__percentage" : "time__percentage--red"
-                  }`}
-                >
-                  {change1h}%
-                </div>
-                <div className="time__period">1h</div>
-              </div>
-              <div
-                className={`time ${
-                  selectedTime === "24h" ? "time--active" : ""
-                }`}
-                id="time-24h"
-                onClick={changeTo24h}
-              >
-                <div
-                  className={`${
-                    change24h > 0 ? "time__percentage" : "time__percentage--red"
-                  }`}
-                >
-                  {change24h}%
-                </div>
-                <div className="time__period">24h</div>
-              </div>
-              <div
-                className={`time ${
-                  selectedTime === "7d" ? "time--active" : ""
-                }`}
-                id="time-7d"
-                onClick={changeTo7d}
-              >
+              <div className="time" id="time-1h" onClick={changeTo7d}>
                 <div
                   className={`${
                     change7d > 0 ? "time__percentage" : "time__percentage--red"
@@ -241,31 +156,12 @@ const CoinCard = ({
               </div>
 
               <div className="mini-chart-container">
-                {selectedTime === "1h" ? (
-                  <Sparklines data={priceChart1h}>
-                    <SparklinesLine
-                      color={change1h > 0 ? "#5bbe84" : "#c43d3d"}
-                      className="mini-chart__chart"
-                    />
-                  </Sparklines>
-                ) : (
-                  ""
-                )}
-                {selectedTime === "24h" ? (
-                  <Sparklines data={priceChart24h}>
-                    <SparklinesLine
-                      color={change24h > 0 ? "#5bbe84" : "#c43d3d"}
-                      className="mini-chart__chart"
-                    />
-                  </Sparklines>
-                ) : (
-                  ""
-                )}
                 {selectedTime === "7d" ? (
                   <Sparklines data={priceChart7d}>
                     <SparklinesLine
                       color={change7d > 0 ? "#5bbe84" : "#c43d3d"}
                       className="mini-chart__chart"
+                      strokeWidth={8}
                     />
                   </Sparklines>
                 ) : (
@@ -276,16 +172,13 @@ const CoinCard = ({
           ) : (
             <Suspense fallback={<div></div>}>
               <ExpandedCoinCard
-                coin={coin}
-                changePrice={changePrice}
                 price={price}
-                change1h={change1h}
-                change24h={change24h}
-                change7d={change7d}
                 update={update}
                 setExpanded={setExpanded}
                 marketCap={marketCap}
                 rank={rank}
+                coinid={coinid}
+                change7d={change7d}
               />
             </Suspense>
           )}

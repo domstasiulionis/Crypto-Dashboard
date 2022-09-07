@@ -10,6 +10,7 @@
     "axios": "^0.27.2",
     "chart.js": "^3.9.1",
     "cors": "^2.8.5",
+    "dompurify": "^2.4.0",
     "firebase": "^9.9.3",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.6.4",

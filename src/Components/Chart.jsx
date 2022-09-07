@@ -25,18 +25,18 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const Chart = ({ coinid, setExpanded, ids }) => {
+const Chart = ({ coinid, setExpanded }) => {
   const [historicData, sethistoricData] = useState();
+  const [change, setChange] = useState();
   const [days, setDays] = useState("24h");
   const [activeBtn, setActiveBtn] = useState("24h");
-  const [custom, setCustom] = useState("");
 
   const options = {
     method: "GET",
-    url: `https://coinranking1.p.rapidapi.com/coin/${ids}/history`,
+    url: `https://coinranking1.p.rapidapi.com/coin/${coinid}/history`,
     params: { referenceCurrencyUuid: "yhjMzLPhuIDl", timePeriod: days },
     headers: {
-      "X-RapidAPI-Key": "87a84376eamshe0fe6404a684850p19482cjsn9cb0e1926c47",
+      "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
       "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
     },
   };
@@ -46,6 +46,7 @@ const Chart = ({ coinid, setExpanded, ids }) => {
       .request(options)
       .then(function (response) {
         sethistoricData(response?.data?.data?.history.reverse());
+        setChange(response?.data?.data?.change);
       })
       .catch(function (error) {
         console.error(error);
@@ -55,49 +56,31 @@ const Chart = ({ coinid, setExpanded, ids }) => {
   const changeTo24h = () => {
     setActiveBtn("24h");
     setDays("24h");
-    setCustom("");
   };
 
   const changeTo7d = () => {
     setActiveBtn("7d");
     setDays("7d");
-    setCustom("");
   };
 
   const changeTo30d = () => {
     setActiveBtn("30d");
     setDays("30d");
-    setCustom("");
   };
 
-  const changeTo60d = () => {
-    setActiveBtn("60d");
-    setDays("60d");
-    setCustom("");
+  const changeTo3m = () => {
+    setActiveBtn("3m");
+    setDays("3m");
   };
 
   const changeTo1y = () => {
     setActiveBtn("1y");
     setDays("1y");
-    setCustom("");
   };
 
-  const changeToMax = () => {
-    setActiveBtn("Max");
-    setDays("1y");
-    setCustom("");
-  };
-
-  const customInput = (e) => {
-    if (e.target.value === "") {
-      setDays("24h");
-      setActiveBtn("24h");
-      setCustom();
-    } else {
-      setActiveBtn();
-      setDays(e.target.value);
-      setCustom(e.target.value);
-    }
+  const changeTo5y = () => {
+    setActiveBtn("5y");
+    setDays("5y");
   };
 
   return (
@@ -129,13 +112,13 @@ const Chart = ({ coinid, setExpanded, ids }) => {
           30d
         </button>
         <button
-          onClick={changeTo60d}
-          id="chart-60d"
+          onClick={changeTo3m}
+          id="chart-3m"
           className={`chart-btn-group__btn-change ${
-            activeBtn === "60d" ? "chart-btn-group__btn-change--active" : ""
+            activeBtn === "3m" ? "chart-btn-group__btn-change--active" : ""
           }`}
         >
-          60d
+          3m
         </button>
         <button
           id="chart-1y"
@@ -147,21 +130,32 @@ const Chart = ({ coinid, setExpanded, ids }) => {
           1y
         </button>
         <button
-          onClick={changeToMax}
-          className={`chart-btn-group__btn-change-max ${
-            activeBtn === "Max" ? "chart-btn-group__btn-change-max--active" : ""
+          onClick={changeTo5y}
+          className={`chart-btn-group__btn-change ${
+            activeBtn === "5y" ? "chart-btn-group__btn-change--active" : ""
           }`}
         >
-          Max
+          5y
         </button>
-        <input
-          onChange={customInput}
-          type="number"
-          placeholder="Custom (days)"
-          value={custom}
-          min="1"
-          max="10000"
-        />
+        <div className="chart-btn-group-change">
+          <p
+            className={
+              change > 0
+                ? "chart-btn-group-change__value"
+                : "chart-btn-group-change__value--red"
+            }
+          >
+            {change ? (
+              change > 0 ? (
+                "+" + change + "%"
+              ) : (
+                change + "%"
+              )
+            ) : (
+              <p>???????</p>
+            )}
+          </p>
+        </div>
       </div>
 
       <div className="line-chart">
@@ -181,7 +175,7 @@ const Chart = ({ coinid, setExpanded, ids }) => {
               datasets: [
                 {
                   data: historicData.map((coin) => coin?.price),
-                  label: `Price (USD)`,
+                  label: `Price ($)`,
                   borderColor: "#c593ee",
                 },
               ],
