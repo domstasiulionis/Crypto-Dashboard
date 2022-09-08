@@ -5,11 +5,11 @@ import LoginModal from "./LogIn/LoginModal";
 import LogOutModal from "./LogOut/LogOutModal";
 
 const Form = ({ show }) => {
-  const { status, setStatus } = useContext(LoginFormContext);
+  const { status } = useContext(LoginFormContext);
 
   return (
     <div>
-      {status === "check" ? (
+      {status === "logged" ? (
         <LogOutModal show={show} />
       ) : (
         <LoginModal show={show} />

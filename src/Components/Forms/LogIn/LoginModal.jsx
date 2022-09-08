@@ -20,7 +20,7 @@ const SignModal = ({ show }) => {
     try {
       await signIn(email, password);
       console.log("logged");
-      setStatus("check");
+      setStatus("logged");
     } catch (e) {
       console.log(e.message);
     }

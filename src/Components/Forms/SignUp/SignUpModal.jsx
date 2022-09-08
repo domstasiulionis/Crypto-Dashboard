@@ -21,7 +21,7 @@ const SignUpModal = ({ show }) => {
     try {
       await signUp(email, password);
       await signIn(email, password);
-      setStatus("check");
+      setStatus("logged");
     } catch (e) {
       setError(e.message);
       console.log(error);
