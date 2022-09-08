@@ -131,6 +131,7 @@ const Chart = ({ coinid, setExpanded }) => {
         </button>
         <button
           onClick={changeTo5y}
+          id="chart-5y"
           className={`chart-btn-group__btn-change ${
             activeBtn === "5y" ? "chart-btn-group__btn-change--active" : ""
           }`}

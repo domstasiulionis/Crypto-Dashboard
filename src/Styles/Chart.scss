@@ -78,21 +78,24 @@ $mainSelected: #1b1824;
   }
 }
 
+@media (max-width: 1270px) {
+  .chart-btn-group {
+    &__btn-change {
+      width: 70px;
+    }
+  }
+}
+
 @media (max-width: 1230px) {
   .chart {
     .line-chart {
       width: 100%;
-      height: 242px;
-      margin-top: 0px;
+      height: 248px;
+      margin-top: -10px;
       padding-bottom: 0;
     }
 
     .chart-btn-group {
-      &__btn-change,
-      input[type="number"] {
-        transform: scale(0.8);
-      }
-
       &__btn-change {
         &:hover {
           background-color: #8e48ff;
@@ -116,42 +119,52 @@ $mainSelected: #1b1824;
 
 @media (max-width: 770px) {
   .chart {
-    .line-chart {
-      width: 100%;
-      height: 242px;
-      margin-top: 0px;
-      padding-bottom: 0;
-    }
-  }
-}
-
-@media (max-width: 770px) {
-  .chart {
     &-btn-group {
       &__btn-change {
-        &-max {
-          display: none;
+        transform: scale(0.9);
+      }
+
+      &-change {
+        transform: scale(0.9);
+        &__value {
+          transform: scale(0.9);
         }
       }
     }
     .line-chart {
-      height: 235px;
+      height: 250px;
     }
   }
 }
 
-@media (max-width: 595px) {
+@media (max-width: 610px) {
   .chart {
-    #chart-60d {
+    #chart-5y {
       display: none;
     }
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 550px) {
+  .chart {
+    #chart-3m {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 450px) {
   .chart {
     #chart-1y {
       display: none;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .chart {
+    .line-chart {
+      height: 240px;
     }
   }
 }

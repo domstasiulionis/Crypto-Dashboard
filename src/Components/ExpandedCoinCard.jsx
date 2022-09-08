@@ -73,7 +73,7 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
                 <BsArrowDown className="expanded-card-res-price-stats-price-change__arrow--red" />
               )}
               <div className="expanded-card-res-price-stats-price-change__amount">
-                {coin?.change && converter(coin?.change)}%
+                {coin?.change ? converter(coin?.change) + "%" : "????"}
               </div>
             </div>
           </Tippy>
@@ -96,7 +96,9 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
           {/* All Time High*/}
           <div className="expanded-card-res-price-stats-mid-24h-volume">
             <div className="expanded-card-res-price-stats-mid-24h-volume__total">
-              ${converter(coin?.allTimeHigh?.price)}
+              {coin?.allTimeHigh?.price
+                ? "$" + converter(coin?.allTimeHigh?.price)
+                : "????"}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-volume__text">
               All Time High
@@ -105,9 +107,9 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
           {/* Diluted MC */}
           <div className="expanded-card-res-price-stats-mid-24h-high">
             <div className="expanded-card-res-price-stats-mid-24h-high__total">
-              $
-              {coin?.fullyDilutedMarketCap &&
-                converter(coin?.fullyDilutedMarketCap)}
+              {coin?.fullyDilutedMarketCap
+                ? "$" + converter(coin?.fullyDilutedMarketCap)
+                : "????"}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-high__text">
               Fully Diluted MC
@@ -116,7 +118,7 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
           {/* 24h Volume */}
           <div className="expanded-card-res-price-stats-mid-24h-low">
             <div className="expanded-card-res-price-stats-mid-24h-low__total">
-              ${converter(coin["24hVolume"])}
+              {coin["24hVolume"] ? "$" + converter(coin["24hVolume"]) : "????"}
             </div>
             <p className="expanded-card-res-price-stats-mid-24h-low__text">
               24h Volume
@@ -163,10 +165,12 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
               Market Cap
             </p>
           </div>
-          {/* 24h Volume */}
+          {/* All Time High */}
           <div className="expanded-card-price-stats-side-24h-volume">
             <div className="expanded-card-price-stats-side-24h-volume__total">
-              ${converter(coin?.allTimeHigh?.price)}
+              {coin?.allTimeHigh?.price
+                ? "$" + converter(coin?.allTimeHigh?.price)
+                : "????"}
             </div>
             <p className="expanded-card-price-stats-side-24h-volume__text">
               All Time High
@@ -175,9 +179,9 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
           {/* 24h High */}
           <div className="expanded-card-price-stats-side-24h-high">
             <div className="expanded-card-price-stats-side-24h-high__total">
-              $
-              {coin?.fullyDilutedMarketCap &&
-                converter(coin?.fullyDilutedMarketCap)}
+              {coin?.fullyDilutedMarketCap
+                ? "$" + converter(coin?.fullyDilutedMarketCap)
+                : "????"}
             </div>
             <p className="expanded-card-price-stats-side-24h-high__text">
               Fully Diluted MC
@@ -186,7 +190,7 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
           {/* 24h Volume */}
           <div className="expanded-card-price-stats-side-24h-low">
             <div className="expanded-card-price-stats-side-24h-low__total">
-              ${converter(coin["24hVolume"])}
+              {coin["24hVolume"] ? "$" + converter(coin["24hVolume"]) : "????"}
             </div>
             <p className="expanded-card-price-stats-side-24h-low__text">
               24h Volume
@@ -195,7 +199,7 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
           {/* Tier */}
           <div className="expanded-card-price-stats-side-24h-low">
             <div className="expanded-card-price-stats-side-24h-low__total">
-              {coin.tier}
+              {coin.tier ? coin.tier : "????"}
             </div>
             <p className="expanded-card-price-stats-side-24h-low__text">Tier</p>
           </div>
@@ -231,7 +235,7 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
           </div>
         </div>
         <div className="expanded-card-price-stats-icons">
-          {coin?.links && (
+          {coin?.links ? (
             <div className="expanded-card-price-stats-icons-con">
               <a href={coin?.links[0]?.url} target="_blank">
                 <TbWorld className="expanded-card-price-stats-icons__icon" />
@@ -244,6 +248,8 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
                 Website
               </a>
             </div>
+          ) : (
+            <p className="expanded-card-price-stats-icons-qmark">????</p>
           )}
         </div>
       </div>

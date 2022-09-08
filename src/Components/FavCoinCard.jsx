@@ -8,7 +8,7 @@ import "../Styles/CoinCard.scss";
 
 import FavCoinsContext from "../Context/FavCoinsContext";
 
-import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
 import { BiChevronRight } from "react-icons/bi";
 

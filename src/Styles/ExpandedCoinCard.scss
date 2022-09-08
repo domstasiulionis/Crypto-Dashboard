@@ -289,16 +289,17 @@ $mainSelected: #1b1824;
         display: flex;
       }
 
+      &-qmark {
+        @include total-amount();
+        letter-spacing: 2px;
+      }
+
       &__website {
         color: rgb(142, 72, 255);
         text-decoration: none;
         margin-left: 10px;
         margin-top: -1px;
         transition: all 0.2s ease-in-out;
-
-        &:hover {
-          color: rgb(86, 18, 196);
-        }
       }
 
       &__icon {
@@ -343,14 +344,16 @@ $mainSelected: #1b1824;
 
     &-res-price-stats {
       display: flex;
+      top: 35px;
 
       &-mid {
         margin-top: 5px;
       }
     }
+
     &-chart {
       height: 310px;
-      top: 230px;
+      top: 205px;
       left: -24px;
     }
 
@@ -366,26 +369,10 @@ $mainSelected: #1b1824;
   }
 }
 
-@media (max-width: 880px) {
-  .expanded-card {
-    #fourteen-day__divider {
-      display: none;
-    }
-
-    &-top {
-      &-14d-change {
-        display: none;
-      }
-    }
-  }
-}
-
 @media (max-width: 770px) {
   .expanded-card {
-    margin-left: -237px;
-
     &-chart {
-      height: 307px;
+      height: 313px;
     }
 
     &-res-price-stats {
@@ -427,17 +414,9 @@ $mainSelected: #1b1824;
       }
     }
 
-    #sixty-day__divider {
-      display: none;
-    }
-
     &-top {
       margin-left: 35%;
       align-content: center;
-
-      &-60d-change {
-        display: none;
-      }
     }
   }
 }
@@ -460,48 +439,57 @@ $mainSelected: #1b1824;
   }
 }
 
-@media (max-width: 595px) {
+@media (max-width: 650px) {
   .expanded-card {
-    margin-left: -200px;
-
-    &-chart {
-      height: 300px;
-    }
-
-    #thirty-day__divider {
-      display: none;
-    }
-
     &-res-price-stats {
-      top: 28px;
       &-mid {
-        &-24h-high,
-        &-24h-low {
+        &-24h-high {
           display: none;
         }
-        &-market-cap {
+        &-market-cap,
+        &-24h-low {
           transform: scale(1);
         }
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .expanded-card {
+    margin-left: -237px;
+  }
+}
+
+@media (max-width: 495px) {
+  .expanded-card {
+    margin-left: -202px;
+
+    &-res-price-stats {
+      top: 20px;
+    }
+
+    &-chart {
+      top: 215px;
+      height: 320px;
+    }
 
     &-top {
-      &-1h-change,
-      &-24h-change,
-      &-7d-change,
-      &-14d-change,
-      &-30d-change,
-      &-60d-change,
-      &-1y-change {
-        display: none;
-      }
       &-rank {
         display: flex;
         justify-content: flex-end;
       }
+    }
+  }
+}
 
-      &__divider {
-        display: none;
+@media (max-width: 550px) {
+  .expanded-card {
+    &-res-price-stats {
+      &-mid {
+        &-24h-low {
+          display: none;
+        }
       }
     }
   }
@@ -517,19 +505,8 @@ $mainSelected: #1b1824;
       }
     }
 
-    &-chart {
-      height: 300px;
-      top: 217px;
-      left: -24px;
-    }
-
-    #thirty-day__divider {
-      display: none;
-    }
-
     &-res-price-stats {
-      top: 45px;
-
+      top: 40px;
       &-mid {
         &__rank {
           display: block;
@@ -540,10 +517,17 @@ $mainSelected: #1b1824;
           transform: scale(0.9);
         }
 
-        &-market-cap {
+        &-market-cap,
+        &-24h-low {
           display: none;
         }
       }
+    }
+
+    &-chart {
+      height: 300px;
+      top: 217px;
+      left: -24px;
     }
   }
 }

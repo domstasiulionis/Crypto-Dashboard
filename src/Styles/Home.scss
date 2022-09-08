@@ -8,14 +8,14 @@
 
   .coins-container {
     overflow-y: hidden;
-    margin: 70px -30px 0px 110px;
+    margin: 70px -19px 0px 110px;
   }
 }
 
-@media (max-width: 1370px) {
+@media (max-width: 1025px) {
   .home-container {
     .coins-container {
-      margin: 70px -30px 20px -3px;
+      margin: 70px -21px 20px -3px;
     }
   }
 }
