@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, lazy, Suspense } from "react";
+import ReactPaginate from "react-paginate";
 
 import "../Styles/Home.scss";
 
@@ -7,16 +8,8 @@ import SidebarIconContext from "../Context/SidebarIconContext";
 import Loader from "../Components/Loader";
 
 const CoinCard = lazy(() => import("../Components/CoinCard"));
-const Pagination = lazy(() => import("../Components/Pagination"));
 
-const Home = ({
-  hamburgerMenu,
-  setHamburgerMenu,
-  coins,
-  coinsPerPage,
-  totalCoins,
-  paginate,
-}) => {
+const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
   const [searchText, setSearchText] = useState("");
   const { activeIcon, setActiveIcon } = useContext(SidebarIconContext);
 
@@ -29,6 +22,32 @@ const Home = ({
     return converted.toLocaleString();
   };
 
+  const priceFormatter = (str) => {
+    const value = str * 1;
+    if (value > 0.01) {
+      return value.toLocaleString();
+    } else {
+      return value.toPrecision(3);
+    }
+  };
+
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 25;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(coins.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(coins.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, coins]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % coins.length;
+    setItemOffset(newOffset);
+    window.scrollTo({ top: 0, left: 0 });
+  };
+
   return (
     <div className="home-container">
       <HomeNavBar
@@ -38,8 +57,8 @@ const Home = ({
       />
       <div className="coins-container">
         <Suspense fallback={<Loader />}>
-          {coins &&
-            coins
+          {currentItems &&
+            currentItems
               .filter((value) => {
                 if (searchText === "") {
                   return value;
@@ -57,17 +76,26 @@ const Home = ({
                   name={coin.name}
                   short={coin.symbol}
                   image={coin.iconUrl}
-                  price={converter(coin.price)}
+                  price={priceFormatter(coin.price)}
                   change7d={Math.round(coin.change * 100) / 100}
                   rank={coin.rank}
                   priceChart7d={coin.sparkline}
                   marketCap={converter(coin.marketCap)}
                 />
               ))}
-          <Pagination
-            coinsPerPage={coinsPerPage}
-            totalCoins={totalCoins}
-            paginate={paginate}
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            containerClassName="pagination"
+            pageLinkClassName="pagination__button"
+            previousLinkClassName="pagination__arrow"
+            nextLinkClassName="pagination__arrow"
+            activeLinkClassName="pagination--active"
           />
         </Suspense>
       </div>

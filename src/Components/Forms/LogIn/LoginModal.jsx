@@ -12,6 +12,7 @@ const SignModal = ({ show }) => {
   const [changeToSignUp, setchangeToSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { signIn } = UserAuth();
   const { setStatus } = useContext(LoginFormContext);
 
@@ -23,6 +24,7 @@ const SignModal = ({ show }) => {
       setStatus("logged");
     } catch (e) {
       console.log(e.message);
+      setError(e.message);
     }
   };
 
@@ -56,6 +58,11 @@ const SignModal = ({ show }) => {
                     type="password"
                   />
                 </div>
+                {error === "Firebase: Error (auth/user-not-found)." ? (
+                  <p className="login-error">Incorrect username/password</p>
+                ) : (
+                  ""
+                )}
                 <div className="modal-form-elements">
                   <button className="modal-form-elements__login-btn">
                     Log in

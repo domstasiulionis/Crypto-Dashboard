@@ -24,7 +24,7 @@ const SignUpModal = ({ show }) => {
       setStatus("logged");
     } catch (e) {
       setError(e.message);
-      console.log(error);
+      console.log(e.message);
     }
   };
 
@@ -56,6 +56,13 @@ const SignUpModal = ({ show }) => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+                {error === "Firebase: Error (auth/user-not-found)." ? (
+                  <p className="login-error">
+                    Password must be at least 6 characters
+                  </p>
+                ) : (
+                  ""
+                )}
                 <div className="modal-form-elements">
                   <button className="modal-form-elements__signup-btn">
                     Sign up

@@ -23,12 +23,6 @@ function App() {
   const [coinsPerPage] = useState(25);
   const [showModal, setShowModal] = useState(false);
 
-  const indexOfLastCoin = currentPage * coinsPerPage;
-  const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
-  const currentPosts = coins.slice(indexOfFirstCoin, indexOfLastCoin);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   const options = {
     method: "GET",
     url: "https://coinranking1.p.rapidapi.com/coins",
@@ -83,12 +77,9 @@ function App() {
                       path="/"
                       element={
                         <Home
-                          coins={currentPosts}
+                          coins={coins}
                           hamburgerMenu={hamburgerMenu}
                           setHamburgerMenu={setHamburgerMenu}
-                          coinsPerPage={coinsPerPage}
-                          totalCoins={coins.length}
-                          paginate={paginate}
                         />
                       }
                     />

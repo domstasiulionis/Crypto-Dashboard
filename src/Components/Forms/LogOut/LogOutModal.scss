@@ -118,3 +118,35 @@
     transform: scale(1);
   }
 }
+
+@media (max-width: 640px) {
+  .modal {
+    &-con {
+      &-content-logout {
+        width: 400px;
+        height: 300px;
+        .modal-form-elements-header {
+          &__title {
+            margin-top: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .modal {
+    &-con {
+      &-content-logout {
+        width: 300px;
+        height: 200px;
+        .modal-form-elements-header {
+          &__title {
+            margin-top: 0px;
+          }
+        }
+      }
+    }
+  }
+}

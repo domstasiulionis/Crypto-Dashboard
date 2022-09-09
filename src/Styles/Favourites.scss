@@ -53,10 +53,22 @@
   }
 }
 
+@media (max-width: 1105px) {
+  .no-coins {
+    transform: scale(0.9);
+  }
+}
+
 @media (max-width: 1025px) {
   .fav-container {
     .coins-container {
       margin: 70px -30px 20px -3px;
     }
+  }
+}
+
+@media (max-width: 525px) {
+  .no-coins {
+    transform: scale(0.8);
   }
 }
