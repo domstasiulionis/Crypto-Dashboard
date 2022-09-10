@@ -20,10 +20,8 @@ const SignModal = ({ show }) => {
     e.preventDefault();
     try {
       await signIn(email, password);
-      console.log("logged");
       setStatus("logged");
     } catch (e) {
-      console.log(e.message);
       setError(e.message);
     }
   };
@@ -36,7 +34,7 @@ const SignModal = ({ show }) => {
           <div className="modal-con">
             <div className="modal-con-content">
               <form onSubmit={handleSubmit}>
-                <div className="close-icon" onClick={show}>
+                <div className="close-icon-login" onClick={show}>
                   <MdOutlineClose size={30} />
                 </div>
                 <h2 className="login-title">

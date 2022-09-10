@@ -12,7 +12,7 @@ const SignUpModal = ({ show }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { status, setStatus } = useContext(LoginFormContext);
+  const { setStatus } = useContext(LoginFormContext);
   const { signUp } = UserAuth();
   const { signIn } = UserAuth();
 
@@ -24,7 +24,6 @@ const SignUpModal = ({ show }) => {
       setStatus("logged");
     } catch (e) {
       setError(e.message);
-      console.log(e.message);
     }
   };
 
@@ -36,7 +35,7 @@ const SignUpModal = ({ show }) => {
           <div className="modal-con">
             <div className="modal-con-content">
               <form onSubmit={handleSubmit}>
-                <div className="close-icon" onClick={show}>
+                <div className="close-icon-signup" onClick={show}>
                   <MdOutlineClose size={30} />
                 </div>
                 <h2 className="signup-title">SIGN UP</h2>

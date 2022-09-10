@@ -75,7 +75,7 @@
     user-select: none;
   }
 
-  .close-icon {
+  .close-icon-login {
     position: absolute;
     top: 20px;
     left: 20px;
@@ -174,8 +174,9 @@
         margin: 5px 0 75px 0;
       }
 
-      .close-icon {
-        display: none;
+      .close-icon-login {
+        top: -90px;
+        left: -70px;
       }
 
       &-content {
@@ -194,6 +195,11 @@
     &-con {
       .login-title {
         margin: -20px 0 55px 0;
+      }
+
+      .close-icon-login {
+        top: -110px;
+        left: -30px;
       }
 
       &-content {

@@ -8,7 +8,7 @@ import { MdOutlineClose } from "react-icons/md";
 
 const SignModal = ({ show }) => {
   const { user, logout } = UserAuth();
-  const { status, setStatus } = useContext(LoginFormContext);
+  const { setStatus } = useContext(LoginFormContext);
 
   const handleSignOut = async (e) => {
     e.preventDefault();
@@ -22,24 +22,26 @@ const SignModal = ({ show }) => {
   };
 
   return (
-    <div className="modal">
-      <div className="modal-overlay" onClick={show} />
-      <div className="modal-con">
-        <div className="modal-con-content-logout">
+    <div className="modal-logout">
+      <div className="modal-logout-overlay" onClick={show} />
+      <div className="modal-logout-con">
+        <div className="modal-logout-con-content-logout">
           <form>
-            <div className="close-icon" onClick={show}>
+            <div className="close-icon-logout" onClick={show}>
               <MdOutlineClose size={30} />
             </div>
-            <div className="modal-form-elements-header">
-              <h2 className="modal-form-elements-header__title">Logged in</h2>
-              <p className="modal-form-elements-header__email">
+            <div className="modal-logout-form-elements-header">
+              <h2 className="modal-logout-form-elements-header__title">
+                Logged in
+              </h2>
+              <p className="modal-logout-form-elements-header__email">
                 {user?.email === "" ? "Loading..." : user?.email}
               </p>
             </div>
-            <div className="modal-form-elements">
+            <div className="modal-logout-form-elements">
               <button
                 onClick={handleSignOut}
-                className="modal-form-elements__logout-btn"
+                className="modal-logout-form-elements__logout-btn"
               >
                 Log out
               </button>
