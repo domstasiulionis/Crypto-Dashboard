@@ -12,9 +12,9 @@ import {
 } from "chart.js";
 import axios from "axios";
 
-import DotsLoader from "./DotsLoader";
+import DotsLoader from "../Loaders/DotsLoader";
 
-import "../Styles/Chart.scss";
+import "./Chart.scss";
 
 ChartJS.register(
   CategoryScale,

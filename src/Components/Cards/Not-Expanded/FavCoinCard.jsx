@@ -1,18 +1,18 @@
 import { useState, useEffect, useContext, lazy, Suspense } from "react";
 import { Sparklines, SparklinesLine } from "react-sparklines";
-import { UserAuth } from "../Context/AuthContext";
-import { db } from "../firebase";
-import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
+import { db } from "../../../firebase";
+import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 
-import "../Styles/CoinCard.scss";
+import "./CoinCard.scss";
 
-import FavCoinsContext from "../Context/FavCoinsContext";
+import { UserAuth } from "../../../Context/AuthContext";
+import FavCoinsContext from "../../../Context/FavCoinsContext";
 
 import { AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
 import { BiChevronRight } from "react-icons/bi";
 
-const ExpandedCoinCard = lazy(() => import("./ExpandedCoinCard"));
+const ExpandedCoinCard = lazy(() => import("../Expanded/ExpandedCoinCard"));
 
 const CoinCard = ({
   coinid,
@@ -27,34 +27,12 @@ const CoinCard = ({
   marketCap,
 }) => {
   const [selectedTime, setSelectedTime] = useState("7d");
-  const [isFav, setIsFav] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   const { user } = UserAuth();
   const { favCoins, setFavCoins } = useContext(FavCoinsContext);
 
   const coinPath = doc(db, "users", `${user?.email}`);
-  const saveCoin = async () => {
-    if (user?.email) {
-      setIsFav(true);
-      await updateDoc(coinPath, {
-        favs: arrayUnion({
-          key: coinid,
-          coinid: coinid,
-          name: name,
-          short: short,
-          image: image,
-          price: price,
-          change7d: change7d,
-          rank: rank,
-          priceChart7d: priceChart7d,
-          marketCap: marketCap,
-        }),
-      });
-    } else {
-      alert("Please sign in to save a coin to your favourites");
-    }
-  };
 
   const deleteCoin = async (passedid) => {
     try {

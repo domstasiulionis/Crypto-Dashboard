@@ -1,20 +1,19 @@
 import { useState, useContext } from "react";
-import SidebarIconContext from "../Context/SidebarIconContext";
 import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
+
+import SidebarIconContext from "../../../Context/SidebarIconContext";
+
 import "tippy.js/dist/tippy.css";
+import "./Sidebar.scss";
 
-import "../Styles/Sidebar.scss";
-
-// Icons
 import { IoHome, IoHomeOutline } from "react-icons/io5";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BsFillPersonFill, BsPerson } from "react-icons/bs";
 
-// Images
-import logo from "../Assets/moon-logo.png";
+import logo from "../../../Assets/moon-logo.png";
 
-import FormMain from "./Forms/FormMain";
+import FormMain from "../../Forms/FormMain";
 
 const Sidebar = ({ showModal, setShowModal }) => {
   const [popUp, setPopUp] = useState(false);

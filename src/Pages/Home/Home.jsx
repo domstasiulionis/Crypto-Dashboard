@@ -1,13 +1,15 @@
 import { useState, useEffect, useContext, lazy, Suspense } from "react";
 import ReactPaginate from "react-paginate";
 
-import "../Styles/Home.scss";
+import "./Home.scss";
 
-import HomeNavBar from "../Components/HomeNavBar";
-import SidebarIconContext from "../Context/SidebarIconContext";
-import Loader from "../Components/Loader";
+import HomeNavBar from "../../Components/Menus/HomePage/HomeNavBar";
+import SidebarIconContext from "../../Context/SidebarIconContext";
+import Loader from "../../Components/Loaders/Loader";
 
-const CoinCard = lazy(() => import("../Components/CoinCard"));
+const CoinCard = lazy(() =>
+  import("../../Components/Cards/Not-Expanded/CoinCard")
+);
 
 const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
   const [searchText, setSearchText] = useState("");

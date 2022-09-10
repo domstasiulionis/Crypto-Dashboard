@@ -1,11 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import FavNavBar from "../Components/FavNavBar";
-import FavCoinCard from "../Components/FavCoinCard";
-import FavCoinsContext from "../Context/FavCoinsContext";
-import SidebarIconContext from "../Context/SidebarIconContext";
 
-import "../Styles/Favourites.scss";
+import FavNavBar from "../../Components/Menus/FavPage/FavNavBar";
+import FavCoinCard from "../../Components/Cards/Not-Expanded/FavCoinCard";
+
+import FavCoinsContext from "../../Context/FavCoinsContext";
+import SidebarIconContext from "../../Context/SidebarIconContext";
+
+import "./Favourites.scss";
 
 const Favourites = ({ hamburgerMenu, setHamburgerMenu }) => {
   const [searchText, setSearchText] = useState("");

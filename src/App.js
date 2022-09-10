@@ -4,23 +4,20 @@ import axios from "axios";
 
 import "./Styles/App.scss";
 
-import Sidebar from "./Components/Sidebar";
-import HamburgerMenu from "./Components/HamburgerMenu";
+import Sidebar from "./Components/Menus/Side/Sidebar";
+import HamburgerMenu from "./Components/Menus/Hamburger/HamburgerMenu";
 
 import { AuthContextProvider } from "./Context/AuthContext";
 import { LoginStatusProvider } from "./Context/LoginFormContext";
 import { FavCoinsProvider } from "./Context/FavCoinsContext";
 import { SidebarIconProvider } from "./Context/SidebarIconContext";
 
-const Home = lazy(() => import("./Pages/Home"));
-const Favourites = lazy(() => import("./Pages/Favourites"));
+const Home = lazy(() => import("./Pages/Home/Home"));
+const Favourites = lazy(() => import("./Pages/Favourites/Favourites"));
 
 function App() {
   const [coins, setCoins] = useState([]);
-  const [update, setUpdate] = useState(0);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [coinsPerPage] = useState(25);
   const [showModal, setShowModal] = useState(false);
 
   const options = {

@@ -1,18 +1,18 @@
 import { useState, useEffect, useContext, lazy, Suspense } from "react";
 import { Sparklines, SparklinesLine } from "react-sparklines";
-import { UserAuth } from "../Context/AuthContext";
-import { db } from "../firebase";
+import { UserAuth } from "../../../Context/AuthContext";
+import { db } from "../../../firebase";
 import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
 
-import "../Styles/CoinCard.scss";
+import "./CoinCard.scss";
 
-import FavCoinsContext from "../Context/FavCoinsContext";
+import FavCoinsContext from "../../../Context/FavCoinsContext";
 
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
 import { BiChevronRight } from "react-icons/bi";
 
-const ExpandedCoinCard = lazy(() => import("./ExpandedCoinCard"));
+const ExpandedCoinCard = lazy(() => import("../Expanded/ExpandedCoinCard"));
 
 const CoinCard = ({
   coinid,
@@ -31,7 +31,7 @@ const CoinCard = ({
   const [expanded, setExpanded] = useState(false);
 
   const { user } = UserAuth();
-  const { favCoins, setFavCoins } = useContext(FavCoinsContext);
+  const { setFavCoins } = useContext(FavCoinsContext);
 
   const coinPath = doc(db, "users", `${user?.email}`);
   const saveCoin = async () => {

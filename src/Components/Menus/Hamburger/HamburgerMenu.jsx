@@ -1,15 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import LoginFormContext from "../Context/LoginFormContext";
 
 import { MdOutlineClose } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 import { AiFillStar } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 
-import logo from "../Assets/moon-logo.png";
+import logo from "../../../Assets/moon-logo.png";
 
-import "../Styles/HamburgerMenu.scss";
+import "./HamburgerMenu.scss";
 
 const HamburgerMenu = ({
   hamburgerMenu,

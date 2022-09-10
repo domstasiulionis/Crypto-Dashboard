@@ -1,7 +1,7 @@
 import { IoHome } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
 
-import "../Styles/HomeNavBar.scss";
+import "./HomeNavBar.scss";
 
 const HomeNavBar = ({ setHamburgerMenu, setSearchText }) => {
   return (

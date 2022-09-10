@@ -4,12 +4,12 @@ import axios from "axios";
 import Tippy from "@tippyjs/react";
 
 import "tippy.js/dist/tippy.css";
-import "../Styles/ExpandedCoinCard.scss";
+import "./ExpandedCoinCard.scss";
 
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { TbWorld } from "react-icons/tb";
 
-const Chart = lazy(() => import("./Chart"));
+const Chart = lazy(() => import("../../Charts/Chart"));
 
 const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
   const [coin, setCoin] = useState({});

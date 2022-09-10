@@ -1,5 +1,5 @@
 import "tippy.js/dist/tippy.css";
-import "../Styles/FavNavBar.scss";
+import "./FavNavBar.scss";
 
 import { BsSearch } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";

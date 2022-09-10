@@ -3,7 +3,7 @@ import "tippy.js/dist/tippy.css";
 
 import { FiRefreshCw } from "react-icons/fi";
 
-import "../Styles/DotsLoader.scss";
+import "./DotsLoader.scss";
 
 const DotsLoader = ({ setExpanded }) => {
   const refreshHandler = () => {
