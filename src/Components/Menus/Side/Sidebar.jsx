@@ -71,7 +71,7 @@ const Sidebar = ({ showModal, setShowModal }) => {
             theme="custom"
             content="Favourites"
           >
-            <Link to="/Favourites">
+            <Link to="/favourites">
               {activeIcon === "favourites" ? (
                 <div className="icon-container--active">
                   <AiFillStar

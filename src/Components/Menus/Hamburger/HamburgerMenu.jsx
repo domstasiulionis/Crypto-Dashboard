@@ -61,7 +61,7 @@ const HamburgerMenu = ({ hamburgerMenu, setHamburgerMenu, setShowModal }) => {
                 </div>
               </Link>
               <Link
-                to="/Favourites"
+                to="/favourites"
                 style={{ textDecoration: "none" }}
                 onClick={toggleSlide}
               >

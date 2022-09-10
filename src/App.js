@@ -82,7 +82,7 @@ function App() {
                     />
                     <Route
                       exact
-                      path="/Favourites"
+                      path="/favourites"
                       element={
                         <Favourites
                           hamburgerMenu={hamburgerMenu}
