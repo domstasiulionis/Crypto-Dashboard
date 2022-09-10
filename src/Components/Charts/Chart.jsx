@@ -11,7 +11,6 @@ import {
   Legend,
 } from "chart.js";
 import axios from "axios";
-
 import DotsLoader from "../Loaders/DotsLoader";
 
 import "./Chart.scss";
@@ -172,7 +171,11 @@ const Chart = ({ coinid, setExpanded }) => {
             data={{
               labels: historicData.map((coin) => {
                 let date = new Date(coin?.timestamp * 1000);
-                return date.toLocaleDateString();
+                let time =
+                  date.getHours() > 12
+                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                    : `${date.getHours()}:${date.getMinutes()} AM`;
+                return days === "24h" ? time : date.toLocaleDateString();
               }),
 
               datasets: [
