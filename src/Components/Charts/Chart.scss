@@ -153,6 +153,14 @@ $mainSelected: #1b1824;
   }
 }
 
+@media (max-width: 495px) {
+  .chart {
+    .line-chart {
+      height: 260px;
+    }
+  }
+}
+
 @media (max-width: 450px) {
   .chart {
     #chart-1y {
