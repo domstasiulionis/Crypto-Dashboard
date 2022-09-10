@@ -7,7 +7,7 @@ const Pagination = ({ coinsPerPage, totalCoins, paginate }) => {
     pageNumbers.push(i);
   }
 
-  const pag = (number) => {
+  const top = (number) => {
     window.scrollTo({ top: 0, left: 0 });
     paginate(number);
   };
@@ -17,7 +17,7 @@ const Pagination = ({ coinsPerPage, totalCoins, paginate }) => {
       <ul className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className="pagination__item">
-            <button className="pagination__button" onClick={() => pag(number)}>
+            <button className="pagination__button" onClick={() => top(number)}>
               {number}
             </button>
           </li>
