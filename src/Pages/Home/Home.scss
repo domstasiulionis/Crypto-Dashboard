@@ -40,13 +40,14 @@
   }
 
   &__arrow {
-    padding: 5px 10px;
-    border-radius: 50%;
-    background-color: transparent;
-    border: 1px solid #443850;
-    color: white;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
+    display: none;
+    // padding: 5px 10px;
+    // border-radius: 50%;
+    // background-color: transparent;
+    // border: 1px solid #443850;
+    // color: white;
+    // transition: all 0.2s ease-in-out;
+    // cursor: pointer;
 
     &:hover {
       background-color: #705092;
