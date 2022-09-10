@@ -198,6 +198,12 @@
   }
 }
 
+@media (max-width: 1025px) {
+  .loader-container {
+    top: 85px;
+  }
+}
+
 @media (max-width: 580px) {
   .loader-container {
     .info {

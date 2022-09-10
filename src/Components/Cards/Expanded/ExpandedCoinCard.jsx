@@ -50,6 +50,25 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
 
       {/* Price - small screens */}
       <div className="expanded-card-res-price-stats">
+        <div className="expanded-card-res-price-stats__website">
+          {coin?.links ? (
+            <div className="expanded-card-price-stats-icons-con">
+              <a href={coin?.links[0]?.url} target="_blank" rel="noreferrer">
+                <TbWorld className="expanded-card-price-stats-icons__icon" />
+              </a>
+              <a
+                href={coin?.links[0]?.url}
+                target="_blank"
+                rel="noreferrer"
+                className="expanded-card-price-stats-icons__website"
+              >
+                Website
+              </a>
+            </div>
+          ) : (
+            <p className="expanded-card-price-stats-icons-qmark">????</p>
+          )}
+        </div>
         <div className="expanded-card-res-price">
           <p className="expanded-card-res-price-stats-price__price">${price}</p>
           <Tippy

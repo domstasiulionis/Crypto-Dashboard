@@ -110,6 +110,12 @@ $mainSelected: #1b1824;
       margin-left: 30px;
     }
 
+    &__website {
+      position: absolute;
+      top: -45px;
+      right: 20px;
+    }
+
     &-price {
       display: flex;
       flex-direction: column;
@@ -351,7 +357,7 @@ $mainSelected: #1b1824;
     }
 
     &-chart {
-      height: 310px;
+      height: 313px;
       top: 205px;
       left: -24px;
     }
@@ -466,6 +472,10 @@ $mainSelected: #1b1824;
 
     &-res-price-stats {
       top: 20px;
+
+      &__website {
+        display: none;
+      }
     }
 
     &-chart {
