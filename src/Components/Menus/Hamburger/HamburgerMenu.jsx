@@ -10,12 +10,7 @@ import logo from "../../../Assets/moon-logo.png";
 
 import "./HamburgerMenu.scss";
 
-const HamburgerMenu = ({
-  hamburgerMenu,
-  setHamburgerMenu,
-  showModal,
-  setShowModal,
-}) => {
+const HamburgerMenu = ({ hamburgerMenu, setHamburgerMenu, setShowModal }) => {
   const [open, setOpen] = useState(hamburgerMenu);
 
   const toggleSlide = () => {

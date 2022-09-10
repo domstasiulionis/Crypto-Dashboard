@@ -37,3 +37,21 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 1025px) {
+  .lds-ring {
+    display: inline-block;
+    position: absolute;
+    top: 47%;
+    left: 46.5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .lds-ring {
+    display: inline-block;
+    position: absolute;
+    top: 47%;
+    left: 43%;
+  }
+}

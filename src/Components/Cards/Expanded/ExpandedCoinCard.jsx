@@ -75,8 +75,7 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
             placement="right"
             delay={300}
             theme="custom"
-            content="24h "
-            Change
+            content="24h Change"
           >
             <div
               className={`expanded-card-res-price-stats-price-change ${
