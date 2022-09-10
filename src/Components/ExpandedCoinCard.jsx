@@ -1,10 +1,9 @@
 import { useEffect, useState, lazy, Suspense } from "react";
-import { Link } from "react-router-dom";
-import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css";
 import DOMPurify from "dompurify";
 import axios from "axios";
+import Tippy from "@tippyjs/react";
 
+import "tippy.js/dist/tippy.css";
 import "../Styles/ExpandedCoinCard.scss";
 
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
@@ -94,33 +93,33 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
             </p>
           </div>
           {/* All Time High*/}
-          <div className="expanded-card-res-price-stats-mid-24h-volume">
-            <div className="expanded-card-res-price-stats-mid-24h-volume__total">
+          <div className="expanded-card-res-price-stats-mid-all-time">
+            <div className="expanded-card-res-price-stats-mid-all-time__total">
               {coin?.allTimeHigh?.price
                 ? "$" + converter(coin?.allTimeHigh?.price)
                 : "????"}
             </div>
-            <p className="expanded-card-res-price-stats-mid-24h-volume__text">
+            <p className="expanded-card-res-price-stats-mid-all-time__text">
               All Time High
             </p>
           </div>
           {/* Diluted MC */}
-          <div className="expanded-card-res-price-stats-mid-24h-high">
-            <div className="expanded-card-res-price-stats-mid-24h-high__total">
+          <div className="expanded-card-res-price-stats-mid-diluted">
+            <div className="expanded-card-res-price-stats-mid-diluted__total">
               {coin?.fullyDilutedMarketCap
                 ? "$" + converter(coin?.fullyDilutedMarketCap)
                 : "????"}
             </div>
-            <p className="expanded-card-res-price-stats-mid-24h-high__text">
+            <p className="expanded-card-res-price-stats-mid-diluted__text">
               Fully Diluted MC
             </p>
           </div>
           {/* 24h Volume */}
-          <div className="expanded-card-res-price-stats-mid-24h-low">
-            <div className="expanded-card-res-price-stats-mid-24h-low__total">
+          <div className="expanded-card-res-price-stats-mid-24h-volume">
+            <div className="expanded-card-res-price-stats-mid-24h-volume__total">
               {coin["24hVolume"] ? "$" + converter(coin["24hVolume"]) : "????"}
             </div>
-            <p className="expanded-card-res-price-stats-mid-24h-low__text">
+            <p className="expanded-card-res-price-stats-mid-24h-volume__text">
               24h Volume
             </p>
           </div>
@@ -176,36 +175,36 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
               All Time High
             </p>
           </div>
-          {/* 24h High */}
-          <div className="expanded-card-price-stats-side-24h-high">
-            <div className="expanded-card-price-stats-side-24h-high__total">
+          {/* Fully Diluted MC */}
+          <div className="expanded-card-price-stats-side-diluted">
+            <div className="expanded-card-price-stats-side-diluted__total">
               {coin?.fullyDilutedMarketCap
                 ? "$" + converter(coin?.fullyDilutedMarketCap)
                 : "????"}
             </div>
-            <p className="expanded-card-price-stats-side-24h-high__text">
+            <p className="expanded-card-price-stats-side-diluted__text">
               Fully Diluted MC
             </p>
           </div>
           {/* 24h Volume */}
-          <div className="expanded-card-price-stats-side-24h-low">
-            <div className="expanded-card-price-stats-side-24h-low__total">
+          <div className="expanded-card-price-stats-side-24h-volume">
+            <div className="expanded-card-price-stats-side-24h-volume__total">
               {coin["24hVolume"] ? "$" + converter(coin["24hVolume"]) : "????"}
             </div>
-            <p className="expanded-card-price-stats-side-24h-low__text">
+            <p className="expanded-card-price-stats-side-24h-volume__text">
               24h Volume
             </p>
           </div>
           {/* Tier */}
-          <div className="expanded-card-price-stats-side-24h-low">
-            <div className="expanded-card-price-stats-side-24h-low__total">
+          <div className="expanded-card-price-stats-side-tier">
+            <div className="expanded-card-price-stats-side-tier__total">
               {coin.tier ? coin.tier : "????"}
             </div>
-            <p className="expanded-card-price-stats-side-24h-low__text">Tier</p>
+            <p className="expanded-card-price-stats-side-tier__text">Tier</p>
           </div>
           {/* Desc */}
-          <div className="expanded-card-price-stats-side-24h-low">
-            <div className="expanded-card-price-stats-side-24h-low__total">
+          <div className="expanded-card-price-stats-side-desc">
+            <div className="expanded-card-price-stats-side-desc__total">
               <div>
                 <Tippy
                   placement="right"
@@ -229,7 +228,7 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
                 </Tippy>
               </div>
             </div>
-            <p className="expanded-card-price-stats-side-24h-low__text">
+            <p className="expanded-card-price-stats-side-desc__text">
               About Coin
             </p>
           </div>
@@ -237,12 +236,13 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
         <div className="expanded-card-price-stats-icons">
           {coin?.links ? (
             <div className="expanded-card-price-stats-icons-con">
-              <a href={coin?.links[0]?.url} target="_blank">
+              <a href={coin?.links[0]?.url} target="_blank" rel="noreferrer">
                 <TbWorld className="expanded-card-price-stats-icons__icon" />
               </a>
               <a
                 href={coin?.links[0]?.url}
                 target="_blank"
+                rel="noreferrer"
                 className="expanded-card-price-stats-icons__website"
               >
                 Website

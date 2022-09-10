@@ -165,11 +165,11 @@ $mainSelected: #1b1824;
       }
 
       &-market-cap,
+      &-all-time,
+      &-diluted,
       &-24h-volume,
-      &-24h-high,
-      &-24h-low,
-      &-hashing,
-      &-trust {
+      &-tier,
+      &-desc {
         @include container-side();
         transform: scale(0.9);
 
@@ -255,11 +255,11 @@ $mainSelected: #1b1824;
       border-radius: 20px;
 
       &-market-cap,
+      &-all-time,
+      &-diluted,
       &-24h-volume,
-      &-24h-high,
-      &-24h-low,
-      &-hashing,
-      &-trust {
+      &-tier,
+      &-desc {
         @include container-side();
 
         &__total {
@@ -397,11 +397,11 @@ $mainSelected: #1b1824;
         transform: scale(0.9);
 
         &-market-cap,
+        &-all-time,
+        &-diluted,
         &-24h-volume,
-        &-24h-high,
-        &-24h-low,
-        &-hashing,
-        &-trust {
+        &-tier,
+        &-desc {
           &__total {
             transform: scale(0.9);
           }
@@ -430,7 +430,7 @@ $mainSelected: #1b1824;
 
     &-res-price-stats {
       &-mid {
-        &-24h-volume {
+        &-all-time {
           display: none;
         }
       }
@@ -442,11 +442,11 @@ $mainSelected: #1b1824;
   .expanded-card {
     &-res-price-stats {
       &-mid {
-        &-24h-high {
+        &-diluted {
           display: none;
         }
         &-market-cap,
-        &-24h-low {
+        &-24h-volume {
           transform: scale(1);
         }
       }
@@ -486,7 +486,7 @@ $mainSelected: #1b1824;
   .expanded-card {
     &-res-price-stats {
       &-mid {
-        &-24h-low {
+        &-24h-volume {
           display: none;
         }
       }
@@ -517,7 +517,7 @@ $mainSelected: #1b1824;
         }
 
         &-market-cap,
-        &-24h-low {
+        &-24h-volume {
           display: none;
         }
       }

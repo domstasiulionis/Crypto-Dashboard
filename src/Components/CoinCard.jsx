@@ -78,11 +78,11 @@ const CoinCard = ({
         }`}
       >
         <div className="coin-card">
-          <div className="coin__star" onClick={saveCoin}>
+          <div className="coin__star">
             {isFav === true ? (
               <AiFillStar className="fav" />
             ) : (
-              <AiOutlineStar className="fav--empty" />
+              <AiOutlineStar className="fav--empty" onClick={saveCoin} />
             )}
           </div>
 
@@ -135,7 +135,7 @@ const CoinCard = ({
                 <p className="coin-market-cap__market-cap-text">Market Cap</p>
               </div>
 
-              <div className="time" id="time-1h" onClick={changeTo7d}>
+              <div className="time" onClick={changeTo7d}>
                 <div
                   className={`${
                     change7d > 0 ? "time__percentage" : "time__percentage--red"
