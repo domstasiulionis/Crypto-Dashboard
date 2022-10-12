@@ -1,17 +1,17 @@
-import Tippy from "@tippyjs/react";
+// import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
-import { FiRefreshCw } from "react-icons/fi";
+// import { FiRefreshCw } from "react-icons/fi";
 
 import "./DotsLoader.scss";
 
 const DotsLoader = ({ setExpanded }) => {
-  const refreshHandler = () => {
-    setExpanded(false);
-    setTimeout(() => {
-      setExpanded(true);
-    }, 300);
-  };
+  // const refreshHandler = () => {
+  //   setExpanded(false);
+  //   setTimeout(() => {
+  //     setExpanded(true);
+  //   }, 300);
+  // };
 
   return (
     <div className="loader-container">
@@ -19,7 +19,7 @@ const DotsLoader = ({ setExpanded }) => {
       <p className="fetching-msg">
         Fetching data, <b>please do not refresh the page</b>
       </p>
-      <div className="dont-ref">
+      {/* <div className="dont-ref">
         <p>Waiting for a while?</p>
         <Tippy
           placement="right"
@@ -47,7 +47,7 @@ const DotsLoader = ({ setExpanded }) => {
         >
           <div className="info">i</div>
         </Tippy>
-      </div>
+      </div> */}
     </div>
   );
 };
