@@ -177,6 +177,7 @@ const CoinCard = ({
                 rank={rank}
                 coinid={coinid}
                 change7d={change7d}
+                btc={btc}
               />
             </Suspense>
           )}

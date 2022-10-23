@@ -11,7 +11,14 @@ import { TbWorld } from "react-icons/tb";
 
 const Chart = lazy(() => import("../../Charts/Chart"));
 
-const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
+const ExpandedCoinCard = ({
+  price,
+  setExpanded,
+  marketCap,
+  rank,
+  coinid,
+  btc,
+}) => {
   const [coin, setCoin] = useState({});
 
   const options = {
@@ -213,12 +220,14 @@ const ExpandedCoinCard = ({ price, setExpanded, marketCap, rank, coinid }) => {
               24h Volume
             </p>
           </div>
-          {/* Tier */}
-          <div className="expanded-card-price-stats-side-tier">
-            <div className="expanded-card-price-stats-side-tier__total">
-              {coin.tier ? coin.tier : "????"}
+          {/* Btc */}
+          <div className="expanded-card-price-stats-side-btc">
+            <div className="expanded-card-price-stats-side-btc__total">
+              ${btc}
             </div>
-            <p className="expanded-card-price-stats-side-tier__text">Tier</p>
+            <p className="expanded-card-price-stats-side-btc__text">
+              BTC Price
+            </p>
           </div>
           {/* Desc */}
           <div className="expanded-card-price-stats-side-desc">

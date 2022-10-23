@@ -175,7 +175,7 @@ $mainSelected: #1b1824;
       &-all-time,
       &-diluted,
       &-24h-volume,
-      &-tier,
+      &-btc,
       &-desc {
         @include container-side();
         transform: scale(0.9);
@@ -265,7 +265,7 @@ $mainSelected: #1b1824;
       &-all-time,
       &-diluted,
       &-24h-volume,
-      &-tier,
+      &-btc,
       &-desc {
         @include container-side();
 
