@@ -69,16 +69,11 @@ const Favourites = ({ hamburgerMenu, setHamburgerMenu }) => {
                   image={coin.image}
                   price={coin.price}
                   changePrice={coin.changePrice}
-                  change1h={coin.change1h}
-                  change24h={coin.change24h}
                   change7d={coin.change7d}
                   rank={coin.rank}
-                  priceChart1h={coin.priceChart1h}
-                  priceChart24h={coin.priceChart24h}
                   priceChart7d={coin.priceChart7d}
                   marketCap={coin.marketCap}
-                  low24h={coin.low24h}
-                  high24h={coin.high24h}
+                  btc={coin.btc}
                 />
               ))}
           </div>

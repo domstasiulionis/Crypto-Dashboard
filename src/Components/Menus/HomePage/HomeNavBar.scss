@@ -208,14 +208,10 @@ $mainFont: "PT Sans", sans-serif;
   }
 }
 
-@media (max-width: 495px) {
+@media (max-width: 510px) {
   .top-nav {
     &-left {
       &__title {
-        display: none;
-      }
-
-      &__icon {
         display: none;
       }
 

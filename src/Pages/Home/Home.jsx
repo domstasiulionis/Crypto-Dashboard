@@ -15,6 +15,11 @@ const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
   const [searchText, setSearchText] = useState("");
   const { activeIcon, setActiveIcon } = useContext(SidebarIconContext);
 
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 25;
+
   useEffect(() => {
     setActiveIcon("home");
   }, [activeIcon, setActiveIcon]);
@@ -32,11 +37,6 @@ const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
       return value.toPrecision(3);
     }
   };
-
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 25;
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -83,6 +83,7 @@ const Home = ({ hamburgerMenu, setHamburgerMenu, coins }) => {
                   rank={coin.rank}
                   priceChart7d={coin.sparkline}
                   marketCap={converter(coin.marketCap)}
+                  btc={priceFormatter(coin.btcPrice)}
                 />
               ))}
           <ReactPaginate

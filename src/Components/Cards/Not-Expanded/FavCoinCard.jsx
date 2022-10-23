@@ -25,6 +25,7 @@ const CoinCard = ({
   priceChart7d,
   update,
   marketCap,
+  btc,
 }) => {
   const [selectedTime, setSelectedTime] = useState("7d");
   const [expanded, setExpanded] = useState(false);
@@ -120,6 +121,11 @@ const CoinCard = ({
               <div className="coin-market-cap">
                 <div className="coin-market-cap__market-cap">${marketCap}</div>
                 <p className="coin-market-cap__market-cap-text">Market Cap</p>
+              </div>
+
+              <div className="coin-btc">
+                <div className="coin-btc__price">${btc}</div>
+                <p className="coin-btc__text">BTC Price</p>
               </div>
 
               <div className="time" id="time-1h" onClick={changeTo7d}>
