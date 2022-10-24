@@ -11,11 +11,6 @@ export function LoginStatusProvider({ children }) {
     localStorage.setItem("status", status);
   }, [status]);
 
-  // useEffect(() => {
-  //   const data = localStorage.getItem("status");
-  //   if (data !== null) setStatus(JSON.parse(data));
-  // }, []);
-
   return (
     <LoginFormContext.Provider value={{ status, setStatus }}>
       {children}

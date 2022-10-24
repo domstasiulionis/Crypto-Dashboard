@@ -30,6 +30,7 @@ const CoinCard = ({
   const [selectedTime, setSelectedTime] = useState("7d");
   const [isFav, setIsFav] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [snackbar, setSnackbar] = useState(false);
 
   const { user } = UserAuth();
   const { setFavCoins } = useContext(FavCoinsContext);
@@ -54,7 +55,7 @@ const CoinCard = ({
         }),
       });
     } else {
-      alert("Please sign in to save a coin to your favourites");
+      setSnackbar(true);
     }
   };
 
@@ -72,8 +73,23 @@ const CoinCard = ({
     setExpanded((expanded) => !expanded);
   };
 
+  const timeoutAlert = () => {
+    setTimeout(() => {
+      setSnackbar(false);
+    }, 7000);
+  };
+
   return (
     <>
+      {snackbar ? (
+        <div className="snackbar">
+          <p>Please log in to save a coin to your favourites</p>
+          <button onClick={() => setSnackbar(false)}>Ok</button>
+          {timeoutAlert()}
+        </div>
+      ) : (
+        ""
+      )}
       <div
         className={`expand-default ${
           expanded === true ? "expand-true" : "expand-false"

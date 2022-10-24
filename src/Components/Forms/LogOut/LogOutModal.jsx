@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../../Context/AuthContext";
 import { useContext } from "react";
 import LoginFormContext from "../../../Context/LoginFormContext";
@@ -9,6 +10,7 @@ import { MdOutlineClose } from "react-icons/md";
 const SignModal = ({ show }) => {
   const { user, logout } = UserAuth();
   const { setStatus } = useContext(LoginFormContext);
+  const navigate = useNavigate();
 
   const handleSignOut = async (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const SignModal = ({ show }) => {
       await logout();
       show();
       setStatus(false);
+      navigate("/");
     } catch (e) {
       console.log(e.message);
     }

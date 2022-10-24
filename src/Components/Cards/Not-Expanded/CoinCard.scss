@@ -47,6 +47,42 @@ $mainSelected: #1b1824;
   animation: close 0.3s ease-in-out forwards;
 }
 
+.snackbar {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  top: 40px;
+  right: 40px;
+  z-index: 999;
+  width: 500px;
+  height: 65px;
+  border-radius: 10px;
+  background-color: rgba($color: #960000, $alpha: 0.7);
+  color: white;
+  border: 2px solid rgb(48, 0, 0);
+  padding: 5px;
+  gap: 4px;
+  cursor: default;
+  animation: fadeIn 0.2s ease-in-out forwards;
+
+  button {
+    width: 100px;
+    background-color: white;
+    border: none;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgb(194, 194, 194);
+    }
+  }
+}
+
 @keyframes open {
   0% {
     height: 82px;
@@ -361,6 +397,10 @@ $mainSelected: #1b1824;
       margin-right: 10px;
     }
   }
+
+  .snackbar {
+    width: 400px;
+  }
 }
 
 @media (max-width: 1170px) {
@@ -454,6 +494,24 @@ $mainSelected: #1b1824;
   }
 }
 
+@media (max-width: 495px) {
+  .snackbar {
+    width: 280px;
+    font-size: 12px;
+
+    button {
+      width: 60px;
+      background-color: white;
+      border: none;
+      padding: 2px;
+      border-radius: 5px;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
 @media (max-width: 465px) {
   .time {
     display: none;
@@ -477,6 +535,10 @@ $mainSelected: #1b1824;
   .coin-overall {
     transform: scale(0.95);
     margin-top: 2px;
+  }
+
+  .snackbar {
+    right: 10px;
   }
 }
 
