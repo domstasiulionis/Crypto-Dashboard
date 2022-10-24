@@ -71,7 +71,10 @@ const CoinCard = ({
       >
         <div className="coin-card">
           <div className="coin__star">
-            <AiFillStar className="fav" onClick={() => deleteCoin(coinid)} />
+            <AiFillStar
+              className="del-fav"
+              onClick={() => deleteCoin(coinid)}
+            />
           </div>
 
           <div className={`rank ${expanded === true ? "" : ""}`}>

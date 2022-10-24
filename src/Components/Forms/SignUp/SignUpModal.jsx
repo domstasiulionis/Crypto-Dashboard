@@ -24,6 +24,7 @@ const SignUpModal = ({ show }) => {
       setStatus("logged");
     } catch (e) {
       setError(e.message);
+      console.log(e.message);
     }
   };
 
@@ -49,7 +50,9 @@ const SignUpModal = ({ show }) => {
                   />
                 </div>
                 <div className="modal-form-elements">
-                  <label className="modal-form-elements__label">Password</label>
+                  <label className="modal-form-elements__label">
+                    Password (6 Characters Minimum )
+                  </label>
                   <input
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
@@ -59,6 +62,23 @@ const SignUpModal = ({ show }) => {
                   <p className="login-error">
                     Password must be at least 6 characters
                   </p>
+                ) : (
+                  ""
+                )}
+                {error === "Firebase: Error (auth/internal-error)." ? (
+                  <p className="login-error">Email is already registered.</p>
+                ) : (
+                  ""
+                )}
+                {error ===
+                "FirebaseError: Firebase: Error (auth/email-already-in-use)." ? (
+                  <p className="login-error">Email is already registered.</p>
+                ) : (
+                  ""
+                )}
+                {error ===
+                "Invalid document reference. Document references must have an even number of segments, but users has 1." ? (
+                  <p className="login-error">Please fill in all fields.</p>
                 ) : (
                   ""
                 )}

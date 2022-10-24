@@ -100,11 +100,19 @@ $mainSelected: #1b1824;
     color: rgb(235, 188, 35);
     margin: 25px 20px 20px 20px;
     cursor: pointer;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
     &--empty {
       @extend .fav;
       color: grey;
+    }
+  }
+
+  .del-fav {
+    @extend .fav;
+
+    &:hover {
+      color: red;
     }
   }
 
