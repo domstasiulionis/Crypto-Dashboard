@@ -1,4 +1,4 @@
-# :chart: Moon Chef
+# :waxing_crescent_moon: Moon Chef
 Live site: https://moon-chef.netlify.app/
 
 ## :receipt:		About
