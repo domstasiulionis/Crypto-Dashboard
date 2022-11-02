@@ -52,6 +52,9 @@ You will need to use your own firebase account for the user auth and database.
 
 // Start the project
 npm start or yarn start
+
+// Publish the project
+yarn build or npm build
 ```
 ## :computer: Author
 Project created by [@domstasiulionis](https://github.com/domstasiulionis)
