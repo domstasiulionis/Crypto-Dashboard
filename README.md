@@ -1,7 +1,7 @@
-# :moneybag: Moon Chef
+# :chart: Moon Chef
 Live site: https://moon-chef.netlify.app/
 
-## :framed_picture:	About
+## :receipt:		About
 Moon Chef is a web applicaiton thats tracks the performance and information of the top 100 cryptocurrencies the world. A user can create an account, which will grant them the ability to save coins to their favourites list (more commonly known as a watchlist). The coins that are added to the list will persist, meaning when the user logs back into their account, the same coins will still be in their list. This was made possible by Firebase on the back-end, which was also used for user authentication alongside the user database. A user can also view more information about a certain coin by clicking on the coin's icon or arrow to reveal an extended version of the coin card, containing more information such as charts and historical data. The user can also search for a specific coin by typing the name of their desired coin into the search bar. 
 
 ## :hammer: Built Using:
@@ -16,8 +16,6 @@ Moon Chef is a web applicaiton thats tracks the performance and information of t
 * [React Sparklines](https://www.npmjs.com/package/react-sparklines) - Sparkline chart
 * [API](https://rapidapi.com/Coinranking/api/coinranking1/) - Provided coin data
 
-![image](https://user-images.githubusercontent.com/44949034/199572543-e9922436-1cc8-415f-96fd-ea20256d02dc.png)
-
 ## :star: Features
 - [x] 100 Crytocurrencies listed
 - [x] Pagination feature
@@ -27,6 +25,8 @@ Moon Chef is a web applicaiton thats tracks the performance and information of t
 - [x] Users can add/remove coins from their favourites and the changes will persist
 - [x] Chart with 24h/7d/30d/3m/1y/5y filter options
 - [x] Mobile, tablet and desktop responsive UI
+
+![image](https://user-images.githubusercontent.com/44949034/199572543-e9922436-1cc8-415f-96fd-ea20256d02dc.png)
 
 ## :rocket: Getting started
 ### Prerequisites
@@ -38,19 +38,19 @@ Clone the repository:
 ```git clone https://github.com/domstasiulionis/Crypto-Dashboard.git```
 
 ```
-# Installing project dependencies.
+// Installing project dependencies
 npm install or yarn install
 
-# API
+// API
 You will need use your own API key which you can obtain from the API website.
 
-# Firebase
+// Firebase
 You will need to use your own firebase account for the user auth and database.
 
-It is recommended that you add your API key and and firebase keys in a .env file.
-Add .env to .gitignore for privacy reasons - which is what was done in this project.
+// It is recommended that you add your API key and and firebase keys in a .env file.
+// Add .env to .gitignore for privacy reasons - which is what was done in this project.
 
-# Start the project
+// Start the project
 npm start or yarn start
 ```
 ## :computer: Author
