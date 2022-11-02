@@ -29,12 +29,12 @@ Moon Chef is a web applicaiton thats tracks the performance and information of t
 - [x] Mobile, tablet and desktop responsive UI
 
 ## Getting started
-###Prerequisites
-*NodeJS must be installed on your computer
-*Git must be configured
-*A package manager such as NPM or YARN must be installed on your computer
+### Prerequisites
+* NodeJS must be installed on your computer
+* Git must be configured
+* A package manager such as NPM or YARN must be installed on your computer
 
-Clone the repository
+Clone the repository:
 ```git clone https://github.com/domstasiulionis/Crypto-Dashboard.git```
 
 ```
@@ -47,7 +47,8 @@ You will need use your own API key which you can obtain from the API website.
 # Firebase
 You will need to use your own firebase account for the user auth and database.
 
-It is recommended that you add your API key and and firebase keys in a .env file and add it to .gitignore file for privacy reasons - which is what was done in this project.
+It is recommended that you add your API key and and firebase keys in a .env file.
+Add .env to .gitignore for privacy reasons - which is what was done in this project.
 
 # Start the project
 npm start # or yarn start
