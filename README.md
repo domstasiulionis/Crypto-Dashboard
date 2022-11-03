@@ -1,7 +1,7 @@
 # :waxing_crescent_moon: Moon Chef
 Live site: https://moon-chef.netlify.app/
 
-## :receipt:		About
+## :receipt: About
 Moon Chef is a web applicaiton thats tracks the performance and information of the top 100 cryptocurrencies the world. A user can create an account, which will grant them the ability to save coins to their favourites list (more commonly known as a watchlist). The coins that are added to the list will persist, meaning when the user logs back into their account, the same coins will still be in their list. This was made possible by Firebase on the back-end, which was also used for user authentication alongside the user database. A user can also view more information about a certain coin by clicking on the coin's icon or arrow to reveal an extended version of the coin card, containing more information such as charts and historical data. The user can also search for a specific coin by typing the name of their desired coin into the search bar. 
 
 ## :hammer: Built Using:
@@ -54,7 +54,7 @@ You will need to use your own firebase account for the user auth and database.
 npm start or yarn start
 
 // Publish the project
-yarn build or npm build
+npm run build or yarn run build
 ```
 ## :computer: Author
 Project created by [@domstasiulionis](https://github.com/domstasiulionis)
