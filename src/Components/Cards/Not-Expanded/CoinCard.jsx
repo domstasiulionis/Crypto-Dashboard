@@ -84,7 +84,6 @@ const CoinCard = ({
       {snackbar ? (
         <div className="snackbar">
           <p>Please log in to save a coin to your favourites</p>
-          <button onClick={() => setSnackbar(false)}>Ok</button>
           {timeoutAlert()}
         </div>
       ) : (
@@ -93,8 +92,7 @@ const CoinCard = ({
       <div
         className={`expand-default ${
           expanded === true ? "expand-true" : "expand-false"
-        }`}
-      >
+        }`}>
         <div className="coin-card">
           <div className="coin__star">
             {isFav === true ? (
@@ -111,8 +109,7 @@ const CoinCard = ({
           <div
             className={`coin-info ${
               expanded === true ? "coin-info--expand-adjustment" : ""
-            }`}
-          >
+            }`}>
             <div className="coin-info__img-container" onClick={expandCard}>
               <div className="coin-info-res" onClick={expandCard}>
                 <BiChevronRight
@@ -162,8 +159,7 @@ const CoinCard = ({
                 <div
                   className={`${
                     change7d > 0 ? "time__percentage" : "time__percentage--red"
-                  }`}
-                >
+                  }`}>
                   {change7d}%
                 </div>
                 <div className="time__period">7d</div>

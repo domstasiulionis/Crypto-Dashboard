@@ -78,19 +78,19 @@ $mainSelected: #1b1824;
   .about-info {
     width: 19px;
     height: 19px;
-    background-color: rgb(201, 201, 201);
+    background-color: #8e48ff;
     border-radius: 50%;
     font-size: 13px;
     font-weight: bold;
     text-align: center;
     align-items: center;
     padding-top: 2px;
-    color: black;
+    color: white;
     transition: all 0.2s ease-in-out;
     cursor: default;
 
     &:hover {
-      background-color: white;
+      background-color: #5100d3;
     }
   }
 
