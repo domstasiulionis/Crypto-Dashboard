@@ -1,4 +1,5 @@
 # :waxing_crescent_moon: Moon Chef
+Site is no longer being maintained as the API used was not free and I have discontinued paying for it.
 Live site: https://moon-chef.netlify.app/
 
 ## :receipt: About
